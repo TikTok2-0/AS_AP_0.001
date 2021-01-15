@@ -2,6 +2,7 @@ package com.example.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BlendMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,13 +29,15 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
     private Context context;
 
     private Activity mainActivity;
+    MainActivity mainActivityInstance;
 
-    private ActivitySwitcher activitySwitcher;
+    //private ActivitySwitcher activitySwitcher;
 
-    public ContactsViewAdapter(Context context, Activity activity) {
+    public ContactsViewAdapter(Context context, Activity activity, MainActivity mainActivityInstance) {
 
         this.context = context;
         this.mainActivity = activity;
+        this.mainActivityInstance = mainActivityInstance;
 
     }
 
@@ -64,9 +67,11 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
         holder.parent.setOnClickListener(new View.OnClickListener(){;
             @Override
             public void onClick(View v){
-                Toast.makeText(context, contacts.get(position).getName()+ " Selected",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, contacts.get(position).getName()+ " Selected",Toast.LENGTH_SHORT).show();
                 if(holder.txtName.getText().toString().contains("HLG während Corona")){
-                    ActivitySwitcher;   //NavHostFragment.findNavController(ActivitySwitcher.this).navigate(R.id.MainActivity_to_menu1);
+                    //ActivitySwitcher;   //NavHostFragment.findNavController(ActivitySwitcher.this).navigate(R.id.MainActivity_to_menu1);
+                    mainActivityInstance.switchActivity(menu1.class);
+
                 }
             }
         });

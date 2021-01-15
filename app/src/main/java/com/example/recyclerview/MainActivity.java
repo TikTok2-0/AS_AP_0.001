@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+String.valueOf(i+1), "dave@gmail.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
-        ContactsViewAdapter adapter = new ContactsViewAdapter(this,this);
+        ContactsViewAdapter adapter = new ContactsViewAdapter(this,this,this);
         adapter.setContacts(contacts);
 
         contactsRecyclerView.setAdapter(adapter);
@@ -47,5 +48,10 @@ public class MainActivity extends AppCompatActivity {
         //grid layout kann auch benutzt werden
         //contactsRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
+    }
+    public void switchActivity(Class<?> cls){
+
+        Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
+        startActivity(intent);
     }
 }
