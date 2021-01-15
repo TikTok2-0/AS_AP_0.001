@@ -59,7 +59,7 @@
             android:layout_below="@id/txtName"
             android:text="Contact Email"
             android:textStyle="italic"
-            android:visibility="invisible"
+            android:visibility="invisibe"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" /-->
 

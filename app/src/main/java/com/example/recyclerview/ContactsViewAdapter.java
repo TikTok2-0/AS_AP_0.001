@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BlendMode;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
 
@@ -25,8 +27,15 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
 
     private Context context;
 
-    public ContactsViewAdapter(Context context) {
+    private Activity mainActivity;
+
+    private ActivitySwitcher activitySwitcher;
+
+    public ContactsViewAdapter(Context context, Activity activity) {
+
         this.context = context;
+        this.mainActivity = activity;
+
     }
 
     @NonNull
@@ -56,6 +65,9 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
             @Override
             public void onClick(View v){
                 Toast.makeText(context, contacts.get(position).getName()+ " Selected",Toast.LENGTH_SHORT).show();
+                if(holder.txtName.getText().toString().contains("HLG während Corona")){
+                    ActivitySwitcher;   //NavHostFragment.findNavController(ActivitySwitcher.this).navigate(R.id.MainActivity_to_menu1);
+                }
             }
         });
 

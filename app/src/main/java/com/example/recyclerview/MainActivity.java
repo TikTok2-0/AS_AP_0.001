@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView logo;
     String logoLink = "https://www.hlg-hamburg.de/wp-content/uploads/2019/06/logo.png";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+String.valueOf(i+1), "dave@gmail.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
-        ContactsViewAdapter adapter = new ContactsViewAdapter(this);
+        ContactsViewAdapter adapter = new ContactsViewAdapter(this,this);
         adapter.setContacts(contacts);
 
         contactsRecyclerView.setAdapter(adapter);
