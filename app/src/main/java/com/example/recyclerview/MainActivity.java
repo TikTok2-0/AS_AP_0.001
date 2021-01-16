@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         ArrayList<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact("Das HLG während Corona", "marot@gmail.com","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
+        contacts.add(new Contact("HLG und Corona", "marot@gmail.com","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
         contacts.add(new Contact("Die Arbeit mit Moodle", "mona.lisa@gmail.com","https://i.ibb.co/F7d5cmc/moodle.jpg"));
         contacts.add(new Contact("Itslearning","mona.list@gmail.com","https://www.univention.de/wp-content/uploads/2019/01/190618-itsLearning-logo-blog-header.png"));
         //contacts.add(new Contact("BBBbb Stever Jobs", "steve@microsoft.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
@@ -130,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //TODO: nicht auf eigene Activities switchen sondern immer auf die selbe und diese variieren abhängig davon welcher Knopf davor gedrückt wurde
 
-    public void switchActivity(Class<?> cls){
+    public void switchActivity(Class<?> cls, String headline){
 
         Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
+        intent.putExtra("headline",headline);
         startActivity(intent);
     }
 

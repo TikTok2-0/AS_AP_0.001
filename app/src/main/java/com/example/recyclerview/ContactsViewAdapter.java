@@ -70,13 +70,9 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
             @Override
             public void onClick(View v){
                 //Toast.makeText(context, contacts.get(position).getName()+ " Selected",Toast.LENGTH_SHORT).show();
-                if(holder.txtName.getText().toString().contains("HLG während Corona")){
-                    //ActivitySwitcher;   //NavHostFragment.findNavController(ActivitySwitcher.this).navigate(R.id.MainActivity_to_menu1);
-                    mainActivityInstance.switchActivity(menu1.class);
 
-                }else if(holder.txtName.getText().toString().contains("Arbeit mit Moodle")){
-                    mainActivityInstance.switchActivity(menu2.class);
-                }
+                mainActivityInstance.switchActivity(universalMenu.class, holder.txtName.getText().toString());
+
             }
         });
 
