@@ -2,12 +2,12 @@ package com.example.recyclerview;
 
 public class Contact {
     private String name;
-    private String email;
+    private boolean lightMode;
     private String imageUrl;
 
-    public Contact(String name, String email, String imageUrl) {
+    public Contact(String name, boolean lightMode, String imageUrl) {
         this.name = name;
-        this.email = email;
+        this.lightMode = lightMode;
         this.imageUrl = imageUrl;
     }
 
@@ -19,12 +19,12 @@ public class Contact {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean getLightMode() {
+        return lightMode;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLightMode(boolean lightMode) {
+        this.lightMode = lightMode;
     }
 
     public String getImageUrl() {
@@ -35,12 +35,5 @@ public class Contact {
         this.imageUrl = imageUrl;
     }
 
-    @Override
-    public String toString() {
-        return "Contact{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
-    }
+
 }

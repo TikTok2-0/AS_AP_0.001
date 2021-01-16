@@ -32,11 +32,11 @@
             android:text="Place Holder"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
-            android:textSize="32dp"
+            android:textSize="32sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_marginTop="50dp"
-            android:layout_marginLeft="25dp"
+            android:layout_marginStart="25dp"
             android:id="@+id/headline"/>
 
     </RelativeLayout>

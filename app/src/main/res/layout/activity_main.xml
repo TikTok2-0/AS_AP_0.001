@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,18 +26,19 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="50dp"
-            android:text="Home"
+            android:text="@string/home"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <ImageView
+            android:contentDescription="Das HLG Logo"
             android:id="@+id/hlgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/HlgNews"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@mipmap/logo"
             android:foreground="@mipmap/logo"
             android:src="@mipmap/logo" />
