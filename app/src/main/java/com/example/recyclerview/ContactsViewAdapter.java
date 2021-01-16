@@ -31,6 +31,8 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
     private Activity mainActivity;
     MainActivity mainActivityInstance;
 
+    private View mContentView;
+
     //private ActivitySwitcher activitySwitcher;
 
     public ContactsViewAdapter(Context context, Activity activity, MainActivity mainActivityInstance) {
@@ -57,7 +59,7 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
         holder.txtName.setText(contacts.get(position).getName());       //hier kann mehr hinzugefügt werden
         //holder.txtEmail.setText(contacts.get(position).getEmail());
 
-        if(holder.txtName.getText().toString().contains("Moodle")){
+        if(holder.txtName.getText().toString().contains("Moodle") || holder.txtName.getText().toString().contains("Itslearning")){
             holder.txtName.setTextColor(context.getResources().getColor(R.color.black));
             holder.constraintLayout.setBackgroundColor(context.getResources().getColor(R.color.white));
             holder.image.setAlpha(255);
@@ -72,6 +74,8 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
                     //ActivitySwitcher;   //NavHostFragment.findNavController(ActivitySwitcher.this).navigate(R.id.MainActivity_to_menu1);
                     mainActivityInstance.switchActivity(menu1.class);
 
+                }else if(holder.txtName.getText().toString().contains("Arbeit mit Moodle")){
+                    mainActivityInstance.switchActivity(menu2.class);
                 }
             }
         });

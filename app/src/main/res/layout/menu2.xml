@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity"
-    android:id="@+id/homeMenu"
     android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer"
-    >
+    tools:context=".menu2">
 
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
     <RelativeLayout
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
@@ -20,37 +20,14 @@
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
         android:textStyle="bold" >
-        <TextView
-            android:id="@+id/HlgNews"
+
+
+        <Button
+            android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="-0dp"
-            android:text="Home"
-            android:textColor="@color/black"
-            android:textSize="30dp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/hlgLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/HlgNews"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="20dp"
-            android:background="@mipmap/logo"
-            android:foreground="@mipmap/logo"
-            android:src="@mipmap/logo" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/contactsRecView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/HlgNews"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
-
+            android:text="Back"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 
     <!-- This FrameLayout insets its children based on system windows using
@@ -74,7 +51,5 @@
         </RelativeLayout>
 
     </FrameLayout>
-
-
 
 </RelativeLayout>
