@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer"
-    tools:context=".menu1">
+    tools:context=".universalMenu">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -14,9 +14,7 @@
         android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:keepScreenOn="true"
-        android:text="@string/dummy_content"
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
         android:textStyle="bold" >
@@ -24,10 +22,22 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:text="Back"
+            android:layout_centerInParent="true"
             android:id="@+id/backBtn"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Holder"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/headline"/>
 
     </RelativeLayout>
 
@@ -48,9 +58,7 @@
             tools:ignore="UselessParent">
 
 
-
         </RelativeLayout>
-
     </FrameLayout>
 
-</RelativeLayout>
+</FrameLayout>
