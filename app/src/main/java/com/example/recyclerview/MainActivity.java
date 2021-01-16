@@ -25,6 +25,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+//sdk min 23: ContactsViewAdapter: l. 64,65: ContextCompat.getColor()
+
 public class MainActivity extends AppCompatActivity {
 
     private static final int UI_ANIMATION_DELAY = 0;
@@ -60,12 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
     private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
-        }
-    };
+    private final Runnable mHideRunnable = this::hide;
 
     private RecyclerView contactsRecyclerView;
     private ImageView logo;
@@ -110,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         ArrayList<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact("HLG und Corona", "marot@gmail.com","https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
-        contacts.add(new Contact("Die Arbeit mit Moodle", "mona.lisa@gmail.com","https://i.ibb.co/F7d5cmc/moodle.jpg"));
-        contacts.add(new Contact("Itslearning","mona.list@gmail.com","https://www.univention.de/wp-content/uploads/2019/01/190618-itsLearning-logo-blog-header.png"));
+        contacts.add(new Contact("HLG und Corona", false,"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
+        contacts.add(new Contact("Die Arbeit mit Moodle", true,"https://i.ibb.co/F7d5cmc/moodle.jpg"));
+        contacts.add(new Contact("Itslearning",true,"https://www.univention.de/wp-content/uploads/2019/01/190618-itsLearning-logo-blog-header.png"));
         //contacts.add(new Contact("BBBbb Stever Jobs", "steve@microsoft.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
-        for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+String.valueOf(i+1), "dave@gmail.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
+        for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1), false,"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
         ContactsViewAdapter adapter = new ContactsViewAdapter(this,this,this);
         adapter.setContacts(contacts);
