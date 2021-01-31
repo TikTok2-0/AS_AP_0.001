@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".MainActivity"
     android:id="@+id/homeMenu"
-    android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer"
-    >
+    android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer">
 
     <RelativeLayout
         android:id="@+id/fullscreen_content"
@@ -21,7 +20,7 @@
         android:textSize="50sp"
         android:textStyle="bold" >
         <TextView
-            android:id="@+id/HlgNews"
+            android:id="@+id/headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -36,7 +35,7 @@
             android:id="@+id/hlgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/HlgNews"
+            android:layout_alignTop="@+id/headline"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
             android:background="@mipmap/logo"
@@ -48,9 +47,23 @@
             android:id="@+id/contactsRecView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_below="@id/HlgNews"
+            android:layout_below="@id/headline"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_above="@+id/menu_bar"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemIconTint="@color/inactive_icon"
+            app:itemTextColor="@color/inactive_icon"
+            android:background="@color/white"
+            app:itemIconSize="30dp"
+            android:layout_marginBottom="-20dp"
+            app:menu="@menu/menu_bar"
+            android:id="@+id/menu_bar"/>
+
 
     </RelativeLayout>
 

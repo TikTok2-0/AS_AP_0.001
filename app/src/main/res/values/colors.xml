@@ -13,4 +13,6 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+    <color name= "inactive_icon">#A0A1A0</color>
+    <color name= "active_icon">#3D7AF5</color>
 </resources>
