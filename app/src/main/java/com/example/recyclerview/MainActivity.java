@@ -1,12 +1,17 @@
 package com.example.recyclerview;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Insets;
@@ -15,13 +20,23 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Telephony;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -32,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
+    private static final boolean AUTO_HIDE = true;
+
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -64,11 +82,28 @@ public class MainActivity extends AppCompatActivity {
     private boolean mVisible;
     private final Runnable mHideRunnable = this::hide;
 
+    private final View.OnTouchListener mDelayHideTouchListener = (view, motionEvent) -> {
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (AUTO_HIDE) {
+                    delayedHide(AUTO_HIDE_DELAY_MILLIS);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                view.performClick();
+                break;
+            default:
+                break;
+        }
+        return false;
+    };
+
     private RecyclerView contactsRecyclerView;
     private ImageView logo;
     String logoLink = "https://www.hlg-hamburg.de/wp-content/uploads/2019/06/logo.png";
     RelativeLayout homeScreen;
 
+    ActionBar toolbar;
 
 
     @Override
@@ -90,15 +125,31 @@ public class MainActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        homeScreen = findViewById(R.id.homeMenu);
+
 
         hide();
 
-        //delayedHide(1000);
 
-        //Insets inset =  Insets.add()
+        BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
 
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case(R.id.menu_home):
+                        switchActivity(MainActivity.class);
+                        break;
+                    case(R.id.menu_news):
+                        break;
+                    case(R.id.menu_settings):
+                        break;
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
 
         contactsRecyclerView = findViewById(R.id.contactsRecView);
 
@@ -132,6 +183,11 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
         intent.putExtra("headline",headline);
+        startActivity(intent);
+    }
+    public void switchActivity(Class<?> cls){
+
+        Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
         startActivity(intent);
     }
 
