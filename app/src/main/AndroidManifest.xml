@@ -6,20 +6,23 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RecyclerView"
-        android:fullBackupContent="false">
-
+        android:theme="@style/Theme.RecyclerView">
+        <activity
+            android:name=".profile_page"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_profile_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
         <activity
             android:name=".universalMenu"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_universal_menu"
-            android:theme="@style/Theme.RecyclerView.Fullscreen"/>
-
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.RecyclerView.Fullscreen">

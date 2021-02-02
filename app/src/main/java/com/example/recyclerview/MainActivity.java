@@ -141,8 +141,10 @@ public class MainActivity extends AppCompatActivity {
                         switchActivity(MainActivity.class);
                         break;
                     case(R.id.menu_news):
+
                         break;
                     case(R.id.menu_settings):
+                        switchActivity(profile_page.class);
                         break;
                     default:
                         break;
