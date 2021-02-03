@@ -7,7 +7,7 @@ public class Contact {
 
     public Contact(String name, boolean lightMode, String imageUrl) {
         this.name = name;
-        this.lightMode = lightMode;
+        this.lightMode = false;//lightMode;
         this.imageUrl = imageUrl;
     }
 
