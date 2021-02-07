@@ -15,7 +15,7 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class profile_page extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
@@ -85,32 +85,34 @@ public class profile_page extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        hide();
         super.onStart();
-        //overridePendingTransition(0,0);
+
+        overridePendingTransition(0,0);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_profile_page);
+        setContentView(R.layout.activity_home_screen);
 
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        hide();
+        //hide();
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
-        bottomNavigation.setSelectedItemId(R.id.menu_settings);
+        bottomNavigation.setSelectedItemId(R.id.menu_home);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case(R.id.menu_home):
-                        switchActivity(HomeScreen.class);
+
                         break;
                     case(R.id.menu_news):
 
@@ -134,7 +136,6 @@ public class profile_page extends AppCompatActivity {
     public void switchActivity(Class<?> cls){
 
         Intent intent = new Intent(this,cls);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 

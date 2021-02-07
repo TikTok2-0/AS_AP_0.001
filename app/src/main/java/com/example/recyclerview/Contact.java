@@ -5,9 +5,9 @@ public class Contact {
     private boolean lightMode;
     private String imageUrl;
 
-    public Contact(String name, boolean lightMode, String imageUrl) {
+    public Contact(String name, String imageUrl) {
         this.name = name;
-        this.lightMode = false;//lightMode;
+
         this.imageUrl = imageUrl;
     }
 

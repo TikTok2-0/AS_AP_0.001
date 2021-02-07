@@ -9,9 +9,7 @@
     app:cardElevation="10dp"
     android:layout_margin="10dp"
     android:elevation="10dp"
-    android:background="@drawable/shadow_background"
-
-    >
+    android:background="@drawable/shadow_background">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

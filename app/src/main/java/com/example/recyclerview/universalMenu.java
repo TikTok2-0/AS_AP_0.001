@@ -104,7 +104,7 @@ public class universalMenu extends AppCompatActivity {
        headline = findViewById(R.id.headline);
 
 
-       backBtn.setOnClickListener((View v) -> switchActivity(MainActivity.class));
+       backBtn.setOnClickListener((View v) -> switchActivity(News.class));
 
        Intent intent = getIntent();
 

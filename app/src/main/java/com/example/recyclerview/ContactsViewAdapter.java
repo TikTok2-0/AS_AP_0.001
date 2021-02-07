@@ -30,13 +30,13 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
     private Context context;
 
     private Activity mainActivity;
-    MainActivity mainActivityInstance;
+    News mainActivityInstance;
 
     private View mContentView;
 
     //private ActivitySwitcher activitySwitcher;
 
-    public ContactsViewAdapter(Context context, Activity activity, MainActivity mainActivityInstance) {
+    public ContactsViewAdapter(Context context, Activity activity, News mainActivityInstance) {
 
         this.context = context;
         this.mainActivity = activity;
