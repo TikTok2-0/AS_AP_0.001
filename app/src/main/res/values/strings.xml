@@ -6,4 +6,5 @@
     <string name="title_activity_universal_menu">FullscreenActivity</string>
     <string name="home">Home</string>
     <string name="title_activity_profile_page">FullscreenActivity</string>
+    <string name="title_activity_home_screen">FullscreenActivity</string>
 </resources>

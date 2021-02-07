@@ -24,7 +24,10 @@ android {
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
+        //sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_1_8
+        //targetCompatibility JavaVersion.VERSION_17
+
     }
 }
 
@@ -34,10 +37,16 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     //implementation 'com.androidx.support:design:27.0.2'
+
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
+
+
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
+
+
 
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'androidx.appcompat:appcompat:1.1.0'

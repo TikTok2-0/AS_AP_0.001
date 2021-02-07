@@ -1,29 +1,15 @@
 package com.example.recyclerview;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Insets;
-import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Telephony;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,18 +17,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
 //sdk min 23: ContactsViewAdapter: l. 64,65: ContextCompat.getColor()
 
-public class MainActivity extends AppCompatActivity {
+public class News extends AppCompatActivity {
 
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
@@ -105,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
 
     ActionBar toolbar;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(100,100);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        overridePendingTransition(0,0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,32 +112,35 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_news);
 
 
 
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-
+        //MariaDBCon.connect();
 
         hide();
 
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
+        bottomNavigation.setSelectedItemId(R.id.menu_news);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case(R.id.menu_home):
-                        switchActivity(MainActivity.class);
+                        switchActivity(HomeScreen.class);
                         break;
                     case(R.id.menu_news):
 
+                        //switchActivity(MainActivity.class);
                         break;
                     case(R.id.menu_settings):
+
                         switchActivity(profile_page.class);
                         break;
                     default:
@@ -160,12 +157,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         ArrayList<Contact> contacts = new ArrayList<>();
-        contacts.add(new Contact("HLG und Corona", false,"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
-        contacts.add(new Contact("Die Arbeit mit Moodle", true,"https://i.ibb.co/F7d5cmc/moodle.jpg"));
-        contacts.add(new Contact("Itslearning",true,"https://www.univention.de/wp-content/uploads/2019/01/190618-itsLearning-logo-blog-header.png"));
+        contacts.add(new Contact("HLG und Corona", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg/1280px-Helene-Lange-Gymnasium_%28Hamburg-Harvestehude%29.2.29247.ajb.jpg"));
+        contacts.add(new Contact("Die Arbeit mit Moodle","https://i.ibb.co/F7d5cmc/moodle.jpg"));
+        contacts.add(new Contact("Itslearning","https://www.univention.de/wp-content/uploads/2019/01/190618-itsLearning-logo-blog-header.png"));
         //contacts.add(new Contact("BBBbb Stever Jobs", "steve@microsoft.com","https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
-        for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1), false,"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
+        for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1),"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
 
         ContactsViewAdapter adapter = new ContactsViewAdapter(this,this,this);
         adapter.setContacts(contacts);

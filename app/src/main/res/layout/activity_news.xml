@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
-    tools:context=".MainActivity"
-    android:id="@+id/homeMenu"
-    android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer">
+    android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer"
+    tools:context=".News">
 
     <RelativeLayout
         android:id="@+id/fullscreen_content"
@@ -16,20 +16,20 @@
         android:keepScreenOn="true"
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
+
         <TextView
             android:id="@+id/headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="50dp"
-            android:text="@string/home"
+            android:text="News"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:contentDescription="Das HLG Logo"
             android:id="@+id/hlgLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,6 +37,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
             android:background="@mipmap/logo"
+            android:contentDescription="Das HLG Logo"
             android:foreground="@mipmap/logo"
             android:src="@mipmap/logo" />
 
@@ -45,23 +46,23 @@
             android:id="@+id/contactsRecView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_above="@+id/menu_bar"
             android:layout_below="@id/headline"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_above="@+id/menu_bar"/>
+            android:layout_marginTop="10dp" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menu_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:itemTextAppearanceInactive="@color/active_icon"
+            android:layout_marginBottom="-20dp"
             android:background="@color/white"
             app:itemIconSize="30dp"
-            android:layout_marginBottom="-20dp"
-            app:menu="@menu/menu_bar"
-            android:id="@+id/menu_bar"
             app:itemIconTint="@drawable/tab_color"
-            app:itemTextColor="@drawable/tab_color"/>
+            app:itemTextAppearanceInactive="@color/active_icon"
+            app:itemTextColor="@drawable/tab_color"
+            app:menu="@menu/menu_bar" />
 
         <FrameLayout
             android:layout_width="match_parent"

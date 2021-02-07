@@ -14,17 +14,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
         <activity
+            android:name=".HomeScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_home_screen"
+            android:theme="@style/Theme.RecyclerView.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".profile_page"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_profile_page"
-            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".universalMenu"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_universal_menu"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".MainActivity"
+            android:name=".News"
             android:theme="@style/Theme.RecyclerView.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

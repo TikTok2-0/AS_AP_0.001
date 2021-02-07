@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="50dp"
-            android:text="Settings"
+            android:text="Home"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
