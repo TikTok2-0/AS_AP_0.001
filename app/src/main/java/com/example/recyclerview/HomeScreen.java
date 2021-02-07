@@ -19,7 +19,7 @@ public class HomeScreen extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
-
+    private jsonPars jsonPars;
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 0;
 
@@ -97,6 +97,8 @@ public class HomeScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_home_screen);
 
+        jsonPars = new jsonPars(this);
+        jsonPars.parseJson();
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
