@@ -1,6 +1,5 @@
 package com.example.recyclerview;
 import android.content.Context;
-import android.webkit.HttpAuthHandler;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -13,10 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import java.util.ArrayList;
 
 public class jsonPars {
@@ -25,16 +20,17 @@ public class jsonPars {
     private String jsonStr;
     private RequestQueue mQueue;
     private Context context;
+    private ArrayList<News> newsal;
 
     public jsonPars(Context context) {
-        url = "https://cdn.discordapp.com/attachments/663113955278979096/808105035103469578/jsonExports_1.json";
+        url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
         this.context = context;
 
     }
 
-    //TODO mach das wieder zu ArrayList<Contact> statt void, also in in arraylist speichern und die dann übergeben
-    public void parseJson(){
+    public ArrayList<News> parseJson(){
         mQueue = Volley.newRequestQueue(context);
+        newsal = new ArrayList<>();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -50,10 +46,11 @@ public class jsonPars {
                                 String caption = news.getString("caption");
                                 String imageURL = news.getString("imageURL");
                                 String id = news.getString("id");
+                                String dates = news.getString("dates");
                                 String category = news.getString("category");
                                 String text = news.getString("text");
 
-                                System.out.println("TITEL!!!!!!!!!!!!!!"+ title);
+                                newsal.add(new News(title,caption,imageURL,id,dates,category,text));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -65,10 +62,9 @@ public class jsonPars {
                 error.printStackTrace();
             }
         });
-
         mQueue.add(request);
+        return (newsal);
   }
 
 }
-
 

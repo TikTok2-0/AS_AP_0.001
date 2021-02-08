@@ -1,31 +1,41 @@
 package com.example.recyclerview;
 
-import android.annotation.SuppressLint;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class profile_page extends AppCompatActivity {
+import java.util.ArrayList;
 
-    private static final boolean AUTO_HIDE = true;
+//sdk min 23: ContactsViewAdapter: l. 64,65: ContextCompat.getColor()
 
+public class newsActivity extends AppCompatActivity {
 
-
-    private static final int AUTO_HIDE_DELAY_MILLIS = 0;
+    private jsonPars jsonPars;
+    private ArrayList<News> news;
 
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
+    private static final boolean AUTO_HIDE = true;
+
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
         @Override
@@ -55,55 +65,70 @@ public class profile_page extends AppCompatActivity {
             mControlsView.setVisibility(View.VISIBLE);
         }
     };
-
     private boolean mVisible;
-    private final Runnable mHideRunnable = new Runnable() {
-        @Override
-        public void run() {
-            hide();
+    private final Runnable mHideRunnable = this::hide;
+
+    private final View.OnTouchListener mDelayHideTouchListener = (view, motionEvent) -> {
+        switch (motionEvent.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (AUTO_HIDE) {
+                    delayedHide(AUTO_HIDE_DELAY_MILLIS);
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                view.performClick();
+                break;
+            default:
+                break;
         }
+        return false;
     };
 
-    private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    if (AUTO_HIDE) {
-                        hide();
-                    }
-                    break;
-                case MotionEvent.ACTION_UP:
-                    view.performClick();
-                    break;
-                default:
-                    break;
-            }
-            return false;
-        }
-    };
+    private RecyclerView contactsRecyclerView;
+    private ImageView logo;
+    String logoLink = "https://www.hlg-hamburg.de/wp-content/uploads/2019/06/logo.png";
+    RelativeLayout homeScreen;
+
+    ActionBar toolbar;
 
     @Override
     protected void onStart() {
         super.onStart();
-        //overridePendingTransition(0,0);
+        overridePendingTransition(100,100);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        overridePendingTransition(0,0);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_profile_page);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        int UI_OPTIONS = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+        //getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        mVisible = false;
+
+        setContentView(R.layout.activity_news);
+
+        jsonPars = new jsonPars(this);
+        news = jsonPars.parseJson();
+
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
+        //MariaDBCon.connect();
+
         hide();
+
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
-        bottomNavigation.setSelectedItemId(R.id.menu_settings);
+        bottomNavigation.setSelectedItemId(R.id.menu_news);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -114,7 +139,7 @@ public class profile_page extends AppCompatActivity {
                         break;
                     case(R.id.menu_news):
 
-                        switchActivity(newsActivity.class);
+                        //switchActivity(MainActivity.class);
                         break;
                     case(R.id.menu_settings):
 
@@ -127,14 +152,35 @@ public class profile_page extends AppCompatActivity {
             }
         });
 
+        contactsRecyclerView = findViewById(R.id.contactsRecView);
 
+        logo = findViewById(R.id.hlgLogo);
+
+        //for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1),"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
+
+        NewsViewAdapter adapter = new NewsViewAdapter(this,this,this);
+        adapter.setNews(news);
+
+        contactsRecyclerView.setAdapter(adapter);
+        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
+
+        Glide.with(this).asBitmap().load(logoLink).into(logo);
+
+        //grid layout kann auch benutzt werden
+        //contactsRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
     }
 
+
+    public void switchActivity(Class<?> cls, String headline){
+
+        Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
+        intent.putExtra("headline",headline);
+        startActivity(intent);
+    }
     public void switchActivity(Class<?> cls){
 
-        Intent intent = new Intent(this,cls);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
         startActivity(intent);
     }
 
@@ -155,17 +201,30 @@ public class profile_page extends AppCompatActivity {
         mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
+        // Schedule a runnable to remove the status and navigation bar after a delay
         mHideHandler.removeCallbacks(mShowPart2Runnable);
         mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
     }
 
     private void show() {
+        // Show the system bar
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         mVisible = true;
 
+        // Schedule a runnable to display UI elements after a delay
         mHideHandler.removeCallbacks(mHidePart2Runnable);
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+    }
+
+    /**
+     * Schedules a call to hide() in delay milliseconds, canceling any
+     * previously scheduled calls.
+     */
+    private void delayedHide(int delayMillis) {
+        mHideHandler.removeCallbacks(mHideRunnable);
+        mHideHandler.postDelayed(mHideRunnable, delayMillis);
+
     }
 
 }
