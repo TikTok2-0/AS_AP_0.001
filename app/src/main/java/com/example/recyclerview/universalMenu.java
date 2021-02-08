@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.text.LineBreaker;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -89,7 +91,7 @@ public class universalMenu extends AppCompatActivity {
         return false;
     };
 
-    Button backBtn;
+    RelativeLayout backBtn;
     TextView headline;
     ImageView imageHead;
     TextView mainText,txtDate,txtCat;
@@ -130,6 +132,8 @@ public class universalMenu extends AppCompatActivity {
        headline.setText(title);
 
        mainText.setText(text);
+
+       //mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
 
        txtDate.setText(date);
 
