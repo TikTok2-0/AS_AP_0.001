@@ -5,13 +5,17 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -87,6 +91,11 @@ public class universalMenu extends AppCompatActivity {
 
     Button backBtn;
     TextView headline;
+    ImageView imageHead;
+    TextView mainText,txtDate,txtCat;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,17 +111,34 @@ public class universalMenu extends AppCompatActivity {
 
        backBtn = findViewById(R.id.backBtn);
        headline = findViewById(R.id.headline);
+       imageHead = findViewById(R.id.imageHead);
+       mainText = findViewById(R.id.text);
+       txtCat = findViewById(R.id.txtCat);
+       txtDate = findViewById(R.id.txtDate);
 
 
        backBtn.setOnClickListener((View v) -> switchActivity(newsActivity.class));
 
        Intent intent = getIntent();
 
-       String headlineName = getIntent().getStringExtra("headline");
+       String title = getIntent().getStringExtra("title");
+       String imageURL = getIntent().getStringExtra("imageURL");
+       String text = getIntent().getStringExtra("text");
+       String date = getIntent().getStringExtra("dates");
+       String category = getIntent().getStringExtra("category");
 
-       headline.setText(headlineName);
+       headline.setText(title);
 
+       mainText.setText(text);
 
+       txtDate.setText(date);
+
+       txtCat.setText("Kategorie: "+category);
+
+        Glide.with(this)
+                .asBitmap()
+                .load(imageURL)
+                .into(imageHead);
     }
 
     public void switchActivity(Class<?> cls){

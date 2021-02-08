@@ -19,25 +19,87 @@
         android:textSize="50sp"
         android:textStyle="bold" >
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/imageHead"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/gradient"
+
+            />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Back"
             android:layout_centerInParent="true"
             android:id="@+id/backBtn"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/imageHead">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Place Holder"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="25dp"
-            android:id="@+id/headline"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Place Holder"
+
+
+                    android:layout_alignParentStart="true"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="25dp"
+                    android:id="@+id/headline"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/headline"
+                    android:layout_marginTop="-22dp"
+                    android:padding="32dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:id="@+id/text"
+                    android:text="text"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text"
+                    android:layout_marginTop="-22dp"
+                    android:text="Datum xx.xx.xxxx"
+                    android:layout_marginStart="32dp"
+                    android:textStyle="italic"
+                    android:id="@+id/txtDate"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txtDate"
+                    android:layout_marginTop="10dp"
+                    android:text="Katerogie: "
+                    android:layout_marginStart="32dp"
+                    android:textStyle="italic"
+                    android:id="@+id/txtCat"
+                    android:layout_marginBottom="24dp"/>
+
+
+
+
+            </RelativeLayout>
+        </ScrollView>
 
     </RelativeLayout>
 
@@ -56,6 +118,7 @@
             android:layout_gravity="bottom|center_horizontal"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
+
 
 
         </RelativeLayout>
