@@ -172,10 +172,19 @@ public class newsActivity extends AppCompatActivity {
     }
 
 
-    public void switchActivity(Class<?> cls, String headline){
-
+    public void switchActivity(Class<?> cls, int position){
+        //News news = new News(title,caption,imageURL,id,dates,category,text)
+        News newsObj = news.get(position);
         Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
-        intent.putExtra("headline",headline);
+
+        intent.putExtra("title", newsObj.getTitle());
+        intent.putExtra("caption",newsObj.getCaption());
+        intent.putExtra("imageURL",newsObj.getImageUrl());
+        intent.putExtra("id",newsObj.getId());
+        intent.putExtra("dates",newsObj.getDates());
+        intent.putExtra("category",newsObj.getCategory());
+        intent.putExtra("text",newsObj.getText());
+
         startActivity(intent);
     }
     public void switchActivity(Class<?> cls){

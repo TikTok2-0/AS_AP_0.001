@@ -22,6 +22,8 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
 
     private ArrayList<News> news = new ArrayList<>();
 
+    private News newsObj;
+
     private Context context;
 
     private Activity mainActivity;
@@ -55,11 +57,12 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         holder.txtName.setText(news.get(position).getTitle());       //hier kann mehr hinzugefügt werden
 
         //TODO: Herausfinden warum manche der PlaceHolder light werden.
-        if(news.get(position).getLightMode()){
+
+        /*if(news.get(position).getLightMode()){
             holder.txtName.setTextColor(ContextCompat.getColor(context,R.color.black));
             holder.constraintLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.white));
             holder.image.setImageAlpha(255); //setAlpha()
-        }
+        }*/
 
         /*
         holder.parent.setOnClickListener(new View.OnClickListener(){;
@@ -69,9 +72,12 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
                 mainActivityInstance.switchActivity(universalMenu.class, holder.txtName.getText().toString());
             }
         });*/
+
+
+
         //Das selbe aber vereinfacht
         //TODO andere News Variabeln einbauen und News page hinzufügen
-        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, holder.txtName.getText().toString()));
+        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
 
         //loading images
         Glide.with(context)
@@ -95,12 +101,19 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         private TextView txtName; //txtEmail;
         private CardView parent;
         private ImageView image;
+        //private News newsObj;
         private ConstraintLayout constraintLayout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.txtName);
             parent = itemView.findViewById(R.id.parent);
             constraintLayout = itemView.findViewById(R.id.parentContraint);
+            /*
+            for(News singleNews : news){
+                if(txtName.toString().equals(singleNews.getCaption().toString())){
+                    newsObj = singleNews;
+                }
+            }*/
             //txtEmail = itemView.findViewById(R.id.txtEmail);
 
             image = itemView.findViewById(R.id.image);
