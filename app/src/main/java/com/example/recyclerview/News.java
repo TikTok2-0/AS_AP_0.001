@@ -77,11 +77,4 @@ public class News {
         this.text = text;
     }
 
-    public boolean getLightMode() {
-        return lightMode;
-    }
-
-    public void setLightMode(boolean lightMode) {
-        this.lightMode = lightMode;
-    }
 }
