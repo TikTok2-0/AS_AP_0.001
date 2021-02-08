@@ -2,41 +2,36 @@ package com.example.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.BlendMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.navigation.fragment.NavHostFragment;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapter.ViewHolder>{
+public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHolder>{
 
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    private ArrayList<News> news = new ArrayList<>();
 
     private Context context;
 
     private Activity mainActivity;
-    News mainActivityInstance;
+    newsActivity mainActivityInstance;
 
     private View mContentView;
 
     //private ActivitySwitcher activitySwitcher;
 
-    public ContactsViewAdapter(Context context, Activity activity, News mainActivityInstance) {
+    public NewsViewAdapter(Context context, Activity activity, newsActivity mainActivityInstance) {
 
         this.context = context;
         this.mainActivity = activity;
@@ -57,11 +52,10 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtName.setText(contacts.get(position).getName());       //hier kann mehr hinzugefügt werden
-        //holder.txtEmail.setText(contacts.get(position).getEmail());
+        holder.txtName.setText(news.get(position).getTitle());       //hier kann mehr hinzugefügt werden
 
         //TODO: Herausfinden warum manche der PlaceHolder light werden.
-        if(contacts.get(position).getLightMode()){
+        if(news.get(position).getLightMode()){
             holder.txtName.setTextColor(ContextCompat.getColor(context,R.color.black));
             holder.constraintLayout.setBackgroundColor(ContextCompat.getColor(context,R.color.white));
             holder.image.setImageAlpha(255); //setAlpha()
@@ -76,23 +70,24 @@ public class ContactsViewAdapter extends RecyclerView.Adapter<ContactsViewAdapte
             }
         });*/
         //Das selbe aber vereinfacht
+        //TODO andere News Variabeln einbauen und News page hinzufügen
         holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, holder.txtName.getText().toString()));
 
         //loading images
         Glide.with(context)
                 .asBitmap()
-                .load(contacts.get(position).getImageUrl())
+                .load(news.get(position).getImageUrl())
                 .into(holder.image);
 
     }
 
     @Override
     public int getItemCount() {
-        return contacts.size();
+        return news.size();
     }
 
-    public void setContacts(ArrayList<Contact> contacts) {
-        this.contacts = contacts;
+    public void setNews(ArrayList<News> news) {
+        this.news = news;
         notifyDataSetChanged(); //wichtig damit die Daten sich aktualisieren
     }
 

@@ -35,7 +35,7 @@
             android:label="@string/title_activity_universal_menu"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".News"
+            android:name=".newsActivity"
             android:theme="@style/Theme.RecyclerView.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
