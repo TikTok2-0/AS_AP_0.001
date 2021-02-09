@@ -19,18 +19,48 @@
 
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
-        android:textStyle="bold" >
+        android:textStyle="bold"
+        android:padding="30dp">
 
         <TextView
             android:id="@+id/headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="Home"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Studenplan"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_below="@+id/headline"
+            android:id="@+id/txtStundenplan"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="powered by UNTIS©"
+            android:textStyle="italic|bold"
+            android:textSize="10dp"
+            android:layout_toRightOf="@+id/txtStundenplan"
+            android:layout_below="@+id/headline"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="5dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/untisRecView"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtStundenplan"/>
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/menu_bar"
@@ -43,7 +73,8 @@
             app:itemIconTint="@drawable/tab_color"
             app:itemTextAppearanceInactive="@color/active_icon"
             app:itemTextColor="@drawable/tab_color"
-            app:menu="@menu/menu_bar" />
+            app:menu="@menu/menu_bar"
+            android:layout_marginTop="20dp"/>
 
     </RelativeLayout>
 
