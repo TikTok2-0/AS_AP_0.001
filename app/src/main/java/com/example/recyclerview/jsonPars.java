@@ -16,26 +16,35 @@ import java.util.ArrayList;
 
 public class jsonPars {
 
-    private String url;
+    private static String url;
     private String jsonStr;
-    private RequestQueue mQueue;
-    private Context context;
-    private ArrayList<News> newsal;
+    private static RequestQueue mQueue;
+    private static Context context;
+    private static ArrayList<News> newsal;
 
     public jsonPars(Context context) {
-        url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
+        //url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
+        url = "https://cdn.discordapp.com/attachments/663113955278979096/808722126756380748/jsonExports.json";
         this.context = context;
+        newsal = new ArrayList<>();
 
     }
 
-    public ArrayList<News> parseJson(){
-        mQueue = Volley.newRequestQueue(context);
-        newsal = new ArrayList<>();
+    public static ArrayList<News> getNewsal() {
+        return newsal;
+    }
 
+    public static ArrayList<News> parseJson(){
+        mQueue = Volley.newRequestQueue(context);
+
+        //System.out.println("json-------------------");
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+
                 new Response.Listener<JSONObject>() {
+
                     @Override
                     public void onResponse(JSONObject response) {
+
                         try {
                             JSONArray jsonArray = response.getJSONArray("news");
 
@@ -63,6 +72,7 @@ public class jsonPars {
             }
         });
         mQueue.add(request);
+
         return (newsal);
   }
 

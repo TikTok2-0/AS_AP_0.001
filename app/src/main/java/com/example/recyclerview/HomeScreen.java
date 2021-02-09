@@ -5,6 +5,9 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +15,21 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class HomeScreen extends AppCompatActivity {
+
+    private ArrayList<Course> courses;
+    private RecyclerView courseRecyclerView;
+
+    private jsonPars json_Pars;
+    private ArrayList<News> news;
 
     private static final boolean AUTO_HIDE = true;
 
@@ -89,17 +103,30 @@ public class HomeScreen extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+    ImageView storyImage;
+    TextView txtName;
+    CardView newsCard;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_home_screen);
 
+        //json_Pars = new jsonPars(this);
+        //news = json_Pars.parseJson();
+
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+        storyImage = findViewById(R.id.storyImage);
+        txtName = findViewById(R.id.txtName);
+        newsCard = findViewById(R.id.newsCard);
+
+        courses = new ArrayList<>();
 
         //hide();
+
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
@@ -126,6 +153,36 @@ public class HomeScreen extends AppCompatActivity {
                 return false;
             }
         });
+        newsCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(universalMenu.class,0);
+            }
+        });
+
+        news = jsonPars.getNewsal();
+
+        courseRecyclerView = findViewById(R.id.untisRecView);
+        UntisViewAdapter adapter = new UntisViewAdapter(this,this,this);
+
+        courses.add(new Course("Mathe 11","Ho","R102",R.color.white,R.color.red));
+        courses.add(new Course("English","vB","R306",R.color.purple,R.color.yellow));
+        courses.add(new Course("Deutsch 2","Ve","R205",R.color.red,R.color.light_blue_900));
+        courses.add(new Course("Physik 3","Dn","R306",R.color.white,R.color.grey));
+
+        adapter.setCourses(courses);
+
+
+
+        courseRecyclerView.setAdapter(adapter);
+        courseRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+
+        txtName.setText(news.get(0).getTitle());
+
+        Glide.with(this)
+                .asBitmap()
+                .load(news.get(0).getImageUrl())
+                .into(storyImage);
 
 
 
@@ -134,6 +191,21 @@ public class HomeScreen extends AppCompatActivity {
     public void switchActivity(Class<?> cls){
 
         Intent intent = new Intent(this,cls);
+        startActivity(intent);
+    }
+    public void switchActivity(Class<?> cls, int position){
+        //News news = new News(title,caption,imageURL,id,dates,category,text)
+        News newsObj = news.get(position);
+        Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
+
+        intent.putExtra("title", newsObj.getTitle());
+        intent.putExtra("caption",newsObj.getCaption());
+        intent.putExtra("imageURL",newsObj.getImageUrl());
+        intent.putExtra("id",newsObj.getId());
+        intent.putExtra("dates",newsObj.getDates());
+        intent.putExtra("category",newsObj.getCategory());
+        intent.putExtra("text",newsObj.getText());
+
         startActivity(intent);
     }
 

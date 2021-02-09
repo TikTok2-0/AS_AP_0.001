@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="52dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
-    android:width"20dp">
+    android:padding="10dp"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="6dp"
 
+    >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parentRelative"
+        android:background="@color/light_blue_600">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:tint="@color/yellow"
+            android:src="@drawable/ic_circle"
+            android:id="@+id/colorIcon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English 10"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/colorIcon"
+            android:textColor="@color/black"
+            android:id="@+id/txtCourse"
+            android:layout_marginLeft="8dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vB"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="16dp"
+            android:id="@+id/txtTeach"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R306"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:layout_toLeftOf="@+id/txtTeach"
+            android:layout_marginRight="24dp"
+            android:id="@+id/txtRoom"/>
+
+    </RelativeLayout>
 
 
 
