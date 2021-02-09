@@ -21,20 +21,28 @@ public class jsonPars {
     private static RequestQueue mQueue;
     private static Context context;
     private static ArrayList<News> newsal;
+    private static jsonPars jsonPars;
 
-    public jsonPars(Context context) {
+    private jsonPars(Context context) {
         //url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
         url = "https://cdn.discordapp.com/attachments/663113955278979096/808722126756380748/jsonExports.json";
         this.context = context;
         newsal = new ArrayList<>();
 
     }
-
+    public static synchronized jsonPars getJsonPars(Context context){
+        if(jsonPars==null){
+            jsonPars = new jsonPars(context);
+            jsonPars.parseJson();
+        }
+        return jsonPars;
+    }
     public static ArrayList<News> getNewsal() {
+
         return newsal;
     }
 
-    public static ArrayList<News> parseJson(){
+    private static void parseJson(){
         mQueue = Volley.newRequestQueue(context);
 
         //System.out.println("json-------------------");
@@ -73,7 +81,7 @@ public class jsonPars {
         });
         mQueue.add(request);
 
-        return (newsal);
+        //return (newsal);
   }
 
 }

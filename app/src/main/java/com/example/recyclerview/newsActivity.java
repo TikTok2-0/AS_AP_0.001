@@ -27,8 +27,9 @@ import java.util.ArrayList;
 
 public class newsActivity extends AppCompatActivity {
 
-    private jsonPars jsonPars;
-    private ArrayList<News> news;
+    private jsonPars json_Pars;
+    private static ArrayList<News> news;
+    private static int length;
 
     private static final int UI_ANIMATION_DELAY = 0;
     private final Handler mHideHandler = new Handler();
@@ -84,8 +85,8 @@ public class newsActivity extends AppCompatActivity {
         return false;
     };
 
-    private RecyclerView contactsRecyclerView;
-    private ImageView logo;
+    private static RecyclerView contactsRecyclerView;
+    private static ImageView logo;
     String logoLink = "https://www.hlg-hamburg.de/wp-content/uploads/2019/06/logo.png";
     RelativeLayout homeScreen;
 
@@ -102,7 +103,7 @@ public class newsActivity extends AppCompatActivity {
         super.onStop();
         overridePendingTransition(0,0);
     }
-
+    static NewsViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,8 +116,10 @@ public class newsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_news);
 
-        jsonPars = new jsonPars(this);
-        news = jsonPars.parseJson();
+        json_Pars =  jsonPars.getJsonPars(this);
+
+        news = jsonPars.getNewsal();
+
 
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
@@ -154,16 +157,20 @@ public class newsActivity extends AppCompatActivity {
 
         contactsRecyclerView = findViewById(R.id.contactsRecView);
 
-        logo = findViewById(R.id.hlgLogo);
+
 
         //for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1),"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
-
-        NewsViewAdapter adapter = new NewsViewAdapter(this,this,this);
+        adapter = new NewsViewAdapter(this, this, this);
         adapter.setNews(news);
 
         contactsRecyclerView.setAdapter(adapter);
-        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
 
+
+        System.out.println(news.size());
+        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
+
+
+        logo = findViewById(R.id.hlgLogo);
         Glide.with(this).asBitmap().load(logoLink).into(logo);
 
         //grid layout kann auch benutzt werden
