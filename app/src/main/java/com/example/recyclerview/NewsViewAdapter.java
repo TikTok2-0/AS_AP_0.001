@@ -56,7 +56,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txtName.setText(news.get(position).getTitle());       //hier kann mehr hinzugefügt werden
 
-        //TODO: Herausfinden warum manche der PlaceHolder light werden.
+
 
         /*if(news.get(position).getLightMode()){
             holder.txtName.setTextColor(ContextCompat.getColor(context,R.color.black));
@@ -76,7 +76,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
 
 
         //Das selbe aber vereinfacht
-        //TODO andere News Variabeln einbauen und News page hinzufügen
+
         holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
 
         //loading images
