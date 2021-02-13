@@ -86,7 +86,7 @@ public class profile_page extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //overridePendingTransition(0,0);
+        overridePendingTransition(0,0);
     }
 
     @Override
