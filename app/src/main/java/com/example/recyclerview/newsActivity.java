@@ -77,7 +77,9 @@ public class newsActivity extends AppCompatActivity {
                 }
                 break;
             case MotionEvent.ACTION_UP:
+                show();
                 view.performClick();
+
                 break;
             default:
                 break;
@@ -125,6 +127,8 @@ public class newsActivity extends AppCompatActivity {
 
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
+        //mContentView.setOnTouchListener(mDelayHideTouchListener);
 
         //MariaDBCon.connect();
 
