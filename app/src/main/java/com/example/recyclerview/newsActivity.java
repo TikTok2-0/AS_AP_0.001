@@ -166,7 +166,7 @@ public class newsActivity extends AppCompatActivity {
         contactsRecyclerView.setAdapter(adapter);
 
 
-        System.out.println(news.size());
+        //System.out.println(news.size());
         contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
 
 

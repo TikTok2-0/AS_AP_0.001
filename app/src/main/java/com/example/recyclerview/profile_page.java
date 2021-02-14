@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,11 +17,13 @@ import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class profile_page extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
-
+    private ArrayList<SettingsProperty> settings;
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 0;
 
@@ -89,6 +93,8 @@ public class profile_page extends AppCompatActivity {
         //overridePendingTransition(0,0);
     }
 
+    private RecyclerView settingsRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +104,23 @@ public class profile_page extends AppCompatActivity {
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
+        settings = new ArrayList<>();
+
+        settingsRecyclerView = findViewById(R.id.settingsRecView);
+        SettingsViewAdapter adapter = new SettingsViewAdapter(this,this,this);
+
+        settings.add(new SettingsProperty("Username: ","Team HLG",false,false));
+        settings.add(new SettingsProperty("Name:","Tik Tok 2.0",false,false));
+        settings.add(new SettingsProperty("E-mail:","tiktok2-0@gmail.com",false,false));
+        settings.add(new SettingsProperty("Private Account","tiktok2-0@gmail.com",false,true));
+        settings.add(new SettingsProperty("Notifications:","tiktok2-0@gmail.com",true,true));
+
+        adapter.setSettings(settings);
+
+        settingsRecyclerView.setAdapter(adapter);
+        settingsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
 
         hide();
 
