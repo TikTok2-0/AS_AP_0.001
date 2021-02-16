@@ -13,7 +13,7 @@
     android:background="@drawable/shadow_background">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -26,23 +26,12 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:scaleType="centerCrop"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:visibility="visible" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/gradient"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-
+            android:background="@drawable/gradient" />
 
         <TextView
             android:id="@+id/txtName"
@@ -50,14 +39,13 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="false"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginBottom="11dp"
-            android:text="Contact Name"
+            android:text="News Headline"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             android:textSize="20dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"/>
 
         <!--TextView
             android:id="@+id/txtEmail"
@@ -72,7 +60,7 @@
 
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>

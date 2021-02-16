@@ -118,7 +118,8 @@ public class universalMenu extends AppCompatActivity {
        txtCat = findViewById(R.id.txtCat);
        txtDate = findViewById(R.id.txtDate);
 
-
+       mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+       //headline.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
        backBtn.setOnClickListener((View v) -> switchActivity(newsActivity.class));
 
        Intent intent = getIntent();
