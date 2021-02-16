@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -106,6 +107,7 @@ public class HomeScreen extends AppCompatActivity {
     ImageView storyImage;
     TextView txtName;
     CardView newsCard;
+    RelativeLayout nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +124,7 @@ public class HomeScreen extends AppCompatActivity {
         storyImage = findViewById(R.id.storyImage);
         txtName = findViewById(R.id.txtName);
         newsCard = findViewById(R.id.newsCard);
+        nextBtn = findViewById(R.id.nextBtn);
 
         courses = new ArrayList<>();
 
@@ -131,6 +134,14 @@ public class HomeScreen extends AppCompatActivity {
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
         bottomNavigation.setSelectedItemId(R.id.menu_home);
+
+        //TODO zu studenplan activity wechseln
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(newsActivity.class);
+            }
+        });
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
