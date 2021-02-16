@@ -25,7 +25,8 @@ public class jsonPars {
 
     private jsonPars(Context context) {
         //url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
-        url = "https://cdn.discordapp.com/attachments/663113955278979096/808722126756380748/jsonExports.json";
+        //url = "https://cdn.discordapp.com/attachments/663113955278979096/808722126756380748/jsonExports.json";
+        url = "https://raw.githubusercontent.com/TikTok2-0/ScreenScrape/main/jsonExports.json";
         this.context = context;
         newsal = new ArrayList<>();
 
