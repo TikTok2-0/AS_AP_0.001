@@ -97,7 +97,9 @@ public class newsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        news = jsonPars.getNewsal();
         overridePendingTransition(100,100);
+
     }
 
     @Override
