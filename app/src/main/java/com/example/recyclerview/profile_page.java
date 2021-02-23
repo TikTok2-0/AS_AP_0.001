@@ -8,12 +8,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -94,7 +97,7 @@ public class profile_page extends AppCompatActivity {
     }
 
     private RecyclerView settingsRecyclerView;
-
+    Button btnLogout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,14 +110,20 @@ public class profile_page extends AppCompatActivity {
 
         settings = new ArrayList<>();
 
+        SharedPreferences sharedPreferences = this.getSharedPreferences(
+                getString(R.string.mainPreferenceKey), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         settingsRecyclerView = findViewById(R.id.settingsRecView);
         SettingsViewAdapter adapter = new SettingsViewAdapter(this,this,this);
 
-        settings.add(new SettingsProperty("Username: ","Team HLG",false,false));
-        settings.add(new SettingsProperty("Name:","Tik Tok 2.0",false,false));
-        settings.add(new SettingsProperty("E-mail:","tiktok2-0@gmail.com",false,false));
-        settings.add(new SettingsProperty("Private Account","tiktok2-0@gmail.com",false,true));
-        settings.add(new SettingsProperty("Notifications:","tiktok2-0@gmail.com",true,true));
+        //settings.add(new SettingsProperty("Username ","Team HLG",false,false));
+        settings.add(new SettingsProperty("Name",sharedPreferences.getString("name","username"),false,false));
+        settings.add(new SettingsProperty("Klasse",String.valueOf(sharedPreferences.getInt("class",1)),false,false));
+        settings.add(new SettingsProperty("Schule",sharedPreferences.getString("school","hlg/kaifu"),false,false));
+        //settings.add(new SettingsProperty("E-Mail","tiktok2-0@gmail.com",false,false));
+        //settings.add(new SettingsProperty("Private Account","tiktok2-0@gmail.com",false,true));
+        //settings.add(new SettingsProperty("Notifications","tiktok2-0@gmail.com",true,true));
 
         adapter.setSettings(settings);
 
@@ -150,6 +159,17 @@ public class profile_page extends AppCompatActivity {
             }
         });
 
+
+
+        btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.clear();
+                editor.apply();
+                switchActivity(loginPageActivity.class);
+            }
+        });
 
 
     }

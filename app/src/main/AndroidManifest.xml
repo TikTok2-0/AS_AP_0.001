@@ -13,13 +13,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
+        <activity android:name=".LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".loginPageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".HomeScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home_screen"
-            android:theme="@style/Theme.RecyclerView.Fullscreen">
-
-        </activity>
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".profile_page"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -33,11 +43,7 @@
         <activity
             android:name=".newsActivity"
             android:theme="@style/Theme.RecyclerView.Fullscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
