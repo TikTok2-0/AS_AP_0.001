@@ -163,12 +163,18 @@ public class HomeScreen extends AppCompatActivity {
                 return false;
             }
         });
-        newsCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchActivity(universalMenu.class,0);
-            }
-        });
+
+            newsCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    try{
+                        switchActivity(universalMenu.class,0);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+
 
         news = jsonPars.getNewsal();
 
@@ -186,14 +192,16 @@ public class HomeScreen extends AppCompatActivity {
 
         courseRecyclerView.setAdapter(adapter);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+        try {
+            txtName.setText(news.get(0).getTitle());
 
-        txtName.setText(news.get(0).getTitle());
-
-        Glide.with(this)
-                .asBitmap()
-                .load(news.get(0).getImageUrl())
-                .into(storyImage);
-
+            Glide.with(this)
+                    .asBitmap()
+                    .load(news.get(0).getImageUrl())
+                    .into(storyImage);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }

@@ -41,6 +41,15 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp"
             android:tint="@color/black"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/menu_bar"
+            android:text="logout"
+            android:layout_marginBottom="25dp"
+            android:layout_marginEnd="25dp"
+            android:id="@+id/btnLogout"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/settingsRecView"
