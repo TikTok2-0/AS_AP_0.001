@@ -31,6 +31,7 @@ public class jsonPars {
         newsal = new ArrayList<>();
 
     }
+    //TODO: news Liste wird aktuell nicht mehr geladen das fixen
     public static synchronized jsonPars getJsonPars(Context context){
         if(jsonPars==null){
             jsonPars = new jsonPars(context);
