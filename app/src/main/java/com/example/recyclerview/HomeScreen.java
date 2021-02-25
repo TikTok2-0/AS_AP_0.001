@@ -135,7 +135,6 @@ public class HomeScreen extends AppCompatActivity {
 
         bottomNavigation.setSelectedItemId(R.id.menu_home);
 
-        //TODO zu studenplan activity wechseln
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -251,5 +250,6 @@ public class HomeScreen extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHidePart2Runnable);
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
+
 
 }
