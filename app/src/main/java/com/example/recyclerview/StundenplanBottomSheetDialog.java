@@ -12,18 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-
-
-
-
 public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //TODO hide navigation bar in bottomsheet
         View v = inflater.inflate(R.layout.stundenplan_bottom_sheet, container, false);
-
         return v;
     }
 
