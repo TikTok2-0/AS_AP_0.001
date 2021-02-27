@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -108,6 +111,8 @@ public class HomeScreen extends AppCompatActivity {
     TextView txtName;
     CardView newsCard;
     RelativeLayout nextBtn;
+    ViewPager2 viewPager2;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +131,8 @@ public class HomeScreen extends AppCompatActivity {
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
 
+        context = this;
+
         courses = new ArrayList<>();
 
         //hide();
@@ -139,6 +146,19 @@ public class HomeScreen extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
+                setContentView(R.layout.viewpage_stundenplan);
+
+                viewPager2 = findViewById(R.id.viewPagerStudenplan);
+                List<String> list = new ArrayList<>();
+                list.add("First Page");
+                list.add("Second Page");
+                list.add("Third Page");
+
+                viewPager2.setAdapter(new StundenplanViewPagerAdapter(context, list, viewPager2));
+
+                 */
+
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
