@@ -145,19 +145,6 @@ public class HomeScreen extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                setContentView(R.layout.viewpage_stundenplan);
-
-                viewPager2 = findViewById(R.id.viewPagerStudenplan);
-                List<String> list = new ArrayList<>();
-                list.add("First Page");
-                list.add("Second Page");
-                list.add("Third Page");
-
-                viewPager2.setAdapter(new StundenplanViewPagerAdapter(context, list, viewPager2));
-
-                 */
-
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
