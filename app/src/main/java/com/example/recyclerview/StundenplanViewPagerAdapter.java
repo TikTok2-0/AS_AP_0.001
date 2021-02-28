@@ -52,11 +52,10 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
             relativeLayout = item.findViewById(R.id.container);
 
         }
-
-
-
     }
 
+    //TODO CircleIndicator einbauen
+    //TODO ViewPager Layout richtig machen
 
 }
 
