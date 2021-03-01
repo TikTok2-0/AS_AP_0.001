@@ -54,8 +54,7 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
         }
     }
 
-    //TODO CircleIndicator einbauen
-    //TODO ViewPager Layout richtig machen
+    //TODO ViewPager Layout Recyclerview hinzufügen
 
 }
 
