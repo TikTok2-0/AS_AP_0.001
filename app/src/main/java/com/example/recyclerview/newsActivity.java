@@ -105,6 +105,8 @@ public class newsActivity extends AppCompatActivity {
         super.onStop();
         overridePendingTransition(0,0);
     }
+
+    static StundenplanViewAdapter adapter2;
     static NewsViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +158,26 @@ public class newsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        /*
+        contactsRecyclerView = findViewById(R.id.contactsRecView);
+
+        adapter2 = new StundenplanViewAdapter(this, this);
+
+        ArrayList<CourseVP> courses = new ArrayList<>();
+        courses.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht"));
+        courses.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung"));
+        courses.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall"));
+        courses.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht"));
+
+        adapter2.setCourses(courses);
+
+        contactsRecyclerView.setAdapter(adapter2);
+
+
+        //System.out.println(news.size());
+        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        */
 
         contactsRecyclerView = findViewById(R.id.contactsRecView);
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:padding="10dp"
+    app:cardElevation="20dp"
+    app:cardCornerRadius="16dp"
+    android:layout_margin="6dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/parentRelative"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/mathicon"
+            android:id="@+id/courseIcon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English 10"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/courseIcon"
+            android:textColor="@color/black"
+            android:id="@+id/txtCourse"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vB"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:id="@+id/txtTeacher"
+            android:layout_toRightOf="@+id/courseIcon"
+            android:layout_below="@+id/txtRoom"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R306"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_below="@+id/txtCourse"
+            android:id="@+id/txtRoom"
+            android:layout_toRightOf="@+id/courseIcon"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/unterrichticon"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30dp"
+            android:id="@+id/statusIcon"/>
+
+    </RelativeLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
