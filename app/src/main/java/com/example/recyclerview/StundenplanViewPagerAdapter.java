@@ -8,20 +8,25 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<StundenplanViewPagerAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
-    private List<String> text;
     private ViewPager2 viewPager2;
+    private ArrayList<ArrayList<CourseVP>> listRecview;
+    private ArrayList<CourseVP> courses;
+    private StundenplanViewAdapter adapter;
+    private Context context;
 
-    StundenplanViewPagerAdapter(Context context, List<String> text, ViewPager2 viewPager2){
+    StundenplanViewPagerAdapter(Context context, ViewPager2 viewPager2){
         this.inflater = LayoutInflater.from(context);
-        this.text = text;
+        this.context = context;
         this.viewPager2 = viewPager2;
     }
 
@@ -34,27 +39,38 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(text.get(position));
+        adapter = new StundenplanViewAdapter(context);
+        adapter.setCourses(listRecview.get(position));
+        holder.recyclerView.setAdapter(adapter);
+        holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
     }
 
     @Override
     public int getItemCount() {
-        return text.size();
+        try {
+            return listRecview.size();
+        }catch(NullPointerException e){
+            System.out.println("---------Exception:" + e);
+        }
+        return 0;
+    }
+
+    public void setRecyclerViews(ArrayList<ArrayList<CourseVP>> listRecview) {
+        this.listRecview = listRecview;
+        notifyDataSetChanged(); //wichtig damit die Daten sich aktualisieren
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView textView;
+        RecyclerView recyclerView;
         RelativeLayout relativeLayout;
 
         ViewHolder(View item){
             super(item);
-            textView = item.findViewById((R.id.viewpagertext));
+            recyclerView = item.findViewById((R.id.studenplanRecview));
             relativeLayout = item.findViewById(R.id.container);
 
         }
     }
-
-    //TODO ViewPager Layout Recyclerview hinzufügen
 
 }
 

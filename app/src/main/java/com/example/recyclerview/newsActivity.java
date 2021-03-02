@@ -166,7 +166,7 @@ public class newsActivity extends AppCompatActivity {
         /*
         contactsRecyclerView = findViewById(R.id.contactsRecView);
 
-        adapter2 = new StundenplanViewAdapter(this, this);
+        adapter2 = new StundenplanViewAdapter(this);
 
         ArrayList<CourseVP> courses = new ArrayList<>();
         courses.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht"));
@@ -185,15 +185,11 @@ public class newsActivity extends AppCompatActivity {
 
         contactsRecyclerView = findViewById(R.id.contactsRecView);
 
-
-
         //for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1),"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
         adapter = new NewsViewAdapter(this, this, this);
         adapter.setNews(news);
 
         contactsRecyclerView.setAdapter(adapter);
-
-
         //System.out.println(news.size());
         contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
 
