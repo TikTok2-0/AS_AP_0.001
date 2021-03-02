@@ -24,9 +24,12 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
 
+    //TODO es wird nur die recyclerview angezeigt und seine größe, es sollte jedoch das ganze layout angezeigt werden
+
     Context context;
     ViewPager2 viewPager2;
     CircleIndicator3 circleIndicator3;
+    StundenplanViewPagerAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,7 +43,27 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
         list.add("First Page");
         list.add("Second Page");
         list.add("Third Page");
-        viewPager2.setAdapter(new StundenplanViewPagerAdapter(context, list, viewPager2));
+
+        ArrayList<CourseVP> monday = new ArrayList<>();
+        monday.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht"));
+        monday.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung"));
+        monday.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall"));
+        monday.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht"));
+
+        ArrayList<CourseVP> tuesday = new ArrayList<>();
+        tuesday.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht"));
+        tuesday.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall"));
+        tuesday.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung"));
+        tuesday.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht"));
+
+        ArrayList<ArrayList<CourseVP>> listRecview = new ArrayList<>();
+        listRecview.add(monday);
+        listRecview.add(tuesday);
+
+        adapter = new StundenplanViewPagerAdapter(context, viewPager2);
+        adapter.setRecyclerViews(listRecview);
+
+        viewPager2.setAdapter(adapter);
 
         circleIndicator3 = (CircleIndicator3) v.findViewById(R.id.indicator);
         circleIndicator3.setViewPager(viewPager2);
