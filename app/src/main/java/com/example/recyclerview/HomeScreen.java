@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +147,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
+
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
             }
