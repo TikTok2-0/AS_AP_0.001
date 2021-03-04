@@ -10,15 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:layout_marginTop="300dp"
+        android:layout_below="@+id/viewPagerStudenplan"
         app:ci_drawable="@drawable/white_radius_circle_indicator"
         app:ci_drawable_unselected="@drawable/black_radius_circle_indicator"
         />
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_centerInParent="true"
+        android:layout_height="500dp"
         android:id="@+id/viewPagerStudenplan"/>
 
 </RelativeLayout>
