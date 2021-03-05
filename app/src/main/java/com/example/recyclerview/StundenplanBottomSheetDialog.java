@@ -20,8 +20,6 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
 
-    //TODO es wird nur die recyclerview angezeigt und seine größe, es sollte jedoch das ganze layout angezeigt werden
-
     public static StundenplanBottomSheetDialog newInstance() {
         return new StundenplanBottomSheetDialog();
     }
