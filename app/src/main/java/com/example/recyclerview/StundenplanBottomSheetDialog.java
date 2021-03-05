@@ -1,18 +1,14 @@
 package com.example.recyclerview;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.viewpager2.widget.ViewPager2;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -26,6 +22,11 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
 
     //TODO es wird nur die recyclerview angezeigt und seine größe, es sollte jedoch das ganze layout angezeigt werden
 
+    public static StundenplanBottomSheetDialog newInstance() {
+        return new StundenplanBottomSheetDialog();
+    }
+
+
     Context context;
     ViewPager2 viewPager2;
     CircleIndicator3 circleIndicator3;
@@ -36,7 +37,7 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
 
         context = getActivity();
 
-        View v = inflater.inflate(R.layout.viewpage_stundenplan, container, false);  //stundenplan_bottom_sheet
+        View v = inflater.inflate(R.layout.bottomsheet_studenplan, container, false);  //stundenplan_bottom_sheet
 
         viewPager2 = (ViewPager2) v.findViewById(R.id.viewPagerStudenplan);
         List<String> list = new ArrayList<>();
