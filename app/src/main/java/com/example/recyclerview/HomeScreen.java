@@ -111,6 +111,7 @@ public class HomeScreen extends AppCompatActivity {
 
     ImageView storyImage;
     TextView txtName;
+    TextView durchschnittBtn;
     CardView newsCard;
     RelativeLayout nextBtn;
     ViewPager2 viewPager2;
@@ -128,10 +129,12 @@ public class HomeScreen extends AppCompatActivity {
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
         storyImage = findViewById(R.id.storyImage);
         txtName = findViewById(R.id.txtName);
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
+        durchschnittBtn = findViewById(R.id.durchschnittBtn);
 
         context = this;
 
@@ -151,6 +154,13 @@ public class HomeScreen extends AppCompatActivity {
 
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
+            }
+        });
+
+        durchschnittBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(NotenrechnerActivity.class);
             }
         });
 

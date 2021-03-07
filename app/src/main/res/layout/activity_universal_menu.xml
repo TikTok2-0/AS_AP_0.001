@@ -100,9 +100,7 @@
                 android:src="@drawable/ic_back2"
                 android:id="@+id/arrow"
                 android:tint="@color/black"
-                android:layout_centerVertical="true"
-
-                />
+                android:layout_centerVertical="true" />
         </RelativeLayout>
 
 
