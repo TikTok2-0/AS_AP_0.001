@@ -30,7 +30,7 @@
         android:layout_toRightOf="@+id/copyright"
         android:layout_below="@+id/headline"
         android:layout_marginTop="20dp"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="90dp"
         >
         <ImageView
             android:layout_centerHorizontal="true"
@@ -48,7 +48,7 @@
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:layout_marginLeft="25dp"/>
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,18 +56,18 @@
             android:text="Stundenplan"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:layout_below="@+id/headline"
             android:id="@+id/txtStundenplan"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="powered by UNTIS©"
             android:textStyle="italic|bold"
-            android:textSize="10sp"
+            android:textSize="12sp"
             android:id="@+id/copyright"
             android:layout_toRightOf="@+id/txtStundenplan"
             android:layout_below="@+id/headline"

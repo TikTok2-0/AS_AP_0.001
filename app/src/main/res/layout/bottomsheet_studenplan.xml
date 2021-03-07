@@ -14,12 +14,13 @@
         app:ci_drawable="@drawable/white_radius_circle_indicator"
         app:ci_drawable_unselected="@drawable/black_radius_circle_indicator" />
 
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPagerStudenplan"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_below="@+id/day"
-        android:layout_marginTop="20dp"
+        android:layout_height="500dp"
+        android:layout_below="@+id/heading"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
 
@@ -46,17 +47,6 @@
         android:layout_marginTop="48dp"
         android:layout_marginStart="5dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Monday"
-        android:id="@+id/day"
-        android:layout_below="@+id/heading"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"/>
 
     <ImageView
         android:layout_width="wrap_content"
