@@ -187,7 +187,7 @@ public class HomeScreen extends AppCompatActivity {
                 }
             });
 
-
+        //json_Pars =  jsonPars.getJsonPars(this);
         news = jsonPars.getNewsal();
 
         courseRecyclerView = findViewById(R.id.untisRecView);

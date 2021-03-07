@@ -29,24 +29,26 @@ public class jsonPars {
         url = "https://raw.githubusercontent.com/TikTok2-0/ScreenScrape/main/jsonExports.json";
         this.context = context;
         newsal = new ArrayList<>();
-
     }
     public static synchronized jsonPars getJsonPars(Context context){
         if(jsonPars==null){
             jsonPars = new jsonPars(context);
             jsonPars.parseJson();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         return jsonPars;
     }
     public static ArrayList<News> getNewsal() {
-
         return newsal;
     }
 
-    private static void parseJson(){
+    private void parseJson(){
         mQueue = Volley.newRequestQueue(context);
 
-        //System.out.println("json-------------------");
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 
                 new Response.Listener<JSONObject>() {
