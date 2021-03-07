@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
     private ArrayList<CourseVP> courses;
     private StundenplanViewAdapter adapter;
     private Context context;
+    private String day;
 
     StundenplanViewPagerAdapter(Context context, ViewPager2 viewPager2){
         this.inflater = LayoutInflater.from(context);
@@ -39,6 +42,7 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.txtDay.setText(listRecview.get(position).get(0).getDay());
         adapter = new StundenplanViewAdapter(context);
         adapter.setCourses(listRecview.get(position));
         holder.recyclerView.setAdapter(adapter);
@@ -63,11 +67,13 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
     public class ViewHolder extends RecyclerView.ViewHolder{
         RecyclerView recyclerView;
         RelativeLayout relativeLayout;
+        private TextView txtDay;
 
         ViewHolder(View item){
             super(item);
             recyclerView = item.findViewById((R.id.studenplanRecview));
             relativeLayout = item.findViewById(R.id.container);
+            txtDay = item.findViewById(R.id.day);
 
         }
     }
