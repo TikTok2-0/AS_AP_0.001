@@ -9,10 +9,13 @@ import android.os.Bundle;
 
 public class LaunchActivity extends AppCompatActivity {
 
+    jsonPars json_Pars;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
+        json_Pars =  jsonPars.getJsonPars(this);
         jsonPars.getNewsal();
         //SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 
@@ -26,7 +29,7 @@ public class LaunchActivity extends AppCompatActivity {
 
             switchActivity(loginPageActivity.class);
         }else{
-            switchActivity(newsActivity.class);
+            switchActivity(HomeScreen.class);
         }
 
     }

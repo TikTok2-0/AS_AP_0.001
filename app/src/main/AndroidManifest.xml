@@ -29,7 +29,9 @@
             android:name=".HomeScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home_screen"
-            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+            android:theme="@style/Theme.RecyclerView.Fullscreen">
+
+        </activity>
         <activity
             android:name=".profile_page"
             android:configChanges="orientation|keyboardHidden|screenSize"
