@@ -7,12 +7,14 @@ public class CourseVP {
     private String teacher;
     private String room;
     private String status;
+    private String day;
 
-    public CourseVP(String course, String teacher, String room, String status) {
+    public CourseVP(String course, String teacher, String room, String status, String day) {
         this.course = course;
         this.teacher = teacher;
         this.room = room;
         this.status = status;
+        this.day = day;
     }
 
     public String getCourse() {
@@ -45,5 +47,13 @@ public class CourseVP {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 }
