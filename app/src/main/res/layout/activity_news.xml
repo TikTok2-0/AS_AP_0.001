@@ -19,35 +19,34 @@
         android:textStyle="bold">
 
         <TextView
-            android:id="@+id/headline"
+            android:id="@+id/txt1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="50dp"
-            android:text="News"
+            android:layout_marginTop="30dp"
+            android:text="HLG"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="60sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/hlgLogo"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/headline"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
-            android:background="@mipmap/logo"
-            android:contentDescription="Das HLG Logo"
-            android:foreground="@mipmap/logo"
-            android:src="@mipmap/logo" />
-
+            android:id="@+id/txt2"
+            android:layout_toRightOf="@+id/txt1"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="10dp"
+            android:text="KFU"
+            android:textColor="@color/lightgrey"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contactsRecView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_above="@+id/menu_bar"
-            android:layout_below="@id/headline"
+            android:layout_below="@id/txt1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp" />
 

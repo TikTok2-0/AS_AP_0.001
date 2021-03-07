@@ -7,16 +7,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,6 +32,8 @@ public class newsActivity extends AppCompatActivity {
 
     private jsonPars json_Pars;
     private static ArrayList<News> news;
+    private static ArrayList<News> newsHlg;
+    private static ArrayList<News> newsKfu;
     private static int length;
 
     private static final int UI_ANIMATION_DELAY = 0;
@@ -87,18 +92,23 @@ public class newsActivity extends AppCompatActivity {
 
     private static RecyclerView contactsRecyclerView;
     private static ImageView logo;
-    String logoLink = "https://www.hlg-hamburg.de/wp-content/uploads/2019/06/logo.png";
+    private Context context;
     RelativeLayout homeScreen;
+    TextView txt1;
+    TextView txt2;
 
     ActionBar toolbar;
 
+/*
     @Override
     protected void onStart() {
         super.onStart();
+        json_Pars =  jsonPars.getJsonPars(this);
         news = jsonPars.getNewsal();
         overridePendingTransition(100,100);
 
     }
+*/
 
     @Override
     protected void onStop() {
@@ -106,7 +116,6 @@ public class newsActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
-    static StundenplanViewAdapter adapter2;
     static NewsViewAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,23 +123,50 @@ public class newsActivity extends AppCompatActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         int UI_OPTIONS = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-        //getWindow().getDecorView().setSystemUiVisibility(UI_OPTIONS);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
 
         setContentView(R.layout.activity_news);
-
-        json_Pars =  jsonPars.getJsonPars(this);
-
+        context = this;
+        newsHlg = new ArrayList<>();
+        newsKfu = new ArrayList<>();
+        //json_Pars =  jsonPars.getJsonPars(this);
         news = jsonPars.getNewsal();
+
+        for(int i=0; i<=5; i++){
+            newsHlg.add(news.get(i));
+        }
+        for(int i=6; i<=11; i++){
+            newsKfu.add(news.get(i));
+        }
 
 
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-        //MariaDBCon.connect();
-
         hide();
+
+        txt1 = findViewById(R.id.txt1);
+        txt2 = findViewById(R.id.txt2);
+
+        txt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(txt2.getText().equals("KFU")) {
+                    txt1.setText("KFU");
+                    txt2.setText("HLG");
+                    adapter.setNews(newsKfu);
+                    contactsRecyclerView.setAdapter(adapter);
+                }else{
+                    txt1.setText("HLG");
+                    txt2.setText("KFU");
+                    adapter.setNews(newsHlg);
+                    contactsRecyclerView.setAdapter(adapter);
+                }
+            }
+        });
+
 
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
@@ -159,39 +195,11 @@ public class newsActivity extends AppCompatActivity {
             }
         });
 
-        /*
         contactsRecyclerView = findViewById(R.id.contactsRecView);
-
-        adapter2 = new StundenplanViewAdapter(this);
-
-        ArrayList<CourseVP> courses = new ArrayList<>();
-        courses.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht"));
-        courses.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung"));
-        courses.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall"));
-        courses.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht"));
-
-        adapter2.setCourses(courses);
-
-        contactsRecyclerView.setAdapter(adapter2);
-
-
-        //System.out.println(news.size());
-        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        */
-
-        contactsRecyclerView = findViewById(R.id.contactsRecView);
-
-        //for(int i = 0; i<10;i++)contacts.add(new Contact("PlaceHolder "+(i+1),"https://cdn.discordapp.com/attachments/663113955278979096/798914901468774420/IMG_20201216_221527.jpg"));
         adapter = new NewsViewAdapter(this, this, this);
-        adapter.setNews(news);
-
+        adapter.setNews(newsHlg);
         contactsRecyclerView.setAdapter(adapter);
-        //System.out.println(news.size());
         contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
-
-
-        logo = findViewById(R.id.hlgLogo);
-        Glide.with(this).asBitmap().load(logoLink).into(logo);
 
         //grid layout kann auch benutzt werden
         //contactsRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -200,7 +208,6 @@ public class newsActivity extends AppCompatActivity {
 
 
     public void switchActivity(Class<?> cls, int position){
-        //News news = new News(title,caption,imageURL,id,dates,category,text)
         News newsObj = news.get(position);
         Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
 
