@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -132,12 +133,17 @@ public class newsActivity extends AppCompatActivity {
         newsKfu = new ArrayList<>();
         //json_Pars =  jsonPars.getJsonPars(this);
         news = jsonPars.getNewsal();
-
-        for(int i=0; i<=5; i++){
-            newsHlg.add(news.get(i));
-        }
-        for(int i=6; i<=11; i++){
-            newsKfu.add(news.get(i));
+        
+        try {
+            for (int i = 0; i <= 5; i++) {
+                newsHlg.add(news.get(i));
+            }
+            for (int i = 6; i <= 11; i++) {
+                newsKfu.add(news.get(i));
+            }
+        }catch(Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "News could not be loaded", Toast.LENGTH_LONG).show();
         }
 
 
