@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -118,6 +119,7 @@ public class newsActivity extends AppCompatActivity {
     }
 
     static NewsViewAdapter adapter;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +135,8 @@ public class newsActivity extends AppCompatActivity {
         newsKfu = new ArrayList<>();
         //json_Pars =  jsonPars.getJsonPars(this);
         news = jsonPars.getNewsal();
+
+
         
         try {
             for (int i = 0; i <= 5; i++) {
@@ -147,13 +151,35 @@ public class newsActivity extends AppCompatActivity {
         }
 
 
+
+
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
+        contactsRecyclerView = findViewById(R.id.contactsRecView);
+        adapter = new NewsViewAdapter(this, this, this);
+        adapter.setNews(newsHlg);
+        contactsRecyclerView.setAdapter(adapter);
+        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
+
 
         hide();
 
         txt1 = findViewById(R.id.txt1);
         txt2 = findViewById(R.id.txt2);
+
+        sharedPreferences = this.getSharedPreferences(getString(R.string.mainPreferenceKey),Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if(sharedPreferences.getBoolean("hlgSelected",true)) {
+            txt1.setText("HLG");
+            txt2.setText("KFU");
+            adapter.setNews(newsHlg);
+        }else{
+            txt1.setText("KFU");
+            txt2.setText("HLG");
+            adapter.setNews(newsKfu);
+        }
+        contactsRecyclerView.setAdapter(adapter);
 
         txt2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,13 +189,18 @@ public class newsActivity extends AppCompatActivity {
                     txt1.setText("KFU");
                     txt2.setText("HLG");
                     adapter.setNews(newsKfu);
-                    contactsRecyclerView.setAdapter(adapter);
+                    editor.putBoolean("hlgSelected",false);
+
+
                 }else{
                     txt1.setText("HLG");
                     txt2.setText("KFU");
                     adapter.setNews(newsHlg);
-                    contactsRecyclerView.setAdapter(adapter);
+                    editor.putBoolean("hlgSelected",true);
                 }
+                editor.apply();
+                contactsRecyclerView.setAdapter(adapter);
+                System.out.println("news selected: "+sharedPreferences.getBoolean("hlgSelected",false));
             }
         });
 
@@ -201,11 +232,6 @@ public class newsActivity extends AppCompatActivity {
             }
         });
 
-        contactsRecyclerView = findViewById(R.id.contactsRecView);
-        adapter = new NewsViewAdapter(this, this, this);
-        adapter.setNews(newsHlg);
-        contactsRecyclerView.setAdapter(adapter);
-        contactsRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));   //display items in linear layout untereinander
 
         //grid layout kann auch benutzt werden
         //contactsRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
