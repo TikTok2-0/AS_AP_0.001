@@ -159,8 +159,11 @@ public class HomeScreen extends AppCompatActivity {
 
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
+                hide();
                 switchActivity(NotenrechnerActivity.class);
+
             }
         });
 
