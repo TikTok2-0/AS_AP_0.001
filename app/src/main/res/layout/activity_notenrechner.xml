@@ -17,65 +17,78 @@
         android:background="@color/white"
         >
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Notenrechner"
+                    android:textColor="@color/black"
+                    android:textSize="35sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/subtitle"
+                    android:layout_below="@+id/headline"
+                    android:text="Schnitt :"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/durchschnittZahl"
+                    android:layout_below="@+id/headline"
+                    android:text="2.12"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@+id/subtitle"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/durchschnittZahl"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/notenrechnerRecView"/>
+
+                <ImageView
+                    android:id="@+id/addBtn"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_baseline_add_circle_outline_24"
+                    android:layout_below="@+id/notenrechnerRecView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:tint="@color/black"/>
+            </RelativeLayout>
+
+        </ScrollView>
+
         <ImageView
             android:layout_width="56dp"
             android:layout_height="match_parent"
             android:id="@+id/backBtn"
             android:tint="@color/black" />
-        <TextView
-            android:id="@+id/headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Notenrechner"
-            android:textColor="@color/black"
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:layout_marginStart="15dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/subtitle"
-            android:layout_below="@+id/headline"
-            android:text="Schnitt :"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/durchschnittZahl"
-            android:layout_below="@+id/headline"
-            android:text="2.12"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/subtitle"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="20dp"
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/durchschnittZahl"
-            android:layout_marginTop="15dp"
-            android:id="@+id/notenrechnerRecView"/>
-
-        <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/ic_baseline_add_circle_outline_24"
-            android:layout_below="@+id/notenrechnerRecView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:tint="@color/black"/>
 
     </RelativeLayout>
 

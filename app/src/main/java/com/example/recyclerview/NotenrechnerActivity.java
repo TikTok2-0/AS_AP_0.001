@@ -18,8 +18,6 @@ import java.util.ArrayList;
 
 public class NotenrechnerActivity extends AppCompatActivity {
 
-    private ImageView BackBtn;
-
     private static final boolean AUTO_HIDE = true;
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 0;
@@ -65,9 +63,10 @@ public class NotenrechnerActivity extends AppCompatActivity {
         }
     };
 
-
+    private ImageView BackBtn;
     private RecyclerView recyclerView;
     private TextView Schnitt;
+    private ImageView AddButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +81,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.notenrechnerRecView);
         BackBtn = findViewById(R.id.backBtn);
         Schnitt = findViewById(R.id.durchschnittZahl);
+        AddButton = findViewById(R.id.addBtn);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +96,16 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
         changeDurchschnitt(adapter.getNoten());
 
-
+        AddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.addNote(new Note("Mathe", "2"));
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
     public void changeDurchschnitt(ArrayList<Note> Noten){
-
         float durch = 0;
 
         for(int i=0; i<Noten.size();i++){
