@@ -2,6 +2,8 @@ package com.example.recyclerview;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +12,9 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class NotenrechnerActivity extends AppCompatActivity {
 
@@ -61,6 +66,9 @@ public class NotenrechnerActivity extends AppCompatActivity {
     };
 
 
+    private RecyclerView recyclerView;
+    private TextView Schnitt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +79,9 @@ public class NotenrechnerActivity extends AppCompatActivity {
         mContentView = findViewById(R.id.fullscreen_content);
 
         hide();
-
+        recyclerView = findViewById(R.id.notenrechnerRecView);
         BackBtn = findViewById(R.id.backBtn);
+        Schnitt = findViewById(R.id.durchschnittZahl);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +90,66 @@ public class NotenrechnerActivity extends AppCompatActivity {
             }
         });
 
+        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
+        changeDurchschnitt(adapter.getNoten());
+
+
+    }
+
+    public void changeDurchschnitt(ArrayList<Note> Noten){
+
+        float durch = 0;
+
+        for(int i=0; i<Noten.size();i++){
+            durch += convertNoteToPunkte(Noten.get(i).getNote());
+        }
+        durch = durch/Noten.size();
+        durch = (17-durch)/3;
+        Schnitt.setText(String.valueOf(durch));
+
+    }
+
+    public int convertNoteToPunkte(String Note){
+
+        switch(Note){
+            case "1+":
+                return 15;
+            case "1":
+                return 14;
+            case "1-":
+                return 13;
+            case "2+":
+                return 12;
+            case "2":
+                return 11;
+            case "2-":
+                return 10;
+            case "3+":
+                return 9;
+            case "3":
+                return 8;
+            case "3-":
+                return 7;
+            case "4+":
+                return 6;
+            case "4":
+                return 5;
+            case "4-":
+                return 4;
+            case "5+":
+                return 3;
+            case "5":
+                return 2;
+            case "5-":
+                return 1;
+            case "6":
+                return 0;
+        }
+
+        return 0;
     }
 
     public void switchActivity(Class<?> cls){
