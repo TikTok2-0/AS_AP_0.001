@@ -121,6 +121,11 @@ public class loginPageActivity extends AppCompatActivity {
                         editor.putInt("class", Integer.parseInt(txtClass.getText().toString()));
                         //editor.putString("school",txtSchool.getText().toString());
                         editor.putString("school",spinner.getSelectedItem().toString());
+                        if(spinner.getSelectedItem().toString().equals("hlg")){
+                            editor.putBoolean("hlgSelected",true);
+                        }else{
+                            editor.putBoolean("hlgSelected",false);
+                        }
                         editor.apply();
                         switchActivity(newsActivity.class);
                     }else{

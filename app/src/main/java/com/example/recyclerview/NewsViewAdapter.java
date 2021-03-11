@@ -2,6 +2,7 @@ package com.example.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,11 +73,15 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
             }
         });*/
 
-
+        SharedPreferences sharedPreferences = mainActivityInstance.getSharedPreferences(
+                mainActivityInstance.getString(R.string.mainPreferenceKey),Context.MODE_PRIVATE);
 
         //Das selbe aber vereinfacht
-
-        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
+        if(sharedPreferences.getBoolean("hlgSelected",true)){
+        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));}
+        else{
+            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position+6));
+        }
 
         //loading images
         Glide.with(context)
