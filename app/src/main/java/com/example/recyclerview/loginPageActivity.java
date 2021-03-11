@@ -13,8 +13,10 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 /**
@@ -75,8 +77,9 @@ public class loginPageActivity extends AppCompatActivity {
      */
 
     Button btnFinish;
-    EditText txtName,txtClass, txtSchool;
+    EditText txtName,txtClass;
     SharedPreferences sharedPreferences;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,11 +93,19 @@ public class loginPageActivity extends AppCompatActivity {
         btnFinish = findViewById(R.id.btnFinish);
         txtName = findViewById(R.id.edtTxtName);
         txtClass = findViewById(R.id.edtTxtClass);
-        txtSchool = findViewById(R.id.edtTxtSchool);
+        //txtSchool = findViewById(R.id.edtTxtSchool);
 
-        // Set up the user interaction to manually show or hide the system UI.
+
         hide();
-        //sharedPreferences = getPreferences(MODE_PRIVATE);
+
+        //------------------Spinner---------------------------
+        spinner = (Spinner) findViewById(R.id.classSpinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.schools_array, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        //!-----------------Spinner---------------------------
+
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 getString(R.string.mainPreferenceKey), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -103,13 +114,13 @@ public class loginPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!txtName.getText().toString().equals("")
-                        && !txtClass.getText().toString().equals("")
-                        && !txtSchool.getText().toString().equals("")){
+                        && !txtClass.getText().toString().equals("")){
 
                     if(Integer.parseInt(txtClass.getText().toString())>4 && Integer.parseInt(txtClass.getText().toString())<13){
                         editor.putString("name",txtName.getText().toString());
                         editor.putInt("class", Integer.parseInt(txtClass.getText().toString()));
-                        editor.putString("school",txtSchool.getText().toString());
+                        //editor.putString("school",txtSchool.getText().toString());
+                        editor.putString("school",spinner.getSelectedItem().toString());
                         editor.apply();
                         switchActivity(newsActivity.class);
                     }else{
@@ -124,10 +135,8 @@ public class loginPageActivity extends AppCompatActivity {
             }
         });
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
-        ;
+
+
     }
     public void switchActivity(Class<?> cls){
         //News news = new News(title,caption,imageURL,id,dates,category,text)

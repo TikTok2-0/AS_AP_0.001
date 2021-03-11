@@ -9,4 +9,8 @@
     <string name="title_activity_home_screen">FullscreenActivity</string>
     <string name="title_activity_login_page">FullscreenActivity</string>
     <string name="mainPreferenceKey">mainPreferenceKey</string>
+    <string-array name="schools_array">
+        <item>hlg</item>
+        <item>kaifu</item>
+    </string-array>
 </resources>
