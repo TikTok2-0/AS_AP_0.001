@@ -214,7 +214,15 @@ public class newsActivity extends AppCompatActivity {
 
 
     public void switchActivity(Class<?> cls, int position){
-        News newsObj = news.get(position);
+
+        News newsObj;
+
+        if(txt1.getText().equals("KFU")) {
+            newsObj = newsKfu.get(position);
+        }else{
+            newsObj = newsHlg.get(position);
+        }
+
         Intent intent = new Intent(this,cls);  // (mainActivity, menu1.class);
 
         intent.putExtra("title", newsObj.getTitle());
