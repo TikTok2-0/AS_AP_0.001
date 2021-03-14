@@ -151,7 +151,7 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
-
+                //show();
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
             }
