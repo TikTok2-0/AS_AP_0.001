@@ -134,7 +134,9 @@ public class HomeScreen extends AppCompatActivity {
         txtName = findViewById(R.id.txtName);
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
+
         durchschnittBtn = findViewById(R.id.durchschnittBtn);
+
 
         context = this;
 
@@ -157,6 +159,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -166,6 +169,7 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
+
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -182,12 +186,16 @@ public class HomeScreen extends AppCompatActivity {
 
                         switchActivity(profile_page.class);
                         break;
+                    case(R.id.menu_homework):
+                        switchActivity(homeworkActivity.class);
+                        break;
                     default:
                         break;
                 }
                 return false;
             }
         });
+
 
             newsCard.setOnClickListener(new View.OnClickListener() {
                 @Override

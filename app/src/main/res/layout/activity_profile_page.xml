@@ -26,12 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:layout_marginTop="50dp"
-            android:text="Profile"
+
+            android:layout_marginTop="30dp"
+            android:text="@string/profile_page_title"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="60sp"
             android:textStyle="bold"
             />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="25dp"
@@ -40,25 +42,88 @@
             android:src="@drawable/ic_settings"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp"
-            android:tint="@color/black"/>
-        <Button
+            android:tint="@color/black"
+            android:visibility="invisible"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headline"
+            android:id="@+id/profileCard"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Profile_subtitle"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_marginStart="25dp"
+
+                android:id="@+id/headlineProfile"
+                android:layout_marginTop="24dp"/>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileEditBtn"
+                android:layout_alignBottom="@+id/headlineProfile"
+                android:layout_alignParentEnd="true"
+                android:padding="4.2dp"
+                android:layout_marginEnd="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="Edit ⟩"
+                    android:textColor="@color/active_icon"/>
+
+            </RelativeLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/settingsRecView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/headlineProfile"
+                android:layout_marginTop="16dp"
+
+                android:layout_alignParentStart="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_below="@+id/settingsRecView"
+                android:background="@color/profileTopicSeperator"/>
+        </RelativeLayout>
+
+
+
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_above="@+id/menu_bar"
-            android:text="logout"
-            android:layout_marginBottom="25dp"
-            android:layout_marginEnd="25dp"
-            android:id="@+id/btnLogout"/>
+            android:text="Statistics"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:layout_alignStart="@id/headline"
+            android:layout_below="@id/profileCard"
+            android:id="@+id/headlineStat"
+            android:layout_marginTop="24dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/settingsRecView"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_above="@+id/menu_bar"
+            android:text="@string/profile_logout"
+            android:layout_marginBottom="25dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/headline"
-            android:layout_marginTop="16dp"
-            android:layout_above="@+id/menu_bar"/>
+            android:id="@+id/btnLogout"
+            android:textColor="@color/black"
+            />
+
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/menu_bar"
@@ -73,26 +138,27 @@
             app:itemTextColor="@drawable/tab_color"
             app:menu="@menu/menu_bar" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:id="@+id/fullscreen_content_controls"
+                style="@style/Widget.Theme.RecyclerView.ButtonBar.Fullscreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="@style/Widget.Theme.RecyclerView.ButtonBar.Fullscreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-        </LinearLayout>
-
-    </RelativeLayout>
 
 </FrameLayout>

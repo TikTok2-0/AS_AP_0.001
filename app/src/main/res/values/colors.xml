@@ -23,4 +23,8 @@
     <color name="toggleActive">#99CC66</color>
     <color name="lineColor">#CCBBBBBB</color>
 
+    <color name="profileTopicSeperator">#4DC1C1C1</color>
+
+
+
 </resources>

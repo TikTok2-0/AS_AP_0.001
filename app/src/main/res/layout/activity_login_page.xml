@@ -55,19 +55,10 @@
             android:inputType="number"
             android:layout_marginTop="24dp"
             android:id="@+id/edtTxtClass"
+
             android:imeOptions="actionDone"
             />
-        <!--EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edtTxtClass"
-            android:layout_alignStart="@+id/edtTxtName"
-            android:ems="15"
-            android:hint="Schule"
-            android:inputType="text"
-            android:layout_marginTop="24dp"
-            android:id="@+id/edtTxtSchool"
-            android:imeOptions="actionDone"/-->
+
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,6 +67,7 @@
             android:layout_below="@id/edtTxtClass"
             android:layout_marginTop="24dp"
             android:id="@+id/classSpinner"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
