@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/lineColor"
+
         android:layout_marginStart="-32dp"
         android:id="@+id/dividerLine"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -19,14 +21,17 @@
         android:layout_margin="3dp"
         android:id="@+id/parentRelative">
 
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="property:"
+
             android:textSize="12sp"
             android:textColor="@color/black"
             android:textStyle="normal"
@@ -34,6 +39,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="false"
             android:layout_marginStart="25dp"
+
             />
         <TextView
             android:layout_width="wrap_content"
@@ -41,6 +47,7 @@
             android:text="value"
             android:textSize="18sp"
             android:textColor="@color/black"
+
             android:textStyle="normal"
             android:layout_alignStart="@+id/txtProperty"
             android:layout_below="@+id/txtProperty"
@@ -48,6 +55,7 @@
             android:layout_centerVertical="true"
             android:id="@+id/txtValue" />
         </RelativeLayout>
+
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -55,7 +63,9 @@
             android:src="@drawable/ic_circle"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp"
+
             android:visibility="invisible"
+
             android:id="@+id/toggle"
             android:tint="@color/black"/>
 

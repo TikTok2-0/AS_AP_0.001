@@ -13,11 +13,13 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import android.widget.Toast;
 
 /**
@@ -78,10 +80,12 @@ public class loginPageActivity extends AppCompatActivity {
      */
 
     Button btnFinish;
+
     EditText txtName,txtClass;
     SharedPreferences sharedPreferences;
     Spinner spinner;
     TextView headline;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,6 +99,7 @@ public class loginPageActivity extends AppCompatActivity {
         btnFinish = findViewById(R.id.btnFinish);
         txtName = findViewById(R.id.edtTxtName);
         txtClass = findViewById(R.id.edtTxtClass);
+
         headline = findViewById(R.id.txtHeadline);
         //txtSchool = findViewById(R.id.edtTxtSchool);
 
@@ -132,16 +137,20 @@ public class loginPageActivity extends AppCompatActivity {
             btnFinish.setText("Done");
         }
 
+
         Context context = this;
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!txtName.getText().toString().equals("")
+
                         && !txtClass.getText().toString().equals("")){
+
 
                     if(Integer.parseInt(txtClass.getText().toString())>4 && Integer.parseInt(txtClass.getText().toString())<13){
                         editor.putString("name",txtName.getText().toString());
                         editor.putInt("class", Integer.parseInt(txtClass.getText().toString()));
+
                         //editor.putString("school",txtSchool.getText().toString());
                         editor.putString("school",spinner.getSelectedItem().toString());
                         if(spinner.getSelectedItem().toString().equals("hlg")){
@@ -152,6 +161,7 @@ public class loginPageActivity extends AppCompatActivity {
                         editor.apply();
                         if(intent.getBooleanExtra("fromLaunch",true))switchActivity(newsActivity.class);
                         else switchActivity(profile_page.class);
+
 
                     }else{
 
@@ -164,7 +174,6 @@ public class loginPageActivity extends AppCompatActivity {
                 }
             }
         });
-
 
 
     }

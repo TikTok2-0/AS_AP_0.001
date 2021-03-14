@@ -105,7 +105,9 @@ public class newsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         json_Pars =  jsonPars.getJsonPars(this);
+
         news = jsonPars.getNewsal();
         overridePendingTransition(100,100);
 
@@ -117,6 +119,7 @@ public class newsActivity extends AppCompatActivity {
         super.onStop();
         overridePendingTransition(0,0);
     }
+
 
     static NewsViewAdapter adapter;
     SharedPreferences sharedPreferences;
@@ -234,6 +237,7 @@ public class newsActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
 
         //grid layout kann auch benutzt werden

@@ -20,11 +20,13 @@ public class StundenplanViewAdapter extends RecyclerView.Adapter<StundenplanView
 
     private ArrayList<CourseVP> courses;
     private Context context;
+
     private ImageView courseIc;
     private ImageView statusIc;
 
     public StundenplanViewAdapter(Context context) {
         this.context = context;
+
     }
 
     @NonNull

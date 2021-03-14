@@ -13,9 +13,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
+        <activity android:name=".LaunchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".loginPageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".homeworkActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+
             android:label="@string/title_activity_homework"
             android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
         <activity android:name=".NotenrechnerActivity" />
@@ -26,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".loginPageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -48,7 +62,9 @@
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".newsActivity"
+
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
+
     </application>
 
 </manifest>

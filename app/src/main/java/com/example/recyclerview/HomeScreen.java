@@ -134,7 +134,9 @@ public class HomeScreen extends AppCompatActivity {
         txtName = findViewById(R.id.txtName);
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
+
         durchschnittBtn = findViewById(R.id.durchschnittBtn);
+
 
         context = this;
 
@@ -151,11 +153,12 @@ public class HomeScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
-                //show();
+
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
 
             }
         });
+
 
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +169,7 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
+
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -191,6 +195,7 @@ public class HomeScreen extends AppCompatActivity {
                 return false;
             }
         });
+
 
             newsCard.setOnClickListener(new View.OnClickListener() {
                 @Override

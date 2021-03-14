@@ -17,8 +17,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -100,8 +102,10 @@ public class profile_page extends AppCompatActivity {
     }
 
     private RecyclerView settingsRecyclerView;
+
     TextView btnLogout;
     RelativeLayout profileEditBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,7 +115,6 @@ public class profile_page extends AppCompatActivity {
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
-
 
 
         settings = new ArrayList<>();
@@ -180,6 +183,7 @@ public class profile_page extends AppCompatActivity {
             }
         });
 
+
         profileEditBtn = findViewById(R.id.profileEditBtn);
         Context context = this;
         profileEditBtn.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +196,7 @@ public class profile_page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
