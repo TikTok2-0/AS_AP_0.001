@@ -90,7 +90,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
             }
         });
 
-        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter();
+        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
