@@ -22,12 +22,12 @@ public class LaunchActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences(
                 getString(R.string.mainPreferenceKey), Context.MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
 
         System.out.println("----sharedPreferences: "+sharedPreferences.getAll().toString());
         if(sharedPreferences.getAll().toString().equals("{}")){
 
-            switchActivity(loginPageActivity.class);
+            switchActivity(loginPageActivity.class,true);
         }else{
             switchActivity(HomeScreen.class);
         }
@@ -38,6 +38,13 @@ public class LaunchActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,cls);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+    }
+    public void switchActivity(Class<?> cls, boolean fromLaunch){
+
+        Intent intent = new Intent(this,cls);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.putExtra("fromLaunch",fromLaunch);
         startActivity(intent);
     }
 }
