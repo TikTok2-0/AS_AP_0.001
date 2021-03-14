@@ -225,6 +225,9 @@ public class newsActivity extends AppCompatActivity {
 
                         switchActivity(profile_page.class);
                         break;
+                    case(R.id.menu_homework):
+                        switchActivity(homeworkActivity.class);
+                        break;
                     default:
                         break;
                 }
