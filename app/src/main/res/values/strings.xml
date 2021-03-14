@@ -13,10 +13,7 @@
         <item>hlg</item>
         <item>kaifu</item>
     </string-array>
-    <string name="profile_page_title">Account</string>
-    <string name="Profile_subtitle">Profile</string>
-    <string name="profile_logout">Logout</string>
-    <string name="menu_homework">Homework</string>
-    <string name="title_activity_homework">FullscreenActivity</string>
-    <string name="homework_page_title">Homework</string>
+    <string name ="profile_page_title">Account</string>
+    <string name ="Profile_subtitle">Profile</string>
+    <string name ="profile_logout">Logout</string>
 </resources>

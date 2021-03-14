@@ -85,7 +85,6 @@ public class profile_page extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     view.performClick();
                     break;
-
                 default:
                     break;
             }
@@ -157,9 +156,6 @@ public class profile_page extends AppCompatActivity {
                     case(R.id.menu_settings):
 
                         switchActivity(profile_page.class);
-                        break;
-                    case(R.id.menu_homework):
-                        switchActivity(homeworkActivity.class);
                         break;
                     default:
                         break;

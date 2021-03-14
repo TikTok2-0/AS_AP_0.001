@@ -13,12 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
-        <activity
-            android:name=".homeworkActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_homework"
-            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
-        <activity android:name=".NotenrechnerActivity" />
+        <activity android:name=".NotenrechnerActivity"></activity>
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +30,7 @@
             android:name=".HomeScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home_screen"
-            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
         <activity
             android:name=".profile_page"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -48,7 +43,7 @@
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".newsActivity"
-            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
     </application>
 
 </manifest>
