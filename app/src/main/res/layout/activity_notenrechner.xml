@@ -52,13 +52,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/durchschnittZahl"
+                    android:id="@+id/Schnitt"
                     android:layout_below="@+id/headline"
-                    android:text="2.12"
                     android:textColor="@color/black"
                     android:layout_toRightOf="@+id/subtitle"
                     android:textStyle="bold"
                     android:textSize="25sp"
+                    android:text=""
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
                     />
@@ -67,14 +67,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/durchschnittZahl"
+                    android:layout_below="@+id/Schnitt"
                     android:layout_marginTop="15dp"
                     android:id="@+id/notenrechnerRecView"/>
 
                 <ImageView
                     android:id="@+id/addBtn"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_baseline_add_circle_outline_24"
                     android:layout_below="@+id/notenrechnerRecView"
                     android:layout_centerHorizontal="true"

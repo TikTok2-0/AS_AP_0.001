@@ -13,6 +13,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -67,6 +70,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView Schnitt;
     private ImageView AddButton;
+    private int positionInsert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         hide();
         recyclerView = findViewById(R.id.notenrechnerRecView);
         BackBtn = findViewById(R.id.backBtn);
-        Schnitt = findViewById(R.id.durchschnittZahl);
+        Schnitt =(TextView) findViewById(R.id.Schnitt);
         AddButton = findViewById(R.id.addBtn);
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
@@ -99,21 +103,30 @@ public class NotenrechnerActivity extends AppCompatActivity {
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.addNote(new Note("Mathe", "2"));
-                recyclerView.setAdapter(adapter);
+                adapter.addNote(new Note("", "1+"));
+                adapter.notifyItemInserted(positionInsert);
+                positionInsert++;
             }
         });
     }
 
+
     public void changeDurchschnitt(ArrayList<Note> Noten){
-        float durch = 0;
+        double durch = 0;
 
         for(int i=0; i<Noten.size();i++){
             durch += convertNoteToPunkte(Noten.get(i).getNote());
         }
         durch = durch/Noten.size();
         durch = (17-durch)/3;
-        Schnitt.setText(String.valueOf(durch));
+        durch = Math.round(durch*100.0)/100.0;
+        if(durch>0) {
+            try {
+                Schnitt.setText("Test");
+            }catch(Exception e){
+                System.out.println("---------"+e+"  "+durch);
+            }
+        }
 
     }
 
@@ -184,4 +197,5 @@ public class NotenrechnerActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHidePart2Runnable);
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
     }
+
 }
