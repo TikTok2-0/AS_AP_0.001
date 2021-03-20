@@ -44,16 +44,14 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
             "Mathe", "Physik", "Deutsch", "Englisch", "Kunst", "Band", "Biologie", "Chemie", "Wirtschaft", "Französisch", "Latein", "Spanisch", "Geographie", "Informatik", "Musik", "Natur und Technik", "NWP", "Orchester", "PGW", "Philosophie", "Psychologie", "Religion", "Sport", "Theater"
     };
 
-    private static String[] noten;
+    private static String[] noten = new String[]{
+            "1+", "1","1-","2+", "2","2-","3+", "3","3-","4+", "4","4-","5+", "5","5-","6"
+    };
 
     public NotenrechnerViewAdapter(Context context, NotenrechnerActivity mainActivityInstance, ArrayList<Note> Noten) {
         this.context = context;
         this.mainActivityInstance = mainActivityInstance;
         this.Noten = Noten;
-
-        //Noten.add(new Note("Mathe", "2"));
-        //Noten.add(new Note("Deutsch", "2"));
-        //Noten.add(new Note("Englisch", "2"));
     }
 
     @NonNull
@@ -74,6 +72,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
         holder.Fach.setAdapter(adapterFach);
+        /*
         holder.Fach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
@@ -89,7 +88,9 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
             }
         });
 
-        /*
+         */
+
+
         holder.Fach.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -98,15 +99,24 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                String newfach = holder.Fach.getText().toString();
+                Noten.get(position1).setFach(newfach);
+                System.out.println("----------------"+Noten.get(position1).getFach());
+                setList("list", Noten);
             }
         });
-         */
+
 
         //holder.Note.setText(Noten.get(position).getNote());
         ArrayAdapter<CharSequence> adapterNote = ArrayAdapter.createFromResource(context, R.array.noten, android.R.layout.simple_spinner_dropdown_item);
         adapterFach.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.Note.setAdapter(adapterNote);
+
+        for(int i=0; i<noten.length;i++){
+            if(noten[i].equals(Noten.get(position1).getNote())){
+                holder.Note.setSelection(i);
+            }
+        }
         holder.Note.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
@@ -122,7 +132,6 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
             }
         });
-
     }
 
     @Override
