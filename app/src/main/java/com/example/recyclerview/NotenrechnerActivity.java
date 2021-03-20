@@ -80,6 +80,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private int positionInsert;
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
+    private ArrayList<Note> Noten = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +99,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         AddButton = findViewById(R.id.addBtn);
 
         sharedPreferences = this.getSharedPreferences(
-                getString(R.string.mainPreferenceKey), Context.MODE_PRIVATE);
+                "mainPreferenceKey", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
@@ -108,7 +109,11 @@ public class NotenrechnerActivity extends AppCompatActivity {
             }
         });
 
-        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this,this);
+        if(getList("list") != null){
+            Noten = getList("list");
+        }
+
+        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this,this, Noten);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
@@ -138,29 +143,15 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
         if(durch>0) {
             //try {
-                Schnitt.setText(String.valueOf(durch));
+            Schnitt.setText(String.valueOf(durch));
             //}catch(Exception e){
-                //System.out.println("---------"+e+"  "+durch);
+            //System.out.println("---------"+e+"  "+durch);
             //}
         }
-
-
     }
 
-    public <T> void setList(String key, List<T> list){
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-
-        set(key,json);
-    }
-
-    public static void set(String key, String value){
-        editor.putString(key,value);
-        editor.apply();
-    }
-
-    public List<Note> getList(String key){
-        List<Note> arrayItems = null;
+    public ArrayList<Note> getList(String key){
+        ArrayList<Note> arrayItems = null;
         String serializedObject = sharedPreferences.getString(key,null);
         if(serializedObject != null){
             Gson gson = new Gson();

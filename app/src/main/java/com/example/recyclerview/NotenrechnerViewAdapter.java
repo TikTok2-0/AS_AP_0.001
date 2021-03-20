@@ -2,6 +2,9 @@ package com.example.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +21,12 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +36,9 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     private ArrayList<Note> Noten = new ArrayList<>();
     private Context context;
     private NotenrechnerActivity mainActivityInstance;
-    NotenrechnerActivity notenrechnerActivity;
+    private NotenrechnerActivity notenrechnerActivity;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
 
     private static final String[] fächer = new String[]{
             "Mathe", "Physik", "Deutsch", "Englisch", "Kunst", "Band", "Biologie", "Chemie", "Wirtschaft", "Französisch", "Latein", "Spanisch", "Geographie", "Informatik", "Musik", "Natur und Technik", "NWP", "Orchester", "PGW", "Philosophie", "Psychologie", "Religion", "Sport", "Theater"
@@ -37,11 +46,10 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
     private static String[] noten;
 
-    public NotenrechnerViewAdapter(Context context, NotenrechnerActivity mainActivityInstance) {
+    public NotenrechnerViewAdapter(Context context, NotenrechnerActivity mainActivityInstance, ArrayList<Note> Noten) {
         this.context = context;
-
-
         this.mainActivityInstance = mainActivityInstance;
+        this.Noten = Noten;
 
         //Noten.add(new Note("Mathe", "2"));
         //Noten.add(new Note("Deutsch", "2"));
@@ -52,6 +60,10 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     @Override
     public NotenrechnerViewAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notenrechner_list_item,parent,false);
+        sharedPreferences = context.getSharedPreferences(
+                "mainPreferenceKey", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
         return new NotenrechnerViewAdapter.Viewholder(view);
     }
 
@@ -62,19 +74,47 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
         holder.Fach.setAdapter(adapterFach);
+        holder.Fach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
+                String newfach = parent.getItemAtPosition(position2).toString();
+                Noten.get(position1).setFach(newfach);
+                //System.out.println("----------------"+Noten.get(position1).getFach());
+                setList("list", Noten);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        /*
+        holder.Fach.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+         */
 
         //holder.Note.setText(Noten.get(position).getNote());
         ArrayAdapter<CharSequence> adapterNote = ArrayAdapter.createFromResource(context, R.array.noten, android.R.layout.simple_spinner_dropdown_item);
         adapterFach.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.Note.setAdapter(adapterNote);
-
         holder.Note.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
                 String newnote = parent.getItemAtPosition(position2).toString();
                 Noten.get(position1).setNote(newnote);
-                System.out.println("------------------"+Noten.get(position1).getNote());
                 mainActivityInstance.changeDurchschnitt(Noten);
+                //System.out.println("----------------"+Noten.get(position1).getNote());
+                setList("list", Noten);
             }
 
             @Override
@@ -112,5 +152,28 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
         }
 
 
+    }
+
+    public <T> void setList(String key, ArrayList<T> list){
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        System.out.println("----------------"+json);
+        set(key,json);
+    }
+
+    public static void set(String key, String value){
+        editor.putString(key,value);
+        editor.apply();
+    }
+
+    public ArrayList<Note> getList(String key){
+        ArrayList<Note> arrayItems = null;
+        String serializedObject = sharedPreferences.getString(key,null);
+        if(serializedObject != null){
+            Gson gson = new Gson();
+            Type type = new TypeToken<ArrayList<Note>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject,type);
+        }
+        return arrayItems;
     }
 }
