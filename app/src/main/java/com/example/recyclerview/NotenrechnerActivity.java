@@ -121,6 +121,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         durch = durch/Noten.size();
         durch = (17-durch)/3;
         durch = Math.round(durch*100.0)/100.0;
+
         if(durch>0) {
             //try {
                 Schnitt.setText(String.valueOf(durch));

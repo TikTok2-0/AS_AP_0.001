@@ -40,8 +40,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     public NotenrechnerViewAdapter(Context context, NotenrechnerActivity mainActivityInstance) {
         this.context = context;
 
-        //TODO: Hier war der Fehler
-        //notenrechnerActivity = new NotenrechnerActivity();
+
         this.mainActivityInstance = mainActivityInstance;
 
         //Noten.add(new Note("Mathe", "2"));
