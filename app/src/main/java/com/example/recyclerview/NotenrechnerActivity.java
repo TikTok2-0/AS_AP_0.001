@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -15,9 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NotenrechnerActivity extends AppCompatActivity {
 
@@ -71,9 +78,12 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private TextView Schnitt;
     private ImageView AddButton;
     private int positionInsert;
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notenrechner);
 
@@ -86,6 +96,10 @@ public class NotenrechnerActivity extends AppCompatActivity {
         BackBtn = findViewById(R.id.backBtn);
         Schnitt =(TextView) findViewById(R.id.Schnitt);
         AddButton = findViewById(R.id.addBtn);
+
+        sharedPreferences = this.getSharedPreferences(
+                getString(R.string.mainPreferenceKey), Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +144,30 @@ public class NotenrechnerActivity extends AppCompatActivity {
             //}
         }
 
+
+    }
+
+    public <T> void setList(String key, List<T> list){
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+
+        set(key,json);
+    }
+
+    public static void set(String key, String value){
+        editor.putString(key,value);
+        editor.apply();
+    }
+
+    public List<Note> getList(String key){
+        List<Note> arrayItems = null;
+        String serializedObject = sharedPreferences.getString(key,null);
+        if(serializedObject != null){
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Note>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject,type);
+        }
+        return arrayItems;
     }
 
     public int convertNoteToPunkte(String Note){
