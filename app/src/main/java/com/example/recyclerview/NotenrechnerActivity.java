@@ -94,7 +94,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
             }
         });
 
-        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this);
+        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
@@ -108,6 +108,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
                 positionInsert++;
             }
         });
+        //recyclerView.setAdapter(adapter);
     }
 
 
@@ -121,11 +122,11 @@ public class NotenrechnerActivity extends AppCompatActivity {
         durch = (17-durch)/3;
         durch = Math.round(durch*100.0)/100.0;
         if(durch>0) {
-            try {
-                Schnitt.setText("Test");
-            }catch(Exception e){
-                System.out.println("---------"+e+"  "+durch);
-            }
+            //try {
+                Schnitt.setText(String.valueOf(durch));
+            //}catch(Exception e){
+                //System.out.println("---------"+e+"  "+durch);
+            //}
         }
 
     }

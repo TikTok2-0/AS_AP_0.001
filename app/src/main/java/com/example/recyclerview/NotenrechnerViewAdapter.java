@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
     private ArrayList<Note> Noten = new ArrayList<>();
     private Context context;
+    private NotenrechnerActivity mainActivityInstance;
     NotenrechnerActivity notenrechnerActivity;
 
     private static final String[] fächer = new String[]{
@@ -35,10 +37,13 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
     private static String[] noten;
 
-    public NotenrechnerViewAdapter(Context context) {
+    public NotenrechnerViewAdapter(Context context, NotenrechnerActivity mainActivityInstance) {
         this.context = context;
 
-        notenrechnerActivity = new NotenrechnerActivity();
+        //TODO: Hier war der Fehler
+        //notenrechnerActivity = new NotenrechnerActivity();
+        this.mainActivityInstance = mainActivityInstance;
+
         //Noten.add(new Note("Mathe", "2"));
         //Noten.add(new Note("Deutsch", "2"));
         //Noten.add(new Note("Englisch", "2"));
@@ -70,7 +75,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
                 String newnote = parent.getItemAtPosition(position2).toString();
                 Noten.get(position1).setNote(newnote);
                 System.out.println("------------------"+Noten.get(position1).getNote());
-                notenrechnerActivity.changeDurchschnitt(Noten);
+                mainActivityInstance.changeDurchschnitt(Noten);
             }
 
             @Override
