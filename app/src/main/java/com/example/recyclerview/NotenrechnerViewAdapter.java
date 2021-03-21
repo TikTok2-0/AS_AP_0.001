@@ -41,7 +41,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     private static SharedPreferences.Editor editor;
 
     private static final String[] fächer = new String[]{
-            "Mathe", "Physik", "Deutsch", "Englisch", "Kunst", "Band", "Biologie", "Chemie", "Wirtschaft", "Französisch", "Latein", "Spanisch", "Geographie", "Informatik", "Musik", "Natur und Technik", "NWP", "Orchester", "PGW", "Philosophie", "Psychologie", "Religion", "Sport", "Theater"
+            "Mathe", "Physik", "Deutsch", "Englisch", "Kunst", "Band", "Biologie", "Chemie", "Wirtschaft", "Französisch", "Latein", "Spanisch", "Geographie", "Informatik", "Musik", "Natur und Technik", "NWP", "Orchester", "PGW", "Philosophie", "Psychologie", "Religion", "Sport", "Theater", "Geschichte"
     };
 
     private static String[] noten = new String[]{
@@ -68,28 +68,20 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     @Override
     public void onBindViewHolder(@NonNull NotenrechnerViewAdapter.Viewholder holder, int position1) {
 
-        holder.Fach.setText(Noten.get(position1).getFach());
-
-        ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
-        holder.Fach.setAdapter(adapterFach);
-        /*
-        holder.Fach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
-                String newfach = parent.getItemAtPosition(position2).toString();
-                Noten.get(position1).setFach(newfach);
-                //System.out.println("----------------"+Noten.get(position1).getFach());
+            public boolean onLongClick(View v) {
+                Noten.remove(position1);
+                notifyItemRemoved(position1);
+                mainActivityInstance.changeDurchschnitt(Noten);
                 setList("list", Noten);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+                return false;
             }
         });
 
-         */
-
+        holder.Fach.setText(Noten.get(position1).getFach());
+        ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
+        holder.Fach.setAdapter(adapterFach);
 
         holder.Fach.addTextChangedListener(new TextWatcher() {
             @Override
@@ -101,13 +93,11 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
             public void afterTextChanged(Editable s) {
                 String newfach = holder.Fach.getText().toString();
                 Noten.get(position1).setFach(newfach);
-                System.out.println("----------------"+Noten.get(position1).getFach());
                 setList("list", Noten);
             }
         });
 
 
-        //holder.Note.setText(Noten.get(position).getNote());
         ArrayAdapter<CharSequence> adapterNote = ArrayAdapter.createFromResource(context, R.array.noten, android.R.layout.simple_spinner_dropdown_item);
         adapterFach.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         holder.Note.setAdapter(adapterNote);
@@ -151,10 +141,12 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
         private AutoCompleteTextView Fach;
         private Spinner Note;
+        private CardView cardView;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
+            cardView = itemView.findViewById(R.id.parent);
             Fach = itemView.findViewById(R.id.actvfach);
             Note = itemView.findViewById(R.id.spinnernote);
 

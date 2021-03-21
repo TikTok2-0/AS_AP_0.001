@@ -113,6 +113,12 @@ public class NotenrechnerActivity extends AppCompatActivity {
             Noten = getList("list");
         }
 
+        try {
+            positionInsert += Noten.size();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
         NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this,this, Noten);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
