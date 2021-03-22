@@ -111,7 +111,7 @@ public class HomeScreen extends AppCompatActivity {
 
     ImageView storyImage;
     TextView txtName;
-    TextView durchschnittBtn;
+    RelativeLayout durchschnittBtn;
     CardView newsCard;
     RelativeLayout nextBtn;
     ViewPager2 viewPager2;

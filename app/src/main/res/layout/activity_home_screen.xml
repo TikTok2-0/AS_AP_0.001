@@ -43,12 +43,13 @@
                 android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:id="@+id/nextBtn"
-                android:layout_toRightOf="@+id/copyright"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="90dp"
+                android:layout_marginEnd="5dp"
                 >
                 <ImageView
                     android:layout_centerHorizontal="true"
+                    android:id="@+id/stuBtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_next"/>
@@ -87,8 +88,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hot Story 🔥:"
-                android:textSize="20sp"
+                android:text="Hot Story 🔥"
+                android:textSize="22sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:layout_below="@id/untisRecView"
@@ -140,16 +141,32 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/durchschnittBtn"
+                android:id="@+id/notenrechnerTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Durchschnitt: "
+                android:text="Notenrechner "
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="22dp"
                 android:textColor="@color/black"
                 android:layout_below="@+id/newsCard"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="25dp"/>
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/durchschnittBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/newsCard"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="5dp"
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_next"/>
+            </RelativeLayout>
 
 
         </RelativeLayout>

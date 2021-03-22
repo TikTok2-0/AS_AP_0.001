@@ -77,6 +77,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView Schnitt;
     private ImageView AddButton;
+    private ImageView infoBtn;
     private int positionInsert;
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
@@ -97,6 +98,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         BackBtn = findViewById(R.id.backBtn);
         Schnitt =(TextView) findViewById(R.id.Schnitt);
         AddButton = findViewById(R.id.addBtn);
+        infoBtn = findViewById(R.id.info);
 
         sharedPreferences = this.getSharedPreferences(
                 "mainPreferenceKey", Context.MODE_PRIVATE);
@@ -109,12 +111,19 @@ public class NotenrechnerActivity extends AppCompatActivity {
             }
         });
 
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeToast();
+            }
+        });
+
         if(getList("list") != null){
             Noten = getList("list");
         }
 
         try {
-            positionInsert += Noten.size();
+            positionInsert = Noten.size();
         }catch (Exception e){
             System.out.println(e);
         }
@@ -139,6 +148,8 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
     public void changeDurchschnitt(ArrayList<Note> Noten){
         double durch = 0;
+
+        positionInsert = Noten.size();
 
         for(int i=0; i<Noten.size();i++){
             durch += convertNoteToPunkte(Noten.get(i).getNote());
@@ -211,6 +222,10 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,cls);
         startActivity(intent);
+    }
+
+    private void makeToast(){
+        Toast.makeText(this,"Delete = Long Press", Toast.LENGTH_SHORT).show();
     }
 
     private void hide() {

@@ -71,15 +71,16 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Noten.remove(position1);
-                notifyItemRemoved(position1);
+                System.out.println("----------------"+holder.getAdapterPosition());
+                Noten.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
                 mainActivityInstance.changeDurchschnitt(Noten);
                 setList("list", Noten);
                 return false;
             }
         });
 
-        holder.Fach.setText(Noten.get(position1).getFach());
+        holder.Fach.setText(Noten.get(holder.getAdapterPosition()).getFach());
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
         holder.Fach.setAdapter(adapterFach);
 
@@ -92,7 +93,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
             @Override
             public void afterTextChanged(Editable s) {
                 String newfach = holder.Fach.getText().toString();
-                Noten.get(position1).setFach(newfach);
+                Noten.get(holder.getAdapterPosition()).setFach(newfach);
                 setList("list", Noten);
             }
         });
@@ -103,7 +104,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
         holder.Note.setAdapter(adapterNote);
 
         for(int i=0; i<noten.length;i++){
-            if(noten[i].equals(Noten.get(position1).getNote())){
+            if(noten[i].equals(Noten.get(holder.getAdapterPosition()).getNote())){
                 holder.Note.setSelection(i);
             }
         }
@@ -111,7 +112,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position2, long id) {
                 String newnote = parent.getItemAtPosition(position2).toString();
-                Noten.get(position1).setNote(newnote);
+                Noten.get(holder.getAdapterPosition()).setNote(newnote);
                 mainActivityInstance.changeDurchschnitt(Noten);
                 //System.out.println("----------------"+Noten.get(position1).getNote());
                 setList("list", Noten);
