@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     app:cardElevation="1dp"
-    android:layout_margin="1dp">
+    android:layout_margin="1dp"
+    android:background="@color/white">
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -19,7 +20,8 @@
         android:layout_height="48dp"
         android:padding="0dp"
         android:layout_margin="3dp"
-        android:id="@+id/parentRelative">
+        android:id="@+id/parentRelative"
+        android:background="@color/white">
 
 
         <RelativeLayout
@@ -67,7 +69,7 @@
             android:visibility="invisible"
 
             android:id="@+id/toggle"
-            android:tint="@color/black"/>
+            app:tint="@color/black"/>
 
 
 

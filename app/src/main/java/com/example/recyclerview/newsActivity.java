@@ -113,6 +113,11 @@ public class newsActivity extends AppCompatActivity {
 
     }
 */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        overridePendingTransition(0,0);
+    }
 
     @Override
     protected void onStop() {
