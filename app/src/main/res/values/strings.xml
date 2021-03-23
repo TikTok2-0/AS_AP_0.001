@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">RecyclerView</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_universal_menu">FullscreenActivity</string>
+    <string name="home">Home</string>
+    <string name="title_activity_profile_page">FullscreenActivity</string>
+    <string name="title_activity_home_screen">FullscreenActivity</string>
+    <string name="title_activity_login_page">FullscreenActivity</string>
+    <string name="mainPreferenceKey">mainPreferenceKey</string>
+
+    <string-array name="schools_array">
+        <item>hlg</item>
+        <item>kaifu</item>
+    </string-array>
+
+    <string-array name="noten">
+        <item>1+</item>
+        <item>1</item>
+        <item>1-</item>
+        <item>2+</item>
+        <item>2</item>
+        <item>2-</item>
+        <item>3+</item>
+        <item>3</item>
+        <item>3-</item>
+        <item>4+</item>
+        <item>4</item>
+        <item>4-</item>
+        <item>5+</item>
+        <item>5</item>
+        <item>5-</item>
+        <item>6</item>
+
+
+    </string-array>
+
+    <string name="profile_page_title">Account</string>
+    <string name="Profile_subtitle">Profile</string>
+    <string name="profile_logout">Logout</string>
+    <string name="menu_homework">Homework</string>
+    <string name="title_activity_homework">FullscreenActivity</string>
+    <string name="homework_page_title">Homework</string>
+
+
 </resources>

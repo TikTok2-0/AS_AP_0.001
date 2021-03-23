@@ -1,25 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.recyclerview">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
-        <activity android:name=".menu1"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".loginPageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+        <activity
+            android:name=".homeworkActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+
+            android:label="@string/title_activity_homework"
+            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
+        <activity android:name=".NotenrechnerActivity" />
+        <activity android:name=".LaunchActivity"
+            tools:ignore="DuplicateActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".loginPageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_login_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".HomeScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_home_screen"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+        <activity
+            android:name=".profile_page"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_profile_page"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+        <activity
+            android:name=".universalMenu"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_universal_menu"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+        <activity
+            android:name=".newsActivity"
+
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+
     </application>
 
 </manifest>
