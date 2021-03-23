@@ -1,5 +1,9 @@
 package com.example.recyclerview;
 
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+
 public class News {
     private String title;
     private String caption;
@@ -8,10 +12,11 @@ public class News {
     private String dates;
     private String category;
     private String text;
+    private ArrayList<String> links = new ArrayList<>();
 
     private boolean lightMode;
 
-    public News(String title, String caption, String imageUrl, String id, String dates, String category, String text) {
+    public News(String title, String caption, String imageUrl, String id, String dates, String category, String text, ArrayList<String> links) {
         this.title = title;
         this.caption = caption;
         this.imageUrl = imageUrl;
@@ -19,6 +24,7 @@ public class News {
         this.dates = dates;
         this.category = category;
         this.text = text;
+        this.links = links;
     }
 
     public String getTitle() {

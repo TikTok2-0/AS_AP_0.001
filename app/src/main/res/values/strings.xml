@@ -42,6 +42,7 @@
     <string name="menu_homework">Homework</string>
     <string name="title_activity_homework">FullscreenActivity</string>
     <string name="homework_page_title">Homework</string>
+    <string name="title_activity_notenrechner_edit">FullscreenActivity</string>
 
 
 </resources>
