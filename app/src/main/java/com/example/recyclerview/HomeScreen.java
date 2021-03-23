@@ -12,11 +12,15 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,9 +43,17 @@ public class HomeScreen extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
-    private static final int AUTO_HIDE_DELAY_MILLIS = 0;
+    /**
+     * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
+     * user interaction before hiding the system UI.
+     */
+    private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
 
-    private static final int UI_ANIMATION_DELAY = 0;
+    /**
+     * Some older devices needs a small delay between UI widget updates
+     * and a change of the status and navigation bar.
+     */
+    private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
     private final Runnable mHidePart2Runnable = new Runnable() {
@@ -53,8 +65,8 @@ public class HomeScreen extends AppCompatActivity {
             // Note that some of these constants are new as of API 16 (Jelly Bean)
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
-            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
-                    | View.SYSTEM_UI_FLAG_FULLSCREEN
+            mContentView.setSystemUiVisibility(//View.SYSTEM_UI_FLAG_LOW_PROFILE
+                    View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -68,12 +80,11 @@ public class HomeScreen extends AppCompatActivity {
             // Delayed display of UI elements
             ActionBar actionBar = getSupportActionBar();
             if (actionBar != null) {
-                actionBar.show();
+                actionBar.hide();
             }
             mControlsView.setVisibility(View.VISIBLE);
         }
     };
-
     private boolean mVisible;
     private final Runnable mHideRunnable = new Runnable() {
         @Override
@@ -81,13 +92,18 @@ public class HomeScreen extends AppCompatActivity {
             hide();
         }
     };
-
+    /**
+     * Touch listener to use for in-layout UI controls to delay hiding the
+     * system UI. This is to prevent the jarring behavior of controls going away
+     * while interacting with activity UI.
+     */
     private final View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             switch (motionEvent.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     if (AUTO_HIDE) {
+                        //delayedHide(AUTO_HIDE_DELAY_MILLIS);
                         hide();
                     }
                     break;
@@ -101,12 +117,14 @@ public class HomeScreen extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onStart() {
-        hide();
+
         super.onStart();
 
         overridePendingTransition(0,0);
+        //hide();
     }
 
     ImageView storyImage;
@@ -123,10 +141,12 @@ public class HomeScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_home_screen);
 
+        transparentStatusAndNavigation();
+
         //json_Pars = new jsonPars(this);
         //news = json_Pars.parseJson();
 
-        mVisible = false;
+        mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
@@ -134,13 +154,15 @@ public class HomeScreen extends AppCompatActivity {
         txtName = findViewById(R.id.txtName);
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
+
         durchschnittBtn = findViewById(R.id.durchschnittBtn);
+
 
         context = this;
 
         courses = new ArrayList<>();
 
-        //hide();
+        //show();
 
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
@@ -157,6 +179,7 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -166,6 +189,7 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
+
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -182,12 +206,16 @@ public class HomeScreen extends AppCompatActivity {
 
                         switchActivity(profile_page.class);
                         break;
+                    case(R.id.menu_homework):
+                        switchActivity(homeworkActivity.class);
+                        break;
                     default:
                         break;
                 }
                 return false;
             }
         });
+
 
             newsCard.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -228,7 +256,7 @@ public class HomeScreen extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
     public void switchActivity(Class<?> cls){
@@ -252,6 +280,49 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void transparentStatusAndNavigation() {
+        //make full transparent statusBar
+        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, true);
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+            );
+        }
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, false);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+            getWindow().setNavigationBarColor(Color.TRANSPARENT);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
+
+    private void setWindowFlag(final int bits, boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+
+        // Trigger the initial hide() shortly after the activity has been
+        // created, to briefly hint to the user that UI controls
+        // are available.
+        delayedHide(100);
+    }
+
     private void toggle() {
         if (mVisible) {
             hide();
@@ -269,17 +340,29 @@ public class HomeScreen extends AppCompatActivity {
         mControlsView.setVisibility(View.GONE);
         mVisible = false;
 
+        // Schedule a runnable to remove the status and navigation bar after a delay
         mHideHandler.removeCallbacks(mShowPart2Runnable);
-        mHideHandler.postDelayed(mHidePart2Runnable, UI_ANIMATION_DELAY);
+        mHideHandler.postDelayed(mHidePart2Runnable, 0);
     }
 
     private void show() {
+        // Show the system bar
         mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
         mVisible = true;
 
+        // Schedule a runnable to display UI elements after a delay
         mHideHandler.removeCallbacks(mHidePart2Runnable);
         mHideHandler.postDelayed(mShowPart2Runnable, UI_ANIMATION_DELAY);
+    }
+
+    /**
+     * Schedules a call to hide() in delay milliseconds, canceling any
+     * previously scheduled calls.
+     */
+    private void delayedHide(int delayMillis) {
+        mHideHandler.removeCallbacks(mHideRunnable);
+        mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
 

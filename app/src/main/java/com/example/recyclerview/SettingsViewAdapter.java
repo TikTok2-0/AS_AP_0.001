@@ -43,6 +43,11 @@ public class SettingsViewAdapter extends RecyclerView.Adapter<SettingsViewAdapte
 
         //holder.txtValue.setActivated(!settings.get(position).isToggleable());
 
+        if(position==0){
+            holder.dividerLine.setVisibility(View.INVISIBLE);
+        }
+
+
         if(settings.get(position).isToggleable()){
             holder.txtValue.setVisibility(View.GONE);
             if(settings.get(position).isActive()){
@@ -74,6 +79,9 @@ public class SettingsViewAdapter extends RecyclerView.Adapter<SettingsViewAdapte
         private ImageView toggle;
         private CardView parent;
 
+        private View dividerLine;
+
+
 
         //private News newsObj;
         private RelativeLayout relativeLayout;
@@ -86,6 +94,8 @@ public class SettingsViewAdapter extends RecyclerView.Adapter<SettingsViewAdapte
             txtProperty = itemView.findViewById(R.id.txtProperty);
             txtValue = itemView.findViewById(R.id.txtValue);
             toggle = itemView.findViewById(R.id.toggle);
+
+            dividerLine = itemView.findViewById(R.id.dividerLine);
 
 
 

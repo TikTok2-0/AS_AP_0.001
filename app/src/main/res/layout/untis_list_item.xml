@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- android:layout_width="360dp"-->
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="360dp"
+    android:layout_width="wrap_content"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
     android:layout_height="52dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
@@ -20,7 +23,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:tint="@color/yellow"
+            app:tint="@color/yellow"
             android:src="@drawable/ic_circle"
             android:id="@+id/colorIcon"/>
         <TextView
