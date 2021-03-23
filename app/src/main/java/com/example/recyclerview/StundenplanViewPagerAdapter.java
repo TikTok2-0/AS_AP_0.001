@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -15,11 +16,13 @@ import androidx.viewpager2.widget.ViewPager2;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<StundenplanViewPagerAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
+
     private ViewPager2 viewPager2;
     private ArrayList<ArrayList<CourseVP>> listRecview;
     private ArrayList<CourseVP> courses;
@@ -30,6 +33,7 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
     StundenplanViewPagerAdapter(Context context, ViewPager2 viewPager2){
         this.inflater = LayoutInflater.from(context);
         this.context = context;
+
         this.viewPager2 = viewPager2;
     }
 
@@ -42,15 +46,18 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         holder.txtDay.setText(listRecview.get(position).get(0).getDay());
         adapter = new StundenplanViewAdapter(context);
         adapter.setCourses(listRecview.get(position));
         holder.recyclerView.setAdapter(adapter);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
+
     }
 
     @Override
     public int getItemCount() {
+
         try {
             return listRecview.size();
         }catch(NullPointerException e){
@@ -75,8 +82,10 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
             relativeLayout = item.findViewById(R.id.container);
             txtDay = item.findViewById(R.id.day);
 
+
         }
     }
+
 
 }
 

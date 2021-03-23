@@ -1,19 +1,10 @@
 package com.example.recyclerview;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.LayerDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-
 import androidx.viewpager2.widget.ViewPager2;
 
 import androidx.annotation.NonNull;
@@ -32,6 +23,7 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
     public static StundenplanBottomSheetDialog newInstance() {
         return new StundenplanBottomSheetDialog();
     }
+
 
     Context context;
     ViewPager2 viewPager2;
@@ -78,6 +70,4 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
 
     }
 
-
 }
-

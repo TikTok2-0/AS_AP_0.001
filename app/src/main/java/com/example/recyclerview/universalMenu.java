@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.text.LineBreaker;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -118,7 +119,10 @@ public class universalMenu extends AppCompatActivity {
        txtCat = findViewById(R.id.txtCat);
        txtDate = findViewById(R.id.txtDate);
 
-       mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+       //API----
+       if(Build.VERSION.SDK_INT>=26){
+        mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+       }
        //headline.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
        backBtn.setOnClickListener((View v) -> switchActivity(newsActivity.class));
 

@@ -21,7 +21,9 @@
 
         <ScrollView
             android:layout_width="match_parent"
+
             android:layout_height="match_parent">
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -48,8 +50,10 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="32dp"
                     android:layout_marginEnd="32dp"
+
                     android:id="@+id/headline"
                     android:layout_below="@+id/imageHead"/>
+
 
 
                 <TextView
@@ -89,18 +93,13 @@
         </ScrollView>
 
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
             android:id="@+id/backBtn">
-            <ImageView
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:src="@drawable/ic_back2"
-                android:id="@+id/arrow"
-                android:tint="@color/black"
-                android:layout_centerVertical="true" />
+
         </RelativeLayout>
 
 
