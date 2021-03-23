@@ -26,10 +26,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
 
         android:id="@+id/fullscreen_content"
-        android:layout_below="@+id/headline">
+        android:layout_below="@+id/headline"
+        android:layout_above="@+id/menu_bar">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -100,13 +101,16 @@
                 android:id="@+id/storyHeadline"/>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="360dp"
+                android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_below="@+id/storyHeadline"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 app:cardCornerRadius="20dp"
+                android:padding="10dp"
                 app:cardElevation="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
                 android:id="@+id/newsCard"
                 >
                 <RelativeLayout
@@ -177,7 +181,7 @@
     </ScrollView>
 
 
-                <TextView
+                <!--TextView
                     android:id="@+id/copyright"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -270,7 +274,7 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </RelativeLayout>
-        </ScrollView>
+        </ScrollView-->
 
 
 
@@ -281,6 +285,7 @@
         android:layout_alignParentBottom="true"
         android:background="@color/white"
         app:itemIconSize="30dp"
+
         app:itemIconTint="@drawable/tab_color"
         app:itemTextAppearanceInactive="@color/active_icon"
         app:itemTextColor="@drawable/tab_color"
