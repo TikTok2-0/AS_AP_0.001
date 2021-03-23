@@ -13,66 +13,169 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
 
-    <RelativeLayout
-        android:id="@+id/fullscreen_content"
+    <TextView
+        android:id="@+id/headline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Home"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"/>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/menu_bar"
-        android:keepScreenOn="true">
 
+        android:id="@+id/fullscreen_content"
+        android:layout_below="@+id/headline">
 
-        <TextView
-            android:id="@+id/headline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:text="Home"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/headline"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:keepScreenOn="true"
+
+            android:textColor="?attr/fullscreenTextColor"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            >
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="15dp">
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/nextBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/stuBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_next"/>
+            </RelativeLayout>
 
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stundenplan"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:id="@+id/txtStundenplan"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="powered by UNTIS©"
+                android:textStyle="italic|bold"
+                android:textSize="12sp"
+                android:id="@+id/copyright"
+                android:layout_toRightOf="@+id/txtStundenplan"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="5dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/untisRecView"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/txtStundenplan"
+                android:layout_marginTop="23dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hot Story 🔥"
+                android:textSize="22sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_below="@id/untisRecView"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/storyHeadline"/>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="360dp"
+                android:layout_height="200dp"
+                android:layout_below="@+id/storyHeadline"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp"
+                android:id="@+id/newsCard"
+                >
                 <RelativeLayout
-                    android:id="@+id/nextBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-
-                    >
-
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
                     <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_next"
-                        app:tint="@color/black" />
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/storyImage"
+                        android:scaleType="centerCrop"/>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/gradient"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <TextView
+                        android:id="@+id/txtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="7dp"
+                        android:layout_marginBottom="11dp"
+                        android:text="News Headline"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:layout_alignBottom="@id/storyImage"
+                        />
                 </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/notenrechnerTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notenrechner "
+                android:textStyle="bold"
+                android:textSize="22dp"
+                android:textColor="@color/black"
+                android:layout_below="@+id/newsCard"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="25dp"/>
+
+            <RelativeLayout
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/durchschnittBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/newsCard"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="5dp"
+                >
+                <ImageView
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_next"/>
+            </RelativeLayout>
 
 
-                <TextView
-                    android:id="@+id/txtStundenplan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+        </RelativeLayout>
 
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:text="Stundenplan"
-                    android:textColor="@color/black"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+
+    </ScrollView>
+
 
                 <TextView
                     android:id="@+id/copyright"
@@ -169,7 +272,7 @@
             </RelativeLayout>
         </ScrollView>
 
-    </RelativeLayout>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/menu_bar"
