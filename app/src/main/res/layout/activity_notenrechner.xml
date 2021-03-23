@@ -33,10 +33,10 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_info"
-            android:tint="@color/black"
-            android:layout_toEndOf="@+id/headline"
+            app:tint="@color/black"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="30dp"
-            android:layout_marginStart="120dp"
+            android:layout_marginEnd="10dp"
             />
 
         <TextView
@@ -90,7 +90,7 @@
                     android:layout_below="@+id/notenrechnerRecView"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:tint="@color/black"/>
+                    app:tint="@color/black"/>
             </RelativeLayout>
 
         </ScrollView>
@@ -99,7 +99,7 @@
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:id="@+id/backBtn"
-            android:tint="@color/black" />
+            app:tint="@color/black" />
 
     </RelativeLayout>
 
