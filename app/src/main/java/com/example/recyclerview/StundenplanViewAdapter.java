@@ -44,22 +44,99 @@ public class StundenplanViewAdapter extends RecyclerView.Adapter<StundenplanView
         holder.txtCourse.setText(courses.get(position).getCourse());
         holder.txtTeacher.setText(courses.get(position).getTeacher());
 
-        if(courses.get(position).getCourse().contains("Mathe")){
-            holder.courseIcon.setImageResource(R.drawable.mathicon);
-        }else if(courses.get(position).getCourse().contains("Physik")){
-            holder.courseIcon.setImageResource(R.drawable.physicsicon);
-        }else if(courses.get(position).getCourse().contains("Deutsch")){
-            holder.courseIcon.setImageResource(R.drawable.germanicon);
-        }else if(courses.get(position).getCourse().contains("Englisch")){
-            holder.courseIcon.setImageResource(R.drawable.englishicon);
+        switch(courses.get(position).getCourse()){
+            case "Mathe":
+                holder.courseIcon.setImageResource(R.drawable.mathicon);
+                break;
+            case "Physik":
+                holder.courseIcon.setImageResource(R.drawable.physicsicon);
+                break;
+            case "Deutsch":
+                holder.courseIcon.setImageResource(R.drawable.germanicon);
+                break;
+            case "Englisch":
+                holder.courseIcon.setImageResource(R.drawable.englishicon);
+                break;
+            case "Kunst":
+                holder.courseIcon.setImageResource(R.drawable.articon);
+                break;
+            case "Band":
+                holder.courseIcon.setImageResource(R.drawable.bandicon);
+                break;
+            case "Biologie":
+                holder.courseIcon.setImageResource(R.drawable.bioicon);
+                break;
+            case "Chemie":
+                holder.courseIcon.setImageResource(R.drawable.chemistryicon);
+                break;
+            case "Wirtschaft":
+                holder.courseIcon.setImageResource(R.drawable.economyicon);
+                break;
+            case "Französisch":
+                holder.courseIcon.setImageResource(R.drawable.frenchlatinspanishicon);
+                break;
+            case "Latein":
+                holder.courseIcon.setImageResource(R.drawable.frenchlatinspanishicon);
+                break;
+            case "Spanisch":
+                holder.courseIcon.setImageResource(R.drawable.frenchlatinspanishicon);
+                break;
+            case "Geographie":
+                holder.courseIcon.setImageResource(R.drawable.geographyicon);
+                break;
+            case "Geschichte":
+                holder.courseIcon.setImageResource(R.drawable.historyicon);
+                break;
+            case "Informatik":
+                holder.courseIcon.setImageResource(R.drawable.iticon);
+                break;
+            case "Musik":
+                holder.courseIcon.setImageResource(R.drawable.musicicon);
+                break;
+            case "Natur und Technik":
+                holder.courseIcon.setImageResource(R.drawable.nticon);
+                break;
+            case "NWP":
+                holder.courseIcon.setImageResource(R.drawable.nwpicon);
+                break;
+            case "Orchester":
+                holder.courseIcon.setImageResource(R.drawable.orchestraicon);
+                break;
+            case "PGW":
+                holder.courseIcon.setImageResource(R.drawable.pgwicon);
+                break;
+            case "Philosophie":
+                holder.courseIcon.setImageResource(R.drawable.philosophyicon);
+                break;
+            case "Psychologie":
+                holder.courseIcon.setImageResource(R.drawable.psychologyicon);
+                break;
+            case "Religion":
+                holder.courseIcon.setImageResource(R.drawable.religionicon);
+                break;
+            case "Seminar":
+                holder.courseIcon.setImageResource(R.drawable.seminaricon);
+                break;
+            case "Sport":
+                holder.courseIcon.setImageResource(R.drawable.sporticon);
+                break;
+            case "Theater":
+                holder.courseIcon.setImageResource(R.drawable.theatreicon);
+                break;
+
         }
 
-        if(courses.get(position).getStatus().contains("Unterricht")){
-            holder.statusIcon.setImageResource(R.drawable.unterrichticon);
-        }else if(courses.get(position).getStatus().contains("Vertretung")){
-            holder.statusIcon.setImageResource(R.drawable.vertretungicon);
-        }else if(courses.get(position).getStatus().contains("Entfall")){
-            holder.statusIcon.setImageResource(R.drawable.ausfallicon);
+        switch (courses.get(position).getStatus()){
+            case "Unterricht":
+                holder.statusIcon.setImageResource(R.drawable.unterrichticon);
+                break;
+            case "Vertretung":
+                holder.statusIcon.setImageResource(R.drawable.vertretungicon);
+                break;
+            case "Entfall":
+                holder.statusIcon.setImageResource(R.drawable.ausfallicon);
+                break;
+
         }
 
     }
