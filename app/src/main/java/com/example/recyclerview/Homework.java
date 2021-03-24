@@ -64,5 +64,9 @@ public class Homework {
         }
         return d;
     }
+    public static String Date2String(Date date){
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        return  format.format(date);
+    }
 
 }

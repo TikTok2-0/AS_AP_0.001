@@ -50,27 +50,30 @@
             android:id="@+id/homeworkRecView"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
+            android:layout_above="@id/menu_bar"
             />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginBottom="@dimen/menu_bar_margin_bottom"
+
+            android:background="@color/white"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@drawable/tab_color"
+            app:itemTextAppearanceInactive="@color/active_icon"
+            app:itemTextColor="@drawable/tab_color"
+            app:menu="@menu/menu_bar" />
 
     </RelativeLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/fullscreen_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="0dp"
 
-        android:background="@color/white"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@drawable/tab_color"
-        app:itemTextAppearanceInactive="@color/active_icon"
-        app:itemTextColor="@drawable/tab_color"
-        app:menu="@menu/menu_bar" />
 
     <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
+         android:fitsSystemWindows.@dimen/menu_bar_margin_bottom -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

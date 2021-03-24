@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="menu_bar_margin_bottom">0</integer>
+    <dimen name="menu_bar_margin_bottom">0dp</dimen>
+
+</resources>

@@ -52,6 +52,18 @@
         android:focusableInTouchMode="false"
         android:id="@+id/date"/>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/date"
+        android:layout_alignTop="@+id/date"
+        android:layout_alignBottom="@id/date"
+        android:layout_alignEnd="@id/date"
+        android:id="@+id/dateBox"
+
+        android:backgroundTint="@color/Transparent"
+
+        android:translationZ="90dp"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"

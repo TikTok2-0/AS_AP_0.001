@@ -162,7 +162,7 @@ public class HomeScreen extends AppCompatActivity {
 
         courses = new ArrayList<>();
 
-        //show();
+        hide();
 
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);

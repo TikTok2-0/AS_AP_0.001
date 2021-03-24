@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -19,6 +20,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -89,6 +96,8 @@ public class homeworkActivity extends AppCompatActivity {
 
     ImageView addBtn;
     RecyclerView homeworkRecyclerView;
+    SharedPreferences sharedPreferences;
+    HomeworkViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +118,8 @@ public class homeworkActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
         bottomNavigation.setSelectedItemId(R.id.menu_homework);
+
+        sharedPreferences = this.getSharedPreferences(getString(R.string.mainPreferenceKey),Context.MODE_PRIVATE);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -136,21 +147,26 @@ public class homeworkActivity extends AppCompatActivity {
             }
         });
 
+        if(getList(getString(R.string.homeworkPreferenceKey))!=null){
+            Homework.homeworkList = getList(getString(R.string.homeworkPreferenceKey));
+        }
 
         homeworkRecyclerView = findViewById(R.id.homeworkRecView);
-        HomeworkViewAdapter adapter = new HomeworkViewAdapter(this,this,this);
+        adapter = new HomeworkViewAdapter(this,this,this);
+        adapter.sort();
         adapter.updateHomework();
         homeworkRecyclerView.setAdapter(adapter);
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
 
         Context context = this;
+        homeworkActivity thisInstance = this;
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("-----------------Aktuelle Hausaufgaben:"+Homework.homeworkList);
                 System.out.println("\n\n\n\n--------------------------------------");
-                HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(getSupportFragmentManager(),adapter);
+                HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(getSupportFragmentManager(),adapter,thisInstance,false);
 
                 bottomSheet.show(getSupportFragmentManager(), "homeworkBottomSheet");
             }
@@ -159,6 +175,20 @@ public class homeworkActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public HomeworkViewAdapter getAdapter(){
+        return adapter;
+    }
+    public ArrayList<Homework> getList(String key){
+        ArrayList<Homework> arrayItems = null;
+        String serializedObject = sharedPreferences.getString(key,null);
+        if(serializedObject != null){
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Homework>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject,type);
+        }
+        return arrayItems;
     }
 
     public void switchActivity(Class<?> cls){
