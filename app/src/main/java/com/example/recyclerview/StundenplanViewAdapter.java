@@ -24,6 +24,8 @@ public class StundenplanViewAdapter extends RecyclerView.Adapter<StundenplanView
     private ImageView courseIc;
     private ImageView statusIc;
 
+
+
     public StundenplanViewAdapter(Context context) {
         this.context = context;
 

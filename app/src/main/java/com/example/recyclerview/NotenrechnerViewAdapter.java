@@ -40,7 +40,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
 
-    private static final String[] fächer = new String[]{
+    public static final String[] fächer = new String[]{
             "Mathe", "Physik", "Deutsch", "Englisch", "Kunst", "Band", "Biologie", "Chemie", "Wirtschaft", "Französisch", "Latein", "Spanisch", "Geographie", "Informatik", "Musik", "Natur und Technik", "NWP", "Orchester", "PGW", "Philosophie", "Psychologie", "Religion", "Sport", "Theater", "Geschichte"
     };
 
