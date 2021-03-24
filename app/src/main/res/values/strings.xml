@@ -42,6 +42,8 @@
     <string name="menu_homework">Homework</string>
     <string name="title_activity_homework">FullscreenActivity</string>
     <string name="homework_page_title">Homework</string>
+    <string name="complete_action">Done</string>
+    <string name="extra_info">Extra Info</string>
 
 
 </resources>

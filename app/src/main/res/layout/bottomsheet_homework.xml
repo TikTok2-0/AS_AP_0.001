@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_maximize_24"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/homework_page_title"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="25dp"
+        android:id="@+id/headline"/>
+
+    <AutoCompleteTextView
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/fachTxt"
+        android:hint="Fach"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_below="@+id/headline"
+        android:layout_alignStart="@id/headline"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:completionThreshold="1"
+        android:inputType="textAutoComplete"
+        android:imeOptions="normal"/>
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:layout_below="@+id/fachTxt"
+        android:layout_alignStart="@id/fachTxt"
+        android:hint="Datum"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:imeOptions="normal"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:id="@+id/date"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_alignStart="@+id/date"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="10dp"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:id="@+id/extInfTxt"
+
+            android:hint="@string/extra_info"/>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/complete_action"
+        android:layout_below="@+id/headline"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="400dp"
+        android:id="@+id/doneBtn"
+
+
+        />
+</RelativeLayout>

@@ -13,230 +13,119 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
 
-    <TextView
-        android:id="@+id/headline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Home"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"/>
-
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
+        android:layout_height="match_parent"
         android:id="@+id/fullscreen_content"
-        android:layout_below="@+id/headline"
         android:layout_above="@+id/menu_bar">
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            android:layout_marginStart="25dp" />
 
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:keepScreenOn="true"
 
-            android:textColor="?attr/fullscreenTextColor"
-            android:textSize="50sp"
-            android:textStyle="bold"
+
+            android:layout_below="@+id/headline"
             >
 
             <RelativeLayout
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:id="@+id/nextBtn"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
-                >
-                <ImageView
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/stuBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_next"/>
-            </RelativeLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stundenplan"
+                android:keepScreenOn="true"
+
+                android:textColor="?attr/fullscreenTextColor"
+                android:textSize="50sp"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:id="@+id/txtStundenplan"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="powered by UNTIS©"
-                android:textStyle="italic|bold"
-                android:textSize="12sp"
-                android:id="@+id/copyright"
-                android:layout_toRightOf="@+id/txtStundenplan"
-                android:layout_marginTop="30dp"
-                android:layout_marginStart="5dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/untisRecView"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/txtStundenplan"
-                android:layout_marginTop="23dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hot Story 🔥"
-                android:textSize="22sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_below="@id/untisRecView"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:id="@+id/storyHeadline"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_below="@+id/storyHeadline"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
-                app:cardCornerRadius="20dp"
-                android:padding="10dp"
-                app:cardElevation="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:id="@+id/newsCard"
                 >
+
                 <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/storyImage"
-                        android:scaleType="centerCrop"/>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/gradient"
-
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
-                    <TextView
-                        android:id="@+id/txtName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="7dp"
-                        android:layout_marginBottom="11dp"
-                        android:text="News Headline"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
-                        android:layout_alignBottom="@id/storyImage"
-                        />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/notenrechnerTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notenrechner "
-                android:textStyle="bold"
-                android:textSize="22dp"
-                android:textColor="@color/black"
-                android:layout_below="@+id/newsCard"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"/>
-
-            <RelativeLayout
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:id="@+id/durchschnittBtn"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/newsCard"
-                android:layout_marginTop="25dp"
-                android:layout_marginEnd="5dp"
-                >
-                <ImageView
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_next"/>
-            </RelativeLayout>
-
-
-        </RelativeLayout>
-
-
-    </ScrollView>
-
-
-                <!--TextView
-                    android:id="@+id/copyright"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-
-                    android:layout_marginStart="5dp"
-
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/nextBtn"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/txtStundenplan"
-                    android:text="powered by UNTIS©"
-                    android:textSize="12sp"
-                    android:textStyle="italic|bold" />
+                    android:layout_marginEnd="5dp"
+                    >
+                    <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/stuBtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_next"/>
+                </RelativeLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/untisRecView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtStundenplan"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="23dp" />
 
                 <TextView
-                    android:id="@+id/storyHeadline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Stundenplan"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="22sp"
+                    android:id="@+id/txtStundenplan"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="powered by UNTIS©"
+                    android:textStyle="italic|bold"
+                    android:textSize="12sp"
+                    android:id="@+id/copyright"
+                    android:layout_toRightOf="@+id/txtStundenplan"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="5dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/untisRecView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/txtStundenplan"
+                    android:layout_marginTop="23dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hot Story 🔥"
+                    android:textSize="22sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:layout_below="@id/untisRecView"
                     android:layout_marginLeft="25dp"
                     android:layout_marginTop="10dp"
-                    android:text="Hot Story 🔥:"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:id="@+id/storyHeadline"/>
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/newsCard"
                     android:layout_width="wrap_content"
                     android:layout_height="200dp"
                     android:layout_below="@+id/storyHeadline"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginStart="10dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="10dp"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="10dp">
-
+                    android:padding="10dp"
+                    app:cardElevation="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/newsCard"
+                    >
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-
                         <ImageView
-                            android:id="@+id/storyImage"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="centerCrop" />
-
+                            android:id="@+id/storyImage"
+                            android:scaleType="centerCrop"/>
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -245,36 +134,60 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
+                            app:layout_constraintTop_toTopOf="parent"/>
                         <TextView
                             android:id="@+id/txtName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignBottom="@id/storyImage"
                             android:layout_marginStart="16dp"
                             android:layout_marginEnd="7dp"
                             android:layout_marginBottom="11dp"
                             android:text="News Headline"
-                            android:textColor="@color/white"
+                            android:textStyle="bold"
                             android:textSize="20dp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/white"
+                            android:layout_alignBottom="@id/storyImage"
+                            />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/durchschnittBtn"
+                    android:id="@+id/notenrechnerTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Notenrechner "
+                    android:textStyle="bold"
+                    android:textSize="22dp"
+                    android:textColor="@color/black"
                     android:layout_below="@+id/newsCard"
                     android:layout_marginLeft="25dp"
+                    android:layout_marginTop="25dp"/>
+
+                <RelativeLayout
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/durchschnittBtn"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/newsCard"
                     android:layout_marginTop="25dp"
-                    android:text="Durchschnitt: "
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="5dp"
+                    >
+                    <ImageView
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_next"/>
+                </RelativeLayout>
+
+
             </RelativeLayout>
-        </ScrollView-->
+
+
+        </ScrollView>
+    </RelativeLayout>
+
+
+
 
 
 
@@ -314,7 +227,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
             android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            tools:ignore="UselessParent"
+            android:background="@color/white">
+
 
             <RelativeLayout
                 android:id="@+id/dummy_button"
@@ -322,7 +237,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
 
-                />
+
+            />
 
         </LinearLayout>
 

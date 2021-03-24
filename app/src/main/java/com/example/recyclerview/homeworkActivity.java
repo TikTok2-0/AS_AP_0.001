@@ -5,13 +5,18 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -82,6 +87,9 @@ public class homeworkActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+    ImageView addBtn;
+    RecyclerView homeworkRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,12 +100,12 @@ public class homeworkActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
+        addBtn = findViewById(R.id.addBtn);
+
+
         // Set up the user interaction to manually show or hide the system UI.
         hide();
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
         bottomNavigation.setSelectedItemId(R.id.menu_homework);
@@ -127,6 +135,30 @@ public class homeworkActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+        homeworkRecyclerView = findViewById(R.id.homeworkRecView);
+        HomeworkViewAdapter adapter = new HomeworkViewAdapter(this,this,this);
+        adapter.updateHomework();
+        homeworkRecyclerView.setAdapter(adapter);
+        homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
+
+        Context context = this;
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("-----------------Aktuelle Hausaufgaben:"+Homework.homeworkList);
+                System.out.println("\n\n\n\n--------------------------------------");
+                HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(getSupportFragmentManager(),adapter);
+
+                bottomSheet.show(getSupportFragmentManager(), "homeworkBottomSheet");
+            }
+        });
+
+
+
+
     }
 
     public void switchActivity(Class<?> cls){
