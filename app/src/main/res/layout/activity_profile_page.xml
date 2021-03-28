@@ -122,7 +122,8 @@
                 android:layout_alignBottom="@+id/notenrechnerTxt"
                 android:layout_alignParentEnd="true"
                 android:padding="4.2dp"
-                android:layout_marginEnd="8dp">
+                android:layout_marginEnd="8dp"
+                android:visibility="invisible">
 
                 <TextView
                     android:layout_width="wrap_content"

@@ -126,11 +126,17 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                homeworkList.remove(holder.getAdapterPosition());
-                Homework.homeworkList = homeworkList;
-                setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),homeworkList);
+                //homeworkList.remove(holder.getAdapterPosition());
+                Homework.homeworkList.remove(holder.getAdapterPosition());
+                //System.out.println(Homework.homeworkList.toString());
+                //setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),homeworkList);
                 notifyItemRemoved(holder.getAdapterPosition());
                 //System.out.println("---------"+holder.getPosition()+" removed");
+                /*for(int i = 0; i<Homework.homeworkList.size();i++){
+                    System.out.println(i+ ": "+Homework.homeworkList.get(i).toString());
+                }*/
+                setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),Homework.homeworkList);
+                updateHomework();
 
 
                 return false;
