@@ -105,6 +105,7 @@ public class profile_page extends AppCompatActivity {
 
     TextView btnLogout;
     RelativeLayout profileEditBtn;
+    RelativeLayout notenrechnerEdtBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +116,8 @@ public class profile_page extends AppCompatActivity {
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+
+
 
 
         settings = new ArrayList<>();
@@ -197,13 +200,20 @@ public class profile_page extends AppCompatActivity {
             }
         });
 
+        notenrechnerEdtBtn = findViewById(R.id.edtNotenrechnerBtn);
+        notenrechnerEdtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(NotenrechnerEditActivity.class);
+            }
+        });
+
 
     }
 
     public void switchActivity(Class<?> cls){
 
         Intent intent = new Intent(this,cls);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 

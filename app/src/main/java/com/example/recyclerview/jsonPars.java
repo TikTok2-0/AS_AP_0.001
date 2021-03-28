@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class jsonPars {
@@ -69,8 +70,13 @@ public class jsonPars {
                                 String dates = news.getString("dates");
                                 String category = news.getString("category");
                                 String text = news.getString("text");
-
-                                newsal.add(new News(title,caption,imageURL,id,dates,category,text));
+                                ArrayList<String> links = new ArrayList<>();
+                                /*
+                                if(news.getString("link") != null) {
+                                    links = returnArrayList(news.getString("link"));
+                                }
+                                */
+                                newsal.add(new News(title,caption,imageURL,id,dates,category,text,links));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -86,6 +92,20 @@ public class jsonPars {
 
         //return (newsal);
   }
+
+  /*
+  private ArrayList<String> returnArrayList(String strlink){
+        ArrayList<String> links = new ArrayList<>();
+
+        strlink.indexOf("https")
+
+
+
+        return links;
+
+  }
+
+   */
 
 }
 

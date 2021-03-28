@@ -5,15 +5,29 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -82,6 +96,12 @@ public class homeworkActivity extends AppCompatActivity {
         overridePendingTransition(0,0);
     }
 
+    ImageView addBtn;
+    RecyclerView homeworkRecyclerView;
+    SharedPreferences sharedPreferences;
+    HomeworkViewAdapter adapter;
+    SwitchCompat switchHomework;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,15 +112,18 @@ public class homeworkActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
+        addBtn = findViewById(R.id.addBtn);
+
+
         // Set up the user interaction to manually show or hide the system UI.
         hide();
 
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
+        switchHomework = findViewById(R.id.switchHomework);
 
         bottomNavigation.setSelectedItemId(R.id.menu_homework);
+
+        sharedPreferences = this.getSharedPreferences(getString(R.string.mainPreferenceKey),Context.MODE_PRIVATE);
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override
@@ -127,6 +150,60 @@ public class homeworkActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        if(getList(getString(R.string.homeworkPreferenceKey))!=null){
+            Homework.homeworkList = getList(getString(R.string.homeworkPreferenceKey));
+        }
+
+        homeworkRecyclerView = findViewById(R.id.homeworkRecView);
+        adapter = new HomeworkViewAdapter(this,this,this);
+        adapter.sort(Homework.homeworkList,getString(R.string.homeworkPreferenceKey));
+        adapter.sort(Homework.completedHomework,getString(R.string.completedHomeworkPreferenceKey));
+        adapter.updateHomework();
+
+        homeworkRecyclerView.setAdapter(adapter);
+        homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+
+
+        Context context = this;
+        homeworkActivity thisInstance = this;
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("-----------------Aktuelle Hausaufgaben:"+Homework.homeworkList);
+                System.out.println("\n\n\n\n--------------------------------------");
+                HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(getSupportFragmentManager(),adapter,thisInstance,false);
+
+                bottomSheet.show(getSupportFragmentManager(), "homeworkBottomSheet");
+            }
+        });
+
+        //adapter = new HomeworkViewAdapter(this,this,this);
+        switchHomework.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Homework.updateActiveHomework();
+                System.out.println(Homework.activeHomwork.toString());
+                adapter.updateHomework();
+                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeChanged(0,adapter.getItemCount());
+            }
+        });
+
+    }
+
+    public HomeworkViewAdapter getAdapter(){
+        return adapter;
+    }
+    public ArrayList<Homework> getList(String key){
+        ArrayList<Homework> arrayItems = null;
+        String serializedObject = sharedPreferences.getString(key,null);
+        if(serializedObject != null){
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<Homework>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject,type);
+        }
+        return arrayItems;
     }
 
     public void switchActivity(Class<?> cls){

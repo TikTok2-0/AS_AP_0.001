@@ -30,7 +30,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/profile_page_title"
             android:textColor="@color/black"
-            android:textSize="60sp"
+            android:textSize="45sp"
             android:textStyle="bold"
             />
 
@@ -100,18 +100,40 @@
 
 
 
-
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Statistics"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="30sp"
             android:layout_alignStart="@id/headline"
             android:layout_below="@id/profileCard"
-            android:id="@+id/headlineStat"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="24dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notenrechner"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:id="@+id/notenrechnerTxt"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtNotenrechnerBtn"
+                android:layout_alignBottom="@+id/notenrechnerTxt"
+                android:layout_alignParentEnd="true"
+                android:padding="4.2dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="invisible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Edit ⟩"
+                    android:textColor="@color/active_icon"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -131,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="00dp"
+            android:layout_marginBottom="@dimen/menu_bar_margin_bottom"
             android:background="@color/white"
             app:itemIconSize="30dp"
             app:itemIconTint="@drawable/tab_color"

@@ -27,11 +27,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -65,8 +62,8 @@ public class HomeScreen extends AppCompatActivity {
             // Note that some of these constants are new as of API 16 (Jelly Bean)
             // and API 19 (KitKat). It is safe to use them, as they are inlined
             // at compile-time and do nothing on earlier devices.
-            mContentView.setSystemUiVisibility(//View.SYSTEM_UI_FLAG_LOW_PROFILE
-                    View.SYSTEM_UI_FLAG_FULLSCREEN
+            mContentView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE
+                    | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                     | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -124,7 +121,7 @@ public class HomeScreen extends AppCompatActivity {
         super.onStart();
 
         overridePendingTransition(0,0);
-        //hide();
+        hide();
     }
 
     ImageView storyImage;
@@ -134,6 +131,7 @@ public class HomeScreen extends AppCompatActivity {
     RelativeLayout nextBtn;
     ViewPager2 viewPager2;
     Context context;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,6 +153,7 @@ public class HomeScreen extends AppCompatActivity {
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
 
+
         durchschnittBtn = findViewById(R.id.durchschnittBtn);
 
 
@@ -162,22 +161,24 @@ public class HomeScreen extends AppCompatActivity {
 
         courses = new ArrayList<>();
 
-        //show();
+        hide();
 
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
 
         bottomNavigation.setSelectedItemId(R.id.menu_home);
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener stundenplanBottomSheetOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
-
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
-
             }
-        });
+        };
+
+        nextBtn.setOnClickListener(stundenplanBottomSheetOnClickListener);
+
+
 
 
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
@@ -258,6 +259,8 @@ public class HomeScreen extends AppCompatActivity {
 
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
+
+
 
     public void switchActivity(Class<?> cls){
 

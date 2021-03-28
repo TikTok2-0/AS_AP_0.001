@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
 
     tools:context=".homeworkActivity">
@@ -17,9 +17,8 @@
         android:layout_height="match_parent"
 
 
-
         android:textSize="50sp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
 
         <TextView
             android:id="@+id/headline"
@@ -29,28 +28,62 @@
             android:layout_marginTop="30dp"
             android:text="@string/homework_page_title"
             android:textColor="@color/black"
-            android:textSize="60sp"
-            android:textStyle="bold"
+            android:textSize="45sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/addBtn"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/headline"
+            android:layout_alignBottom="@id/headline"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:src="@drawable/ic_add"
+            app:tint="@color/black" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/switchHomework"
+            android:layout_toRightOf="@+id/headline"
+            android:layout_alignTop="@+id/headline"
+            android:layout_alignBottom="@+id/headline"
+            android:layout_toLeftOf="@+id/addBtn"
+            android:shadowColor="@color/checkBoxColor"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/headline"
+            android:layout_marginTop="12dp"
+            android:id="@+id/homeworkRecView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@id/menu_bar"
             />
 
-    </RelativeLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/menu_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/fullscreen_content"
-        android:layout_marginBottom="0dp"
-        android:background="@color/white"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/menu_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
 
-        app:itemIconSize="30dp"
-        app:itemIconTint="@drawable/tab_color"
-        app:itemTextAppearanceInactive="@color/active_icon"
-        app:itemTextColor="@drawable/tab_color"
-        app:menu="@menu/menu_bar"
-        android:layout_marginTop="20dp"/>
+            android:layout_marginBottom="@dimen/menu_bar_margin_bottom"
+
+            android:background="@color/white"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@drawable/tab_color"
+            app:itemTextAppearanceInactive="@color/active_icon"
+            app:itemTextColor="@drawable/tab_color"
+            app:menu="@menu/menu_bar" />
+
+    </RelativeLayout>
+
+
 
     <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
+         android:fitsSystemWindows.@dimen/menu_bar_margin_bottom -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

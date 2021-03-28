@@ -9,6 +9,9 @@
     <string name="title_activity_home_screen">FullscreenActivity</string>
     <string name="title_activity_login_page">FullscreenActivity</string>
     <string name="mainPreferenceKey">mainPreferenceKey</string>
+    <string name="homeworkPreferenceKey">homeworkList</string>
+    <string name="completedHomeworkPreferenceKey">completedHomeworkList</string>
+    <string name="activeHomeworkPreferenceKey">activeHomeworkList</string>
 
     <string-array name="schools_array">
         <item>hlg</item>
@@ -42,6 +45,12 @@
     <string name="menu_homework">Homework</string>
     <string name="title_activity_homework">FullscreenActivity</string>
     <string name="homework_page_title">Homework</string>
+
+    <string name="complete_action">Done</string>
+    <string name="extra_info">Extra Info</string>
+
+    <string name="title_activity_notenrechner_edit">FullscreenActivity</string>
+
 
 
 </resources>
