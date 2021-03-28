@@ -1,5 +1,7 @@
 package com.example.recyclerview;
 
+import androidx.annotation.NonNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +12,15 @@ public class Homework {
     private Date date;
     private String subject;
     private String extraInfo;
+    private boolean completed;
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
 
     public String getDateStr() {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -40,7 +51,9 @@ public class Homework {
         this.extraInfo = extraInfo;
     }
 
-    public static ArrayList<Homework> homeworkList = new ArrayList<>();
+    public static ArrayList<Homework>   homeworkList = new ArrayList<>(),
+                                        activeHomwork = new ArrayList<>(),
+                                        completedHomework = new ArrayList<>();
 
     Homework(Date date, String subject, String extraInfo){
         this.date = date;
@@ -53,7 +66,9 @@ public class Homework {
             homeworkList = new ArrayList<>();
         }
         homeworkList.add(homework);
+        activeHomwork.add(homework);
     }
+
     public static Date convertToDate(String date){
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         Date d = null;
@@ -67,6 +82,25 @@ public class Homework {
     public static String Date2String(Date date){
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         return  format.format(date);
+    }
+
+    public static void updateActiveHomework(){
+        activeHomwork.clear();
+        for(int i=0;i<homeworkList.size();i++){
+            if(!homeworkList.get(i).isCompleted()){
+                activeHomwork.add(homeworkList.get(i));
+            }
+        }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        try {
+            return ("subject: " + subject + "\ndate: " + Date2String(date) + "\nextra: " + extraInfo + "\nisActive: " + completed);
+        }catch (Exception e){
+            return ("No full");
+        }
     }
 
 }

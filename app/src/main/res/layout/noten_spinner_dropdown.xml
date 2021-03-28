@@ -4,7 +4,7 @@
     android:id="@android:id/text1"
     style="?android:attr/spinnerDropDownItemStyle"
     android:singleLine="true"
-    android:layout_width="50dp"
+    android:layout_width="wrap_content"
     android:layout_height="?attr/dropdownListPreferredItemHeight"
    android:ellipsize="start"
 

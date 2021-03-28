@@ -142,9 +142,11 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
                         Homework.homeworkList.set(positionToEdit,homework);
                     }
+
                     adapter.updateHomework();
+
                     adapter.notifyItemInserted(adapter.getItemCount());
-                    adapter.sort();
+                    adapter.sort(Homework.homeworkList,homeworkActivityInstance.getString(R.string.homeworkPreferenceKey));
                     adapter.updateHomework();
                     adapter.notifyDataSetChanged();
 

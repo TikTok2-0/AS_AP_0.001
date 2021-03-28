@@ -10,6 +10,8 @@
     <string name="title_activity_login_page">FullscreenActivity</string>
     <string name="mainPreferenceKey">mainPreferenceKey</string>
     <string name="homeworkPreferenceKey">homeworkList</string>
+    <string name="completedHomeworkPreferenceKey">completedHomeworkList</string>
+    <string name="activeHomeworkPreferenceKey">activeHomeworkList</string>
 
     <string-array name="schools_array">
         <item>hlg</item>

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -98,6 +100,7 @@ public class homeworkActivity extends AppCompatActivity {
     RecyclerView homeworkRecyclerView;
     SharedPreferences sharedPreferences;
     HomeworkViewAdapter adapter;
+    SwitchCompat switchHomework;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +119,7 @@ public class homeworkActivity extends AppCompatActivity {
         hide();
 
         BottomNavigationView bottomNavigation = findViewById(R.id.menu_bar);
+        switchHomework = findViewById(R.id.switchHomework);
 
         bottomNavigation.setSelectedItemId(R.id.menu_homework);
 
@@ -153,8 +157,10 @@ public class homeworkActivity extends AppCompatActivity {
 
         homeworkRecyclerView = findViewById(R.id.homeworkRecView);
         adapter = new HomeworkViewAdapter(this,this,this);
-        adapter.sort();
+        adapter.sort(Homework.homeworkList,getString(R.string.homeworkPreferenceKey));
+        adapter.sort(Homework.completedHomework,getString(R.string.completedHomeworkPreferenceKey));
         adapter.updateHomework();
+
         homeworkRecyclerView.setAdapter(adapter);
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
@@ -172,8 +178,17 @@ public class homeworkActivity extends AppCompatActivity {
             }
         });
 
-
-
+        //adapter = new HomeworkViewAdapter(this,this,this);
+        switchHomework.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Homework.updateActiveHomework();
+                System.out.println(Homework.activeHomwork.toString());
+                adapter.updateHomework();
+                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeChanged(0,adapter.getItemCount());
+            }
+        });
 
     }
 
