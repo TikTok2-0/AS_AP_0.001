@@ -48,7 +48,8 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:text="Here will be some extra Info"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:layout_toLeftOf="@+id/checkbox"/>
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
