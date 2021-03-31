@@ -5,10 +5,13 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -94,6 +97,10 @@ public class AboutUsActivity extends AppCompatActivity {
         }
     };
 
+    TextView githubLink;
+    TextView icons8Link;
+    TextView materialLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,9 +112,37 @@ public class AboutUsActivity extends AppCompatActivity {
         mContentView = findViewById(R.id.fullscreen_content);
         hide();
 
+        githubLink =findViewById(R.id.githubLink);
+        githubLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLink("https://github.com/TikTok2-0/AS_AP_0.001/blob/development/LICENSE");
+            }
+        });
+
+        icons8Link = findViewById(R.id.icons8Link);
+        icons8Link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLink("https://icons8.de");
+            }
+        });
+
+        materialLink = findViewById(R.id.materialLink);
+        materialLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLink("https://material.io");
+            }
+        });
+
 
     }
 
+    private void openLink(String link){
+        Intent Getintent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        startActivity(Getintent);
+    }
 
     private void toggle() {
         if (mVisible) {

@@ -28,22 +28,60 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="© 2021 Alexander Jenke and Dave Bruchwald\n\n\nFound a Bug? Report it to:\ndahydigital@gmail.com\n\nThis application uses the following open-source libraries:\nhttps://www.apache.org/licenses/LICENSE-2.0.txt\n\nIcons from: \nhttps://icons8.de\nhttps://material.io\n"
+                    android:text="© 2021 Alexander Jenke and Dave Bruchwald\n\n\nFound a Bug? Report it to:\ndahydigital@gmail.com\n\nThis application uses the following open-source libraries:Icons from:"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"
                     android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
                     android:textSize="15sp"
                     android:id="@+id/firstTxt"/>
+
+                <TextView
+                    android:id="@+id/githubLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/light_blue_600"
+                    android:text="https://github.com/TikTok2-0/AS_AP_0.001/blob/development/LICENSE"
+                    android:layout_below="@+id/firstTxt"/>
+
                 <TextView
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/secondTxt"
-                    android:layout_below="@+id/firstTxt"
+                    android:layout_below="@+id/githubLink"
                     android:textSize="15sp"
                     android:textColor="@color/black"
+                    android:text="Icons from:"
                     />
+
+                <TextView
+                    android:id="@+id/icons8Link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/light_blue_600"
+                    android:text="https://icons8.de"
+                    android:layout_below="@+id/secondTxt"/>
+
+                <TextView
+                    android:id="@+id/materialLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/light_blue_600"
+                    android:text="https://material.io"
+                    android:layout_below="@+id/icons8Link"/>
+
 
             </RelativeLayout>
 
