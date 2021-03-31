@@ -38,7 +38,6 @@ dependencies {
 
     //implementation 'com.androidx.support:design:27.0.2'
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
-    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
 
 
     implementation 'com.google.code.gson:gson:2.8.6'

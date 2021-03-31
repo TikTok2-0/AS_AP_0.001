@@ -48,7 +48,7 @@
     <string name="extra_info">Extra Info</string>
 
     <string name="title_activity_notenrechner_edit">FullscreenActivity</string>
-
+    <string name="title_activity_about_us">FullscreenActivity</string>
 
 
 </resources>
