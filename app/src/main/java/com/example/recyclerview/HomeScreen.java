@@ -27,11 +27,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
 
@@ -135,6 +132,7 @@ public class HomeScreen extends AppCompatActivity {
     ViewPager2 viewPager2;
     Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,6 +153,7 @@ public class HomeScreen extends AppCompatActivity {
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
 
+
         durchschnittBtn = findViewById(R.id.durchschnittBtn);
 
 
@@ -169,15 +168,17 @@ public class HomeScreen extends AppCompatActivity {
 
         bottomNavigation.setSelectedItemId(R.id.menu_home);
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener stundenplanBottomSheetOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 StundenplanBottomSheetDialog bottomSheet = new StundenplanBottomSheetDialog();
-
                 bottomSheet.show(getSupportFragmentManager(), "studenplanBottomSheet");
-
             }
-        });
+        };
+
+        nextBtn.setOnClickListener(stundenplanBottomSheetOnClickListener);
+
+
 
 
         durchschnittBtn.setOnClickListener(new View.OnClickListener() {
@@ -258,6 +259,8 @@ public class HomeScreen extends AppCompatActivity {
 
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
+
+
 
     public void switchActivity(Class<?> cls){
 

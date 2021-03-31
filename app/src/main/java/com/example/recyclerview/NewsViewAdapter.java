@@ -80,7 +80,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         if(sharedPreferences.getBoolean("hlgSelected",true)){
         holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));}
         else{
-            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position+6));
+            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
         }
 
         //loading images
