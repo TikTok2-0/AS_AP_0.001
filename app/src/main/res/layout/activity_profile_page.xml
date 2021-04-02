@@ -139,12 +139,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_above="@+id/menu_bar"
+            android:layout_above="@+id/btnAboutUs"
             android:text="@string/profile_logout"
-            android:layout_marginBottom="25dp"
+            android:layout_marginBottom="30dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/btnLogout"
             android:textColor="@color/black"
+            />
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/btnAboutUs"
+            android:text="About Us"
+            android:layout_above="@+id/menu_bar"
+            android:textColor="@color/black"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
             />
 
 

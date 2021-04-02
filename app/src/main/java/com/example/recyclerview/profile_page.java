@@ -104,6 +104,7 @@ public class profile_page extends AppCompatActivity {
     private RecyclerView settingsRecyclerView;
 
     TextView btnLogout;
+    TextView btnAboutUs;
     RelativeLayout profileEditBtn;
     RelativeLayout notenrechnerEdtBtn;
 
@@ -205,6 +206,14 @@ public class profile_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switchActivity(NotenrechnerEditActivity.class);
+            }
+        });
+
+        btnAboutUs = findViewById(R.id.btnAboutUs);
+        btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(AboutUsActivity.class);
             }
         });
 

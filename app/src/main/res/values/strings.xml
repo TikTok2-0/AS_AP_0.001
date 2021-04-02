@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecyclerView</string>
+    <string name="app_name">EM-App</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -50,7 +50,7 @@
     <string name="extra_info">Extra Info</string>
 
     <string name="title_activity_notenrechner_edit">FullscreenActivity</string>
-
+    <string name="title_activity_about_us">FullscreenActivity</string>
 
 
 </resources>
