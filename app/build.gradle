@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -37,6 +38,7 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     //implementation 'com.androidx.support:design:27.0.2'
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
     implementation 'com.jaeger.statusbarutil:library:1.4.0'
 
 

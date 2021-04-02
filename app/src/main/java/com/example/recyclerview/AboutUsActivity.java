@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.gms.oss.licenses.OssLicensesActivity;
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -97,9 +101,9 @@ public class AboutUsActivity extends AppCompatActivity {
         }
     };
 
-    TextView githubLink;
+
     TextView icons8Link;
-    TextView materialLink;
+    TextView materialLink, copyrightTxt, openSourceLicences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,13 +114,19 @@ public class AboutUsActivity extends AppCompatActivity {
         mVisible = false;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
+        copyrightTxt = findViewById(R.id.copyrightTxt);
+
+
+        copyrightTxt.setText(R.string.Copyright);
         hide();
 
-        githubLink =findViewById(R.id.githubLink);
-        githubLink.setOnClickListener(new View.OnClickListener() {
+        openSourceLicences = findViewById(R.id.openSourceLicencesTxt);
+        Context context = this;
+        openSourceLicences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openLink("https://github.com/TikTok2-0/AS_AP_0.001/blob/development/LICENSE");
+                startActivity(new Intent(context, OssLicensesMenuActivity.class));
+
             }
         });
 
