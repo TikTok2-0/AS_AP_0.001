@@ -268,6 +268,7 @@ public class NewsActivity extends AppCompatActivity {
         intent.putExtra("dates",newsObj.getDates());
         intent.putExtra("category",newsObj.getCategory());
         intent.putExtra("text",newsObj.getText());
+        intent.putExtra("link",newsObj.getLink());
 
         startActivity(intent);
     }

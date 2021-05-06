@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.text.LineBreaker;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -93,7 +94,7 @@ public class UniversalMenu extends AppCompatActivity {
     RelativeLayout backBtn;
     TextView headline;
     ImageView imageHead;
-    TextView mainText,txtDate,txtCat;
+    TextView mainText,txtDate,txtCat,txtLink;
 
 
 
@@ -116,6 +117,7 @@ public class UniversalMenu extends AppCompatActivity {
        mainText = findViewById(R.id.text);
        txtCat = findViewById(R.id.txtCat);
        txtDate = findViewById(R.id.txtDate);
+       txtLink = findViewById(R.id.txtLink);
 
        //API----
        if(Build.VERSION.SDK_INT>=26){
@@ -131,10 +133,20 @@ public class UniversalMenu extends AppCompatActivity {
        String text = getIntent().getStringExtra("text");
        String date = getIntent().getStringExtra("dates");
        String category = getIntent().getStringExtra("category");
+       String link = getIntent().getStringExtra("link");
 
        headline.setText(title);
 
        mainText.setText(text);
+
+       txtLink.setText(link);
+
+       txtLink.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               openLink((String) txtLink.getText());
+           }
+       });
 
        //mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
 
@@ -160,6 +172,11 @@ public class UniversalMenu extends AppCompatActivity {
         } else {
             show();
         }
+    }
+
+    private void openLink(String link){
+        Intent Getintent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        startActivity(Getintent);
     }
 
     private void hide() {

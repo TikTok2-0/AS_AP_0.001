@@ -12,11 +12,11 @@ public class News {
     private String dates;
     private String category;
     private String text;
-    private ArrayList<String> links = new ArrayList<>();
+    private String link;
 
     private boolean lightMode;
 
-    public News(String title, String caption, String imageUrl, String id, String dates, String category, String text, ArrayList<String> links) {
+    public News(String title, String caption, String imageUrl, String id, String dates, String category, String text, String links) {
         this.title = title;
         this.caption = caption;
         this.imageUrl = imageUrl;
@@ -24,7 +24,7 @@ public class News {
         this.dates = dates;
         this.category = category;
         this.text = text;
-        this.links = links;
+        this.link = links;
     }
 
     public String getTitle() {
@@ -83,4 +83,7 @@ public class News {
         this.text = text;
     }
 
+    public String getLink() { return link; }
+
+    public void setLink(String link) { this.link = link; }
 }

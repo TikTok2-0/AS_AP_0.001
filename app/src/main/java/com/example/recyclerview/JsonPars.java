@@ -69,13 +69,13 @@ public class JsonPars {
                                 String dates = news.getString("dates");
                                 String category = news.getString("category");
                                 String text = news.getString("text");
-                                ArrayList<String> links = new ArrayList<>();
+                                String link = processLink(news.getString("links"));
                                 /*
                                 if(news.getString("link") != null) {
                                     links = returnArrayList(news.getString("link"));
                                 }
                                 */
-                                newsal.add(new News(title,caption,imageURL,id,dates,category,text,links));
+                                newsal.add(new News(title,caption,imageURL,id,dates,category,text,link));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -90,6 +90,14 @@ public class JsonPars {
         mQueue.add(request);
 
         //return (newsal);
+  }
+
+  private String processLink(String jLink){
+        String link = jLink.substring(0, jLink.length());
+        if(link.equals("x")){
+            link = "";
+        }
+        return link;
   }
 
   /*
