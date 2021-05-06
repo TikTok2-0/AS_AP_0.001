@@ -27,13 +27,13 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     private Context context;
 
     private Activity mainActivity;
-    newsActivity mainActivityInstance;
+    NewsActivity mainActivityInstance;
 
     private View mContentView;
 
     //private ActivitySwitcher activitySwitcher;
 
-    public NewsViewAdapter(Context context, Activity activity, newsActivity mainActivityInstance) {
+    public NewsViewAdapter(Context context, Activity activity, NewsActivity mainActivityInstance) {
 
         this.context = context;
         this.mainActivity = activity;
@@ -78,9 +78,9 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
 
         //Das selbe aber vereinfacht
         if(sharedPreferences.getBoolean("hlgSelected",true)){
-        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));}
+        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(UniversalMenu.class, position));}
         else{
-            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
+            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(UniversalMenu.class, position));
         }
 
         //loading images

@@ -15,7 +15,6 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -23,16 +22,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 //sdk min 23: ContactsViewAdapter: l. 64,65: ContextCompat.getColor()
 
-public class newsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity {
 
-    private jsonPars json_Pars;
+    private JsonPars json_Pars;
     private static ArrayList<News> news;
     private static ArrayList<News> newsHlg;
     private static ArrayList<News> newsKfu;
@@ -142,7 +140,7 @@ public class newsActivity extends AppCompatActivity {
         newsHlg = new ArrayList<>();
         newsKfu = new ArrayList<>();
         //json_Pars =  jsonPars.getJsonPars(this);
-        news = jsonPars.getNewsal();
+        news = JsonPars.getNewsal();
 
 
         
@@ -231,7 +229,7 @@ public class newsActivity extends AppCompatActivity {
                         break;
                     case(R.id.menu_settings):
 
-                        switchActivity(profile_page.class);
+                        switchActivity(ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
                         switchActivity(homeworkActivity.class);

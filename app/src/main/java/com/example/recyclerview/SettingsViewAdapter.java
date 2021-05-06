@@ -22,9 +22,9 @@ public class SettingsViewAdapter extends RecyclerView.Adapter<SettingsViewAdapte
     private Context context;
 
     private Activity mainActivity;
-    profile_page mainActivityInstance;
+    ProfilePageActivity mainActivityInstance;
 
-    public SettingsViewAdapter(Context context, Activity activity, profile_page mainActivityInstance) {
+    public SettingsViewAdapter(Context context, Activity activity, ProfilePageActivity mainActivityInstance) {
         this.context = context;
         this.mainActivity = activity;
         this.mainActivityInstance = mainActivityInstance;

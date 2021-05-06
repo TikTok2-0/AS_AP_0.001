@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".loginPageActivity"
+            android:name=".LoginPageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login_page"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".loginPageActivity"
+            android:name=".LoginPageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_login_page"
             android:theme="@style/Theme.RecyclerView.Fullscreen"
@@ -63,17 +63,17 @@
             android:label="@string/title_activity_home_screen"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".profile_page"
+            android:name=".ProfilePageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_profile_page"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".universalMenu"
+            android:name=".UniversalMenu"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_universal_menu"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".newsActivity"
+            android:name=".NewsActivity"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
     </application>
 

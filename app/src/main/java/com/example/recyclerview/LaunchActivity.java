@@ -10,7 +10,7 @@ import android.os.Bundle;
 public class LaunchActivity extends AppCompatActivity {
 
 
-    jsonPars json_Pars;
+    JsonPars json_Pars;
 
 
     @Override
@@ -18,9 +18,9 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
-        json_Pars =  jsonPars.getJsonPars(this);
+        json_Pars =  JsonPars.getJsonPars(this);
 
-        jsonPars.getNewsal();
+        JsonPars.getNewsal();
         //SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(
@@ -32,7 +32,7 @@ public class LaunchActivity extends AppCompatActivity {
         if(sharedPreferences.getAll().toString().equals("{}")){
 
 
-            switchActivity(loginPageActivity.class,true);
+            switchActivity(LoginPageActivity.class,true);
         }else{
             switchActivity(HomeScreen.class);
 

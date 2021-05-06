@@ -1,8 +1,6 @@
 package com.example.recyclerview;
 
-import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +10,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.adapter.FragmentViewHolder;
 
 import java.util.ArrayList;
 
 public class StundenplanViewAdapter extends RecyclerView.Adapter<StundenplanViewAdapter.ViewHolder> {
 
-    private ArrayList<CourseVP> courses;
+    private ArrayList<Course> courses;
     private Context context;
 
     private ImageView courseIc;
@@ -148,7 +145,7 @@ public class StundenplanViewAdapter extends RecyclerView.Adapter<StundenplanView
         return courses.size();
     }
 
-    public void setCourses(ArrayList<CourseVP> courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
         notifyDataSetChanged(); //wichtig damit die Daten sich aktualisieren
     }

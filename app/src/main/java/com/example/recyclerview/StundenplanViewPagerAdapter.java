@@ -13,19 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-
-import java.util.List;
 
 public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<StundenplanViewPagerAdapter.ViewHolder> {
 
     private LayoutInflater inflater;
 
     private ViewPager2 viewPager2;
-    private ArrayList<ArrayList<CourseVP>> listRecview;
-    private ArrayList<CourseVP> courses;
+    private ArrayList<ArrayList<Course>> listRecview;
+    private ArrayList<Course> courses;
     private StundenplanViewAdapter adapter;
     private Context context;
     private String day;
@@ -66,7 +62,7 @@ public class StundenplanViewPagerAdapter extends RecyclerView.Adapter<Stundenpla
         return 0;
     }
 
-    public void setRecyclerViews(ArrayList<ArrayList<CourseVP>> listRecview) {
+    public void setRecyclerViews(ArrayList<ArrayList<Course>> listRecview) {
         this.listRecview = listRecview;
         notifyDataSetChanged(); //wichtig damit die Daten sich aktualisieren
     }

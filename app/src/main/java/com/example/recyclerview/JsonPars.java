@@ -12,28 +12,27 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class jsonPars {
+public class JsonPars {
 
     private static String url;
     private String jsonStr;
     private static RequestQueue mQueue;
     private static Context context;
     private static ArrayList<News> newsal;
-    private static jsonPars jsonPars;
+    private static JsonPars jsonPars;
 
-    private jsonPars(Context context) {
+    private JsonPars(Context context) {
         //url = "https://cdn.discordapp.com/attachments/715575746181202022/808299256318001152/jsonExports.json";
         //url = "https://cdn.discordapp.com/attachments/663113955278979096/808722126756380748/jsonExports.json";
         url = "https://raw.githubusercontent.com/TikTok2-0/ScreenScrape/main/jsonExports.json";
         this.context = context;
         newsal = new ArrayList<>();
     }
-    public static synchronized jsonPars getJsonPars(Context context){
+    public static synchronized JsonPars getJsonPars(Context context){
         if(jsonPars==null){
-            jsonPars = new jsonPars(context);
+            jsonPars = new JsonPars(context);
             jsonPars.parseJson();
             try {
                 Thread.sleep(1000);

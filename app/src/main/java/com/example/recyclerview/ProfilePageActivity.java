@@ -16,7 +16,6 @@ import android.os.Handler;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,7 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class profile_page extends AppCompatActivity {
+public class ProfilePageActivity extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
@@ -159,11 +158,11 @@ public class profile_page extends AppCompatActivity {
                         break;
                     case(R.id.menu_news):
 
-                        switchActivity(newsActivity.class);
+                        switchActivity(NewsActivity.class);
                         break;
                     case(R.id.menu_settings):
 
-                        switchActivity(profile_page.class);
+                        switchActivity(ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
                         switchActivity(homeworkActivity.class);
@@ -183,7 +182,7 @@ public class profile_page extends AppCompatActivity {
             public void onClick(View v) {
                 editor.clear();
                 editor.apply();
-                switchActivity(loginPageActivity.class);
+                switchActivity(LoginPageActivity.class);
             }
         });
 
@@ -193,7 +192,7 @@ public class profile_page extends AppCompatActivity {
         profileEditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,loginPageActivity.class);
+                Intent intent = new Intent(context, LoginPageActivity.class);
                 intent.putExtra("fromLaunch",false);
                 intent.putExtra("headline","Profile");
                 intent.putExtra("textSize",60);

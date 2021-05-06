@@ -35,7 +35,7 @@ public class HomeScreen extends AppCompatActivity {
     private ArrayList<Course> courses;
     private RecyclerView courseRecyclerView;
 
-    private jsonPars json_Pars;
+    private JsonPars json_Pars;
     private ArrayList<News> news;
 
     private static final boolean AUTO_HIDE = true;
@@ -201,11 +201,11 @@ public class HomeScreen extends AppCompatActivity {
                         break;
                     case(R.id.menu_news):
 
-                        switchActivity(newsActivity.class);
+                        switchActivity(NewsActivity.class);
                         break;
                     case(R.id.menu_settings):
 
-                        switchActivity(profile_page.class);
+                        switchActivity(ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
                         switchActivity(homeworkActivity.class);
@@ -222,7 +222,7 @@ public class HomeScreen extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     try{
-                        switchActivity(universalMenu.class,0);
+                        switchActivity(UniversalMenu.class,0);
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -230,15 +230,15 @@ public class HomeScreen extends AppCompatActivity {
             });
 
         //json_Pars =  jsonPars.getJsonPars(this);
-        news = jsonPars.getNewsal();
+        news = JsonPars.getNewsal();
 
         courseRecyclerView = findViewById(R.id.untisRecView);
         UntisViewAdapter adapter = new UntisViewAdapter(this,this,this);
 
-        courses.add(new Course("Mathe 11","Ho","R102",R.color.white,R.color.red));
-        courses.add(new Course("English","vB","R306",R.color.purple,R.color.yellow));
-        courses.add(new Course("Deutsch 2","Ve","R205",R.color.red,R.color.light_blue_900));
-        courses.add(new Course("Physik 3","Dn","R306",R.color.white,R.color.grey));
+        courses.add(new Course("Mathe","Ho","R102", "Entfall", "Montag"));
+        courses.add(new Course("English","vB","R306","Vertretung", "Montag"));
+        courses.add(new Course("Deutsch","Ve","R205","Entfall", "Montag"));
+        courses.add(new Course("Physik","Dn","R306","Unterricht", "Montag"));
 
         adapter.setCourses(courses);
 

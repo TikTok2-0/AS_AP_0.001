@@ -43,19 +43,19 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
         list.add("Second Page");
         list.add("Third Page");
 
-        ArrayList<CourseVP> monday = new ArrayList<>();
-        monday.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht", "Montag"));
-        monday.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung", "Montag"));
-        monday.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall", "Montag"));
-        monday.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht", "Montag"));
+        ArrayList<Course> monday = new ArrayList<>();
+        monday.add(new Course("Mathe", "Ho", "Raum 205", "Unterricht", "Montag"));
+        monday.add(new Course("Englisch", "vB", "Raum 306", "Vertretung", "Montag"));
+        monday.add(new Course("Deutsch", "Ve", "Raum 205", "Entfall", "Montag"));
+        monday.add(new Course("Physik", "Dn", "Raum 306", "Unterricht", "Montag"));
 
-        ArrayList<CourseVP> tuesday = new ArrayList<>();
-        tuesday.add(new CourseVP("Physik", "Dn", "Raum 306", "Unterricht", "Dienstag"));
-        tuesday.add(new CourseVP("Deutsch", "Ve", "Raum 205", "Entfall", "Dienstag"));
-        tuesday.add(new CourseVP("Englisch", "vB", "Raum 306", "Vertretung", "Dienstag"));
-        tuesday.add(new CourseVP("Mathe", "Ho", "Raum 205", "Unterricht", "Dienstag"));
+        ArrayList<Course> tuesday = new ArrayList<>();
+        tuesday.add(new Course("Physik", "Dn", "Raum 306", "Unterricht", "Dienstag"));
+        tuesday.add(new Course("Deutsch", "Ve", "Raum 205", "Entfall", "Dienstag"));
+        tuesday.add(new Course("Englisch", "vB", "Raum 306", "Vertretung", "Dienstag"));
+        tuesday.add(new Course("Mathe", "Ho", "Raum 205", "Unterricht", "Dienstag"));
 
-        ArrayList<ArrayList<CourseVP>> listRecview = new ArrayList<>();
+        ArrayList<ArrayList<Course>> listRecview = new ArrayList<>();
         listRecview.add(monday);
         listRecview.add(tuesday);
 

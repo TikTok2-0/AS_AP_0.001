@@ -11,10 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -57,9 +54,9 @@ public class UntisViewAdapter extends RecyclerView.Adapter<UntisViewAdapter.View
         holder.txtRoom.setText(courses.get(position).getRoom());
         holder.txtCourse.setText(courses.get(position).getCourse());
         holder.txtTeach.setText(courses.get(position).getTeacher());
-        holder.colorIcon.setColorFilter(context.getColor(courses.get(position).getColorCourse()));
+        holder.relativeLayout.setBackgroundColor(context.getColor(getCourseColor(courses.get(position).getStatus())) );
+        holder.colorIcon.setImageResource(getCourseIcon(courses.get(position).getCourse()));
 
-        holder.relativeLayout.setBackgroundColor(context.getColor(courses.get(position).getColorBack()));
         //holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(universalMenu.class, position));
     }
 
@@ -73,6 +70,79 @@ public class UntisViewAdapter extends RecyclerView.Adapter<UntisViewAdapter.View
     public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
         notifyDataSetChanged(); //wichtig damit die Daten sich aktualisieren
+    }
+
+    private int getCourseColor(String status){
+        switch(status){
+            case "Entfall":
+                return(R.color.red);
+            case "Unterricht":
+                return(R.color.white);
+            case "Vertretung":
+                return(R.color.purple);
+
+        }
+        return(R.color.white);
+    }
+
+    public int getCourseIcon(String course){
+        switch(course) {
+            case "Mathe":
+                return (R.drawable.mathicon);
+            case "Physik":
+                return (R.drawable.physicsicon);
+            case "Deutsch":
+                return (R.drawable.germanicon);
+            case "Englisch":
+                return (R.drawable.englishicon);
+            case "English":
+                return (R.drawable.englishicon);
+            case "Kunst":
+                return (R.drawable.articon);
+            case "Band":
+                return (R.drawable.bandicon);
+            case "Biologie":
+                return (R.drawable.bioicon);
+            case "Chemie":
+                return (R.drawable.chemistryicon);
+            case "Wirtschaft":
+                return (R.drawable.economyicon);
+            case "Französisch":
+                return (R.drawable.frenchlatinspanishicon);
+            case "Latein":
+                return (R.drawable.frenchlatinspanishicon);
+            case "Spanisch":
+                return (R.drawable.frenchlatinspanishicon);
+            case "Geographie":
+                return (R.drawable.geographyicon);
+            case "Geschichte":
+                return (R.drawable.historyicon);
+            case "Informatik":
+                return (R.drawable.iticon);
+            case "Musik":
+                return (R.drawable.musicicon);
+            case "Natur und Technik":
+                return (R.drawable.nticon);
+            case "NWP":
+                return (R.drawable.nwpicon);
+            case "Orchester":
+                return (R.drawable.orchestraicon);
+            case "PGW":
+                return (R.drawable.pgwicon);
+            case "Philosophie":
+                return (R.drawable.philosophyicon);
+            case "Psychologie":
+                return (R.drawable.psychologyicon);
+            case "Religion":
+                return (R.drawable.religionicon);
+            case "Seminar":
+                return (R.drawable.seminaricon);
+            case "Sport":
+                return (R.drawable.sporticon);
+            case "Theater":
+                return (R.drawable.theatreicon);
+        }
+        return(R.drawable.religionicon);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

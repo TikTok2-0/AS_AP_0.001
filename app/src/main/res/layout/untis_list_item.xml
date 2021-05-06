@@ -22,9 +22,11 @@
         android:background="@color/light_blue_600">
 
         <ImageView
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
-            app:tint="@color/yellow"
+            android:layout_height="50dp"
             android:src="@drawable/ic_circle"
             android:id="@+id/colorIcon"/>
         <TextView

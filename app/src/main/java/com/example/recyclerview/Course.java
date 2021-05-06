@@ -1,36 +1,25 @@
 package com.example.recyclerview;
 
-import android.graphics.Color;
+import android.widget.ImageView;
 
 public class Course {
     private String course;
     private String teacher;
     private String room;
-    private int colorBack;
-    private int colorCourse;
+    private String status;
 
-    public int getColorBack() {
-        return colorBack;
-    }
+    private String day;
 
-    public void setColorBack(int colorBack) {
-        this.colorBack = colorBack;
-    }
+    public Course(String course, String teacher, String room, String status, String day) {
 
-    public int getColorCourse() {
-        return colorCourse;
-    }
 
-    public void setColorCourse(int colorCourse) {
-        this.colorCourse = colorCourse;
-    }
-
-    public Course(String course, String teacher, String room, int colorBack, int colorCourse) {
         this.course = course;
         this.teacher = teacher;
         this.room = room;
-        this.colorBack = colorBack;
-        this.colorCourse = colorCourse;
+        this.status = status;
+
+        this.day = day;
+
     }
 
     public String getCourse() {
@@ -56,4 +45,22 @@ public class Course {
     public void setRoom(String room) {
         this.room = room;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
 }

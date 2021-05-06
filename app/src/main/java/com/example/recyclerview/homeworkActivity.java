@@ -15,11 +15,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
@@ -135,11 +133,11 @@ public class homeworkActivity extends AppCompatActivity {
                     case(R.id.menu_news):
 
                         //switchActivity(MainActivity.class);
-                        switchActivity(newsActivity.class);
+                        switchActivity(NewsActivity.class);
                         break;
                     case(R.id.menu_settings):
 
-                        switchActivity(profile_page.class);
+                        switchActivity(ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
 

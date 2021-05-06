@@ -10,9 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,7 +24,7 @@ import android.widget.Toast;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class loginPageActivity extends AppCompatActivity {
+public class LoginPageActivity extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
@@ -159,8 +157,8 @@ public class loginPageActivity extends AppCompatActivity {
                             editor.putBoolean("hlgSelected",false);
                         }
                         editor.apply();
-                        if(intent.getBooleanExtra("fromLaunch",true))switchActivity(newsActivity.class);
-                        else switchActivity(profile_page.class);
+                        if(intent.getBooleanExtra("fromLaunch",true))switchActivity(NewsActivity.class);
+                        else switchActivity(ProfilePageActivity.class);
 
 
                     }else{
