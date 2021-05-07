@@ -37,7 +37,7 @@
             android:label="@string/title_activity_login_page"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
-            android:name=".homeworkActivity"
+            android:name=".HomeworkActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_homework"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />

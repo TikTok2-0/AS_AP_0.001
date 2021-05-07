@@ -165,7 +165,7 @@ public class ProfilePageActivity extends AppCompatActivity {
                         switchActivity(ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
-                        switchActivity(homeworkActivity.class);
+                        switchActivity(HomeworkActivity.class);
                         break;
                     default:
                         break;

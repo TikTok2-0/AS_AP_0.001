@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,7 @@ import java.util.List;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class homeworkActivity extends AppCompatActivity {
+public class HomeworkActivity extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -158,13 +159,13 @@ public class homeworkActivity extends AppCompatActivity {
         adapter.sort(Homework.homeworkList,getString(R.string.homeworkPreferenceKey));
         adapter.sort(Homework.completedHomework,getString(R.string.completedHomeworkPreferenceKey));
         adapter.updateHomework();
-
+        initItemTouchHelper();
         homeworkRecyclerView.setAdapter(adapter);
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
 
 
         Context context = this;
-        homeworkActivity thisInstance = this;
+        HomeworkActivity thisInstance = this;
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,6 +189,22 @@ public class homeworkActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initItemTouchHelper(){
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                System.out.println("----------------"+viewHolder.getAdapterPosition());
+                adapter.removeHomework(viewHolder.getAdapterPosition());
+            }
+        };
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(homeworkRecyclerView);
     }
 
     public HomeworkViewAdapter getAdapter(){

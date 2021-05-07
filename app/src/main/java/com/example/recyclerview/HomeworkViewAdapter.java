@@ -3,20 +3,15 @@ package com.example.recyclerview;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.function.Function;
 
 public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapter.ViewHolder>
                                     {
@@ -36,13 +30,13 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
     Context context;
 
     private Activity mainActivity;
-    homeworkActivity mainActivityInstance;
+    HomeworkActivity mainActivityInstance;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
 
-    public HomeworkViewAdapter(Context context, Activity activity, homeworkActivity mainActivityInstance){
+    public HomeworkViewAdapter(Context context, Activity activity, HomeworkActivity mainActivityInstance){
         this.context = context;
         this.mainActivity = activity;
         this.mainActivityInstance = mainActivityInstance;
@@ -121,31 +115,9 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
             }
         });
 
-
-
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                //homeworkList.remove(holder.getAdapterPosition());
-                Homework.homeworkList.remove(holder.getAdapterPosition());
-                //System.out.println(Homework.homeworkList.toString());
-                //setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),homeworkList);
-                notifyItemRemoved(holder.getAdapterPosition());
-                //System.out.println("---------"+holder.getPosition()+" removed");
-                /*for(int i = 0; i<Homework.homeworkList.size();i++){
-                    System.out.println(i+ ": "+Homework.homeworkList.get(i).toString());
-                }*/
-                setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),Homework.homeworkList);
-                updateHomework();
-
-
-                return false;
-            }
-        });
         holder.subject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context,"subject clicked",Toast.LENGTH_SHORT).show();
                 HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(
                         mainActivityInstance.getSupportFragmentManager(),
                         mainActivityInstance.getAdapter(),
@@ -156,7 +128,6 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
                         holder.getBindingAdapterPosition());
 
                 bottomSheet.show(mainActivityInstance.getSupportFragmentManager(), "homeworkBottomSheet");
-                //bottomSheet.setData(holder.date.getText().toString(),holder.subject.getText().toString(),holder.extraInf.getText().toString());
             }
         });
 
@@ -183,7 +154,13 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
     }
 
     public void hideItem(final int position){
+    }
 
+    public void removeHomework(int position){
+        Homework.homeworkList.remove(position);
+        notifyItemRemoved(position);
+        setList(mainActivityInstance.getString(R.string.homeworkPreferenceKey),Homework.homeworkList);
+        updateHomework();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

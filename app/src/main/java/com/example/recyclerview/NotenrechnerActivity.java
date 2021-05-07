@@ -149,7 +149,6 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                System.out.println("----------------"+viewHolder.getAdapterPosition());
                 adapter.removeNote(viewHolder.getAdapterPosition());
             }
         };

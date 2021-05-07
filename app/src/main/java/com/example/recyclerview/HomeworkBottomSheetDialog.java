@@ -1,6 +1,5 @@
 package com.example.recyclerview;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,7 +22,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
@@ -34,12 +31,12 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
     FragmentManager fragmentManager;
     HomeworkViewAdapter adapter;
-    homeworkActivity homeworkActivityInstance;
+    HomeworkActivity homeworkActivityInstance;
     boolean usedAsEditor;
     String dateToSet,subjectToSet,extraInfToSet;
     int positionToEdit;
 
-    HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter, homeworkActivity homeworkActivityInstance, boolean usedAsEditor){
+    HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter, HomeworkActivity homeworkActivityInstance, boolean usedAsEditor){
         this.fragmentManager = fragmentManager;
         this.adapter = adapter;
         this.homeworkActivityInstance = homeworkActivityInstance;
@@ -47,7 +44,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     }
 
     public HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter,
-                                     homeworkActivity homeworkActivityInstance, boolean usedAsEditor,
+                                     HomeworkActivity homeworkActivityInstance, boolean usedAsEditor,
                                      String dateToSet, String subjectToSet, String extraInfToSet, int positionToEdit) {
         this.fragmentManager = fragmentManager;
         this.adapter = adapter;
