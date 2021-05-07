@@ -134,7 +134,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
         return Noten;
     }
 
-    public class Viewholder extends RecyclerView.ViewHolder{
+    public static class Viewholder extends RecyclerView.ViewHolder{
 
         private AutoCompleteTextView Fach;
         private Spinner Note;

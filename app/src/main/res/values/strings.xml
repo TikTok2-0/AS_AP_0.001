@@ -51,6 +51,8 @@
 
     <string name="title_activity_notenrechner_edit">FullscreenActivity</string>
     <string name="title_activity_about_us">FullscreenActivity</string>
+    <string name="title_activity_abirechner">FullscreenActivity</string>
+    <string name="title_activity_basic_fullscreen">FullscreenActivity</string>
 
 
 </resources>

@@ -15,15 +15,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView">
         <activity
+            android:name=".BasicFullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_basic_fullscreen"
+            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
+        <activity
+            android:name=".AbirechnerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_abirechner"
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
+        <activity
             android:name=".NotenrechnerEditActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_notenrechner_edit"
-            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity
             android:name=".AboutUsActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_about_us"
-            android:theme="@style/Theme.RecyclerView.Fullscreen"></activity>
+            android:theme="@style/Theme.RecyclerView.Fullscreen" />
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
