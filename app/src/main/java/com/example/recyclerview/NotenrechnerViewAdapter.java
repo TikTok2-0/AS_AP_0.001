@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
@@ -67,18 +68,6 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
     @Override
     public void onBindViewHolder(@NonNull NotenrechnerViewAdapter.Viewholder holder, int position1) {
-
-        holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                System.out.println("----------------"+holder.getAdapterPosition());
-                Noten.remove(holder.getAdapterPosition());
-                notifyItemRemoved(holder.getAdapterPosition());
-                mainActivityInstance.changeDurchschnitt(Noten);
-                setList("list", Noten);
-                return false;
-            }
-        });
 
         holder.Fach.setText(Noten.get(holder.getAdapterPosition()).getFach());
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, fächer);
@@ -132,6 +121,13 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
 
     public void addNote(Note note){
         Noten.add(note);
+    }
+
+    public void removeNote(int position){
+        Noten.remove(position);
+        notifyItemRemoved(position);
+        mainActivityInstance.changeDurchschnitt(Noten);
+        setList("list", Noten);
     }
 
     public ArrayList<Note> getNoten(){

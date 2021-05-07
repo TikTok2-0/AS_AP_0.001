@@ -1,7 +1,9 @@
 package com.example.recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -77,11 +79,11 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TextView Schnitt;
     private ImageView AddButton;
-    private ImageView infoBtn;
     private int positionInsert;
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private ArrayList<Note> Noten = new ArrayList<>();
+    private NotenrechnerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,6 @@ public class NotenrechnerActivity extends AppCompatActivity {
         BackBtn = findViewById(R.id.backBtn);
         Schnitt =(TextView) findViewById(R.id.Schnitt);
         AddButton = findViewById(R.id.addBtn);
-        infoBtn = findViewById(R.id.info);
 
         sharedPreferences = this.getSharedPreferences(
                 "mainPreferenceKey", Context.MODE_PRIVATE);
@@ -108,13 +109,6 @@ public class NotenrechnerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switchActivity(HomeScreen.class);
-            }
-        });
-
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                makeToast();
             }
         });
 
@@ -128,7 +122,8 @@ public class NotenrechnerActivity extends AppCompatActivity {
             System.out.println(e);
         }
 
-        NotenrechnerViewAdapter adapter = new NotenrechnerViewAdapter(this,this, Noten);
+        adapter = new NotenrechnerViewAdapter(this,this, Noten);
+        initItemTouchHelper();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
@@ -142,9 +137,24 @@ public class NotenrechnerActivity extends AppCompatActivity {
                 positionInsert++;
             }
         });
-        //recyclerView.setAdapter(adapter);
+
     }
 
+    private void initItemTouchHelper(){
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                System.out.println("----------------"+viewHolder.getAdapterPosition());
+                adapter.removeNote(viewHolder.getAdapterPosition());
+            }
+        };
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+    }
 
     public void changeDurchschnitt(ArrayList<Note> Noten){
         double durch = 0;
@@ -222,10 +232,6 @@ public class NotenrechnerActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,cls);
         startActivity(intent);
-    }
-
-    private void makeToast(){
-        Toast.makeText(this,"Delete = Long Press", Toast.LENGTH_SHORT).show();
     }
 
     private void hide() {
