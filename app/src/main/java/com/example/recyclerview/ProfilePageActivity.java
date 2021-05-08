@@ -106,6 +106,7 @@ public class ProfilePageActivity extends AppCompatActivity {
     TextView btnAboutUs;
     RelativeLayout profileEditBtn;
     RelativeLayout notenrechnerEdtBtn;
+    private TextView abirechnerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -206,6 +207,12 @@ public class ProfilePageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switchActivity(NotenrechnerEditActivity.class);
             }
+        });
+
+        abirechnerBtn = findViewById(R.id.abirechnerTxt);
+        abirechnerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { switchActivity(AbirechnerActivity.class); }
         });
 
         btnAboutUs = findViewById(R.id.btnAboutUs);

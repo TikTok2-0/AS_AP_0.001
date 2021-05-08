@@ -132,6 +132,18 @@
                     android:textColor="@color/active_icon"/>
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/abirechnerTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abirechner"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:layout_below="@+id/notenrechnerTxt"
+                android:layout_marginTop="20dp"/>
+
         </RelativeLayout>
 
 

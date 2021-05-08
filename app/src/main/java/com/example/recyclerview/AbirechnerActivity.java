@@ -2,13 +2,20 @@ package com.example.recyclerview;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 public class AbirechnerActivity extends AppCompatActivity {
@@ -76,6 +83,14 @@ public class AbirechnerActivity extends AppCompatActivity {
         }
     };
 
+    private TextView numSemster;
+    private TextView numAbitur;
+    private TextView numTotal;
+    private TextView numAverage;
+    private RecyclerView recyclerView;
+    private AbiNoteViewAdapter adapter;
+    private ArrayList<AbiNote> Abinoten = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +99,34 @@ public class AbirechnerActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
+        numSemster = findViewById(R.id.numSemester);
+        numAbitur = findViewById(R.id.numAbitur);
+        numTotal = findViewById(R.id.numTotal);
+        numAverage = findViewById(R.id.numAverage);
 
+        Abinoten.add(new AbiNote("Mathe", 11,12,13,14,true,13,true));
 
+        recyclerView = findViewById(R.id.detailRecView);
+        adapter = new AbiNoteViewAdapter(this,this,Abinoten);
+        initItemTouchHelper();
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+
+    }
+
+    private void initItemTouchHelper(){
+        ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                adapter.removeAbinote(viewHolder.getAdapterPosition());
+            }
+        };
+        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
 
     @Override
