@@ -184,6 +184,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
                         ,switchHigherLevel.isChecked()
                         );
                 abirechnerActivity.addAbinote(abiNote);
+                abirechnerActivity.updateStats();
                 main.dismiss();
             }
         });

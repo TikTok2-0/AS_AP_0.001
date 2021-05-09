@@ -93,6 +93,9 @@ public class AbirechnerActivity extends AppCompatActivity {
     private AbiNoteViewAdapter adapter;
     private ArrayList<AbiNote> Abinoten = new ArrayList<>();
     private ImageView addBtn;
+    private int pointsSemester;
+    private int pointsAbitur;
+    private int pointsTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +111,8 @@ public class AbirechnerActivity extends AppCompatActivity {
         numAverage = findViewById(R.id.numAverage);
 
         Abinoten.add(new AbiNote("Mathe", 11,12,13,14,true,13,true));
+
+        updateStats();
 
         recyclerView = findViewById(R.id.detailRecView);
         adapter = new AbiNoteViewAdapter(this,this,Abinoten);
@@ -125,10 +130,59 @@ public class AbirechnerActivity extends AppCompatActivity {
         };
         addBtn.setOnClickListener(abirechnerBottomSheetOnClickListener);
 
+
     }
 
     public void addAbinote(AbiNote abiNote){
         adapter.addAbinote(abiNote);
+    }
+
+    private void calcPointsSem(){
+        pointsSemester = 0;
+
+        for(int i=0; i<Abinoten.size(); i++){
+            int loopTotal = 0;
+            loopTotal += Abinoten.get(i).getPointsSem1() + Abinoten.get(i).getPointsSem2()
+                    +Abinoten.get(i).getPointsSem3() + Abinoten.get(i).getPointsSem4();
+
+            if(Abinoten.get(i).isHigherLevel()){
+                loopTotal *= 2;
+            }
+            pointsSemester += loopTotal;
+        }
+    }
+
+    private void calcPointsAbitur(){
+        pointsAbitur = 0;
+
+        for(int i=0; i<Abinoten.size(); i++){
+            if(Abinoten.get(i).isExam()){
+                pointsAbitur += Abinoten.get(i).getExamGrade() *5;
+            }
+        }
+    }
+
+    private void calcPointsTotal(){
+        pointsTotal =  pointsAbitur + pointsSemester;
+    }
+
+    /*
+    //TODO format durchschnitt
+    public float calcAverage(){
+
+    }
+
+     */
+
+    public void updateStats(){
+        calcPointsSem();
+        calcPointsAbitur();
+        calcPointsTotal();
+
+        numSemster.setText(String.valueOf(pointsSemester));
+        numAbitur.setText(String.valueOf(pointsAbitur));
+        numTotal.setText(String.valueOf(pointsTotal));
+
     }
 
     private void initItemTouchHelper(){
