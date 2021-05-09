@@ -70,6 +70,11 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         setList("listAbinoten", Abinoten);
     }
 
+    public void addAbinote(AbiNote abiNote){
+        Abinoten.add(abiNote);
+        notifyDataSetChanged();
+    }
+
     public static class Viewholder extends RecyclerView.ViewHolder{
 
         private TextView course;

@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -90,6 +92,7 @@ public class AbirechnerActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AbiNoteViewAdapter adapter;
     private ArrayList<AbiNote> Abinoten = new ArrayList<>();
+    private ImageView addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +115,20 @@ public class AbirechnerActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
+        addBtn = findViewById(R.id.addBtn);
+        View.OnClickListener abirechnerBottomSheetOnClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AbirechnerBottomSheetDialog bottomSheet = new AbirechnerBottomSheetDialog();
+                bottomSheet.show(getSupportFragmentManager(), "abirechnerBottomSheet");
+            }
+        };
+        addBtn.setOnClickListener(abirechnerBottomSheetOnClickListener);
+
+    }
+
+    private void addAbinote(AbiNote abiNote){
+        adapter.addAbinote(abiNote);
     }
 
     private void initItemTouchHelper(){
@@ -127,6 +144,12 @@ public class AbirechnerActivity extends AppCompatActivity {
             }
         };
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
+    }
+
+    public void switchActivity(Class<?> cls){
+
+        Intent intent = new Intent(this,cls);
+        startActivity(intent);
     }
 
     @Override
