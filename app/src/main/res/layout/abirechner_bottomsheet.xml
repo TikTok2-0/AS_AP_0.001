@@ -136,54 +136,82 @@
                     android:layout_marginTop="15dp"
                     />
 
-                <TextView
-                    android:id="@+id/numSemester"
+                <ImageButton
+                    android:id="@+id/btnPointsS1Add"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
                     android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_add_24"
                     />
 
-                <TextView
-                    android:id="@+id/numAbitur"
+                <ImageButton
+                    android:id="@+id/btnPointsS1Dec"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/numSemester"
-                    android:layout_marginTop="15dp"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_toStartOf="@+id/btnPointsS1Add"
+                    android:src="@drawable/ic_baseline_decrease"
                     />
 
-                <TextView
-                    android:id="@+id/numTotal"
+                <ImageButton
+                    android:id="@+id/btnPointsS2Add"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/numAbitur"
-                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/btnPointsS1Add"
+                    android:src="@drawable/ic_baseline_add_24"
                     />
 
-                <TextView
-                    android:id="@+id/numAverage"
+                <ImageButton
+                    android:id="@+id/btnPointsS2Dec"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_toStartOf="@+id/btnPointsS2Add"
+                    android:layout_below="@+id/btnPointsS1Add"
+                    android:src="@drawable/ic_baseline_decrease"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnPointsS3Add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/numTotal"
-                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/btnPointsS2Add"
+                    android:src="@drawable/ic_baseline_add_24"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnPointsS3Dec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_toStartOf="@+id/btnPointsS3Add"
+                    android:layout_below="@+id/btnPointsS2Add"
+                    android:src="@drawable/ic_baseline_decrease"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnPointsS4Add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/btnPointsS3Add"
+                    android:src="@drawable/ic_baseline_add_24"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnPointsS4Dec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_toStartOf="@+id/btnPointsS4Add"
+                    android:layout_below="@+id/btnPointsS3Add"
+                    android:src="@drawable/ic_baseline_decrease"
                     />
 
             </RelativeLayout>
@@ -267,18 +295,27 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml"
                     android:layout_marginEnd="5dp"/>
 
-                <TextView
-                    android:id="@+id/numAbitur"
+                <ImageButton
+                    android:id="@+id/btnPointsAbiturAdd"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="123"
-                    android:textSize="20sp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/switchExam"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_add_24"
+                    />
+
+                <ImageButton
+                    android:id="@+id/btnPointsAbiturDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textSize="18sp"
+                    android:layout_toStartOf="@+id/btnPointsAbiturAdd"
+                    android:layout_below="@+id/switchExam"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_baseline_decrease"
                     />
 
                 <Switch
@@ -286,8 +323,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_below="@+id/numAbitur"
-                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/btnPointsAbiturAdd"
+                    android:layout_marginTop="5dp"
                     android:layout_marginEnd="5dp"
                     />
 
@@ -331,14 +368,11 @@
 
     </androidx.cardview.widget.CardView>
 
-
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_baseline_maximize_24"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
-
 
 </RelativeLayout>
