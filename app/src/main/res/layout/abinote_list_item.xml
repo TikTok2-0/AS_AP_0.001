@@ -24,7 +24,6 @@
             android:layout_marginStart="15dp"
             android:text="Fach"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
 
 
@@ -37,19 +36,36 @@
             android:layout_marginEnd="15dp"
             android:text="E"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
+
+        <RelativeLayout
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/level"
+            android:id="@+id/layoutPointsAbitur"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+
+            >
+            <TextView
+                android:id="@+id/pointsAbitur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="-"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/pointsS4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/level"
+            android:layout_toLeftOf="@+id/layoutPointsAbitur"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="30dp"
             android:text="69"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -61,7 +77,6 @@
             android:layout_marginEnd="15dp"
             android:text="69"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -73,7 +88,6 @@
             android:layout_marginEnd="15dp"
             android:text="69"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
 
         <TextView
@@ -85,7 +99,6 @@
             android:layout_marginEnd="15dp"
             android:text="69"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="@color/black"/>
 
 

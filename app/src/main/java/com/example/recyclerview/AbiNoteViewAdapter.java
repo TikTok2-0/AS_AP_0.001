@@ -53,11 +53,19 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         holder.pointsS2.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getPointsSem2()));
         holder.pointsS3.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getPointsSem3()));
         holder.pointsS4.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getPointsSem4()));
+
         if(Abinoten.get(holder.getAdapterPosition()).isHigherLevel()){
             holder.level.setText("E");
         }else{
             holder.level.setText("G");
         }
+
+        if(Abinoten.get(holder.getAdapterPosition()).isExam()){
+            holder.pointsAbitur.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getExamGrade()));
+        }else{
+            holder.pointsAbitur.setText("-");
+        }
+
     }
 
     @Override
@@ -83,6 +91,7 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         private TextView pointsS3;
         private TextView pointsS4;
         private TextView level;
+        private TextView pointsAbitur;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
@@ -91,7 +100,8 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
             pointsS2 = itemView.findViewById(R.id.pointsS2);
             pointsS3 = itemView.findViewById(R.id.pointsS3);
             pointsS4 = itemView.findViewById(R.id.pointsS4);
-            level = pointsS1 = itemView.findViewById(R.id.level);
+            level = itemView.findViewById(R.id.level);
+            pointsAbitur = itemView.findViewById(R.id.pointsAbitur);
         }
 
     }

@@ -116,10 +116,10 @@ public class AbirechnerActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
 
         addBtn = findViewById(R.id.addBtn);
+        AbirechnerBottomSheetDialog bottomSheet = new AbirechnerBottomSheetDialog(this);
         View.OnClickListener abirechnerBottomSheetOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AbirechnerBottomSheetDialog bottomSheet = new AbirechnerBottomSheetDialog();
                 bottomSheet.show(getSupportFragmentManager(), "abirechnerBottomSheet");
             }
         };
@@ -127,7 +127,7 @@ public class AbirechnerActivity extends AppCompatActivity {
 
     }
 
-    private void addAbinote(AbiNote abiNote){
+    public void addAbinote(AbiNote abiNote){
         adapter.addAbinote(abiNote);
     }
 

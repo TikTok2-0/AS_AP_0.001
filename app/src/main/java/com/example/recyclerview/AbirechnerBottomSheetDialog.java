@@ -54,10 +54,18 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
     private Switch switchHigherLevel;
 
     private CardView cardViewFinish;
+    private AbirechnerBottomSheetDialog main;
 
+    /*
     public AbirechnerBottomSheetDialog newInstance(AbirechnerActivity abirechnerActivity) {
         this.abirechnerActivity = abirechnerActivity;
         return new AbirechnerBottomSheetDialog();
+    }
+     */
+
+    public AbirechnerBottomSheetDialog(AbirechnerActivity abirechnerActivity) {
+        this.abirechnerActivity = abirechnerActivity;
+        this.main = this;
     }
 
     @Nullable
@@ -66,9 +74,9 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
         context = getActivity();
 
-        View v = inflater.inflate(R.layout.bottomsheet_studenplan, container, false);  //stundenplan_bottom_sheet
+        View v = inflater.inflate(R.layout.abirechner_bottomsheet, container, false);  //stundenplan_bottom_sheet
 
-        edtTxtCourse = v.findViewById(R.id.edtTxtCourse); //!!!!!!
+        edtTxtCourse = v.findViewById(R.id.edtTxtCourse);
         txtPointsS1 = v.findViewById(R.id.txtPointsS1);
         txtPointsS2 = v.findViewById(R.id.txtPointsS2);
         txtPointsS3 = v.findViewById(R.id.txtPointsS3);
@@ -81,12 +89,12 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
         btnPointsS3Add = v.findViewById(R.id.btnPointsS3Add);
         btnPointsS4Dec = v.findViewById(R.id.btnPointsS4Dec);
         btnPointsS4Add = v.findViewById(R.id.btnPointsS4Add);
-        switchExam = v.findViewById(R.id.switchExam); //!!!!!!
+        switchExam = v.findViewById(R.id.switchExam);
         txtPointsAbitur = v.findViewById(R.id.txtPointsAbitur);
         btnPointsAbiturAdd = v.findViewById(R.id.btnPointsAbiturAdd);
         btnPointsAbiturDec = v.findViewById(R.id.btnPointsAbiturDec);
-        switchHigherLevel = v.findViewById(R.id.switchHigherLevel); //!!!!!!
-        cardViewFinish = v.findViewById(R.id.cardViewFinish); //!!!!!!
+        switchHigherLevel = v.findViewById(R.id.switchHigherLevel);
+        cardViewFinish = v.findViewById(R.id.cardViewFinish);
 
         btnPointsS1Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,15 +171,20 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
             @Override
             public void onClick(View v) {
                 AbiNote abiNote;
+
+                System.out.println("-----------------"+switchHigherLevel.isChecked());
+
                 abiNote = new AbiNote(edtTxtCourse.getText().toString()
                         ,getPoints(txtPointsS1, "S1: ")
                         ,getPoints(txtPointsS2, "S2: ")
                         ,getPoints(txtPointsS3, "S3: ")
                         ,getPoints(txtPointsS4, "S4: ")
-                        ,switchExam.isActivated()
+                        ,switchExam.isChecked()
                         ,getPoints(txtPointsAbitur, "Abitur: ")
-                        ,switchHigherLevel.isActivated()
+                        ,switchHigherLevel.isChecked()
                         );
+                abirechnerActivity.addAbinote(abiNote);
+                main.dismiss();
             }
         });
 
@@ -181,7 +194,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
     private void addPoint(TextView textView, String Semester){
         String text = (String) textView.getText();
-        text = text.substring(Semester.length()-1,text.length());
+        text = text.substring(Semester.length(),text.length()-1);
         int points = Integer.parseInt(text);
         points += 1;
         text = Semester + points + "P";
@@ -190,7 +203,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
     private void decPoint(TextView textView, String Semester){
         String text = (String) textView.getText();
-        text = text.substring(Semester.length()-1,text.length());
+        text = text.substring(Semester.length(),text.length()-1);
         int points = Integer.parseInt(text);
         points -= 1;
         text = Semester + points + "P";
@@ -199,7 +212,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
     private int getPoints(TextView textView, String Semester){
         String text = (String) textView.getText();
-        text = text.substring(Semester.length()-1,text.length());
+        text = text.substring(Semester.length(),text.length()-1);
         int points = Integer.parseInt(text);
         return points;
     }

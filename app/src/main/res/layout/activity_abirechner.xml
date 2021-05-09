@@ -73,7 +73,6 @@
                         android:textSize="20sp"
                         android:text="Semester"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         />
 
                     <TextView
@@ -83,7 +82,6 @@
                         android:textSize="20sp"
                         android:text="Abitur"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_below="@+id/txtSemester"
                         android:layout_marginTop="15dp"
                         />
@@ -107,7 +105,6 @@
                         android:textSize="20sp"
                         android:text="Average"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_below="@+id/txtTotal"
                         android:layout_marginTop="15dp"
                         />
@@ -119,7 +116,6 @@
                         android:text="123"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_alignParentEnd="true"
                         />
 
@@ -130,7 +126,6 @@
                         android:text="123"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_alignParentEnd="true"
                         android:layout_below="@+id/numSemester"
                         android:layout_marginTop="15dp"
@@ -156,7 +151,6 @@
                         android:text="123"
                         android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:layout_alignParentEnd="true"
                         android:layout_below="@+id/numTotal"
                         android:layout_marginTop="15dp"
