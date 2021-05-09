@@ -74,6 +74,7 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
     public void removeAbinote(int position){
         Abinoten.remove(position);
         notifyItemRemoved(position);
+        abirechnerActivity.updateStats();
         //mainActivityInstance.changeDurchschnitt(Noten);
         setList("listAbinoten", Abinoten);
     }

@@ -96,6 +96,7 @@ public class AbirechnerActivity extends AppCompatActivity {
     private int pointsSemester;
     private int pointsAbitur;
     private int pointsTotal;
+    private double average;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,26 +164,29 @@ public class AbirechnerActivity extends AppCompatActivity {
     }
 
     private void calcPointsTotal(){
+        pointsTotal = 0;
         pointsTotal =  pointsAbitur + pointsSemester;
     }
 
-    /*
+
     //TODO format durchschnitt
-    public float calcAverage(){
-
+    public void calcAverage(){
+        average = 0;
+        double pointsTotal = this.pointsTotal;
+        average = (17.0/3.0)-(pointsTotal/180.0);
+        average =(Math.round(average*100.0)/100.0);
     }
-
-     */
 
     public void updateStats(){
         calcPointsSem();
         calcPointsAbitur();
         calcPointsTotal();
+        calcAverage();
 
         numSemster.setText(String.valueOf(pointsSemester));
         numAbitur.setText(String.valueOf(pointsAbitur));
         numTotal.setText(String.valueOf(pointsTotal));
-
+        numAverage.setText(String.valueOf(average));
     }
 
     private void initItemTouchHelper(){
