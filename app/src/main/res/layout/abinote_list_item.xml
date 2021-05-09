@@ -44,7 +44,7 @@
             android:layout_toLeftOf="@+id/level"
             android:id="@+id/layoutPointsAbitur"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="30dp"
 
             >
             <TextView

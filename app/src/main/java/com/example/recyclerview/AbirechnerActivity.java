@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -17,7 +19,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class AbirechnerActivity extends AppCompatActivity {
@@ -85,6 +92,8 @@ public class AbirechnerActivity extends AppCompatActivity {
         }
     };
 
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
     private TextView numSemster;
     private TextView numAbitur;
     private TextView numTotal;
@@ -97,6 +106,7 @@ public class AbirechnerActivity extends AppCompatActivity {
     private int pointsAbitur;
     private int pointsTotal;
     private double average;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,9 +121,17 @@ public class AbirechnerActivity extends AppCompatActivity {
         numTotal = findViewById(R.id.numTotal);
         numAverage = findViewById(R.id.numAverage);
 
-        Abinoten.add(new AbiNote("Mathe", 11,12,13,14,true,13,true));
+        sharedPreferences = this.getSharedPreferences(
+                "mainPreferenceKey", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+        if(getList("abinoten") != null){
+            Abinoten = getList("abinoten");
+        }
 
         updateStats();
+
+
 
         recyclerView = findViewById(R.id.detailRecView);
         adapter = new AbiNoteViewAdapter(this,this,Abinoten);
@@ -140,27 +158,37 @@ public class AbirechnerActivity extends AppCompatActivity {
 
     private void calcPointsSem(){
         pointsSemester = 0;
+        try{
+            for(int i=0; i<Abinoten.size(); i++){
+                int loopTotal = 0;
+                loopTotal += Abinoten.get(i).getPointsSem1() + Abinoten.get(i).getPointsSem2()
+                        +Abinoten.get(i).getPointsSem3() + Abinoten.get(i).getPointsSem4();
 
-        for(int i=0; i<Abinoten.size(); i++){
-            int loopTotal = 0;
-            loopTotal += Abinoten.get(i).getPointsSem1() + Abinoten.get(i).getPointsSem2()
-                    +Abinoten.get(i).getPointsSem3() + Abinoten.get(i).getPointsSem4();
-
-            if(Abinoten.get(i).isHigherLevel()){
-                loopTotal *= 2;
+                if(Abinoten.get(i).isHigherLevel()){
+                    loopTotal *= 2;
+                }
+                pointsSemester += loopTotal;
             }
-            pointsSemester += loopTotal;
+        }catch(Exception e){
+            System.out.println(e);
         }
+
     }
 
     private void calcPointsAbitur(){
         pointsAbitur = 0;
 
-        for(int i=0; i<Abinoten.size(); i++){
-            if(Abinoten.get(i).isExam()){
-                pointsAbitur += Abinoten.get(i).getExamGrade() *5;
+        try{
+            for(int i=0; i<Abinoten.size(); i++){
+                if(Abinoten.get(i).isExam()){
+                    pointsAbitur += Abinoten.get(i).getExamGrade() *5;
+                }
             }
+        }catch(Exception e){
+            System.out.println(e);
         }
+
+
     }
 
     private void calcPointsTotal(){
@@ -208,6 +236,17 @@ public class AbirechnerActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,cls);
         startActivity(intent);
+    }
+
+    public ArrayList<AbiNote> getList(String key){
+        ArrayList<AbiNote> arrayItems = null;
+        String serializedObject = sharedPreferences.getString(key,null);
+        if(serializedObject != null){
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<AbiNote>>(){}.getType();
+            arrayItems = gson.fromJson(serializedObject,type);
+        }
+        return arrayItems;
     }
 
     @Override

@@ -69,19 +69,28 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
     }
 
     @Override
-    public int getItemCount() { return Abinoten.size(); }
+    public int getItemCount() {
+        try{
+            return Abinoten.size();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return 0;
+         }
 
     public void removeAbinote(int position){
         Abinoten.remove(position);
         notifyItemRemoved(position);
         abirechnerActivity.updateStats();
         //mainActivityInstance.changeDurchschnitt(Noten);
-        setList("listAbinoten", Abinoten);
+        setList("abinoten", Abinoten);
     }
 
     public void addAbinote(AbiNote abiNote){
         Abinoten.add(abiNote);
         notifyDataSetChanged();
+        abirechnerActivity.updateStats();
+        setList("abinoten", Abinoten);
     }
 
     public static class Viewholder extends RecyclerView.ViewHolder{
@@ -119,12 +128,12 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         editor.apply();
     }
 
-    public ArrayList<Note> getList(String key){
-        ArrayList<Note> arrayItems = null;
+    public ArrayList<AbiNote> getList(String key){
+        ArrayList<AbiNote> arrayItems = null;
         String serializedObject = sharedPreferences.getString(key,null);
         if(serializedObject != null){
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<Note>>(){}.getType();
+            Type type = new TypeToken<ArrayList<AbiNote>>(){}.getType();
             arrayItems = gson.fromJson(serializedObject,type);
         }
         return arrayItems;
