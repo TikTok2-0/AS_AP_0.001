@@ -44,7 +44,7 @@
             android:layout_toLeftOf="@+id/level"
             android:id="@+id/layoutPointsAbitur"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="15dp"
 
             >
             <TextView
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/layoutPointsAbitur"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="30dp"
+            android:layout_marginEnd="15dp"
             android:text="69"
             android:textSize="20sp"
             android:textColor="@color/black"/>
