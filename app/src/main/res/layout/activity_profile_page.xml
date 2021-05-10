@@ -113,7 +113,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:id="@+id/notenrechnerTxt"/>
+                android:id="@+id/notenrechnerBtn"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -141,7 +141,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp"
-                android:layout_below="@+id/notenrechnerTxt"
+                android:layout_below="@+id/notenrechnerBtn"
                 android:layout_marginTop="20dp"/>
 
         </RelativeLayout>

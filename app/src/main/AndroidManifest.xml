@@ -68,7 +68,7 @@
             android:theme="@style/Theme.RecyclerView.Fullscreen"
             tools:ignore="DuplicateActivity" />
         <activity
-            android:name=".HomeScreen"
+            android:name=".HomeScreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />

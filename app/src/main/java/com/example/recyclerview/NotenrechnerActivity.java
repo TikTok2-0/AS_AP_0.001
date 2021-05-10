@@ -13,16 +13,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
-import org.w3c.dom.Text;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -108,7 +104,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
         BackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchActivity(HomeScreen.class);
+                switchActivity(HomeScreenActivity.class);
             }
         });
 

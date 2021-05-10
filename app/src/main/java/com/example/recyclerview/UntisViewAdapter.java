@@ -23,13 +23,13 @@ public class UntisViewAdapter extends RecyclerView.Adapter<UntisViewAdapter.View
     private Context context;
 
     private Activity mainActivity;
-    HomeScreen mainActivityInstance;
+    HomeScreenActivity mainActivityInstance;
 
     private View mContentView;
 
     //private ActivitySwitcher activitySwitcher;
 
-    public UntisViewAdapter(Context context, Activity activity, HomeScreen mainActivityInstance) {
+    public UntisViewAdapter(Context context, Activity activity, HomeScreenActivity mainActivityInstance) {
 
         this.context = context;
         this.mainActivity = activity;

@@ -30,7 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreenActivity extends AppCompatActivity {
 
     private ArrayList<Course> courses;
     private RecyclerView courseRecyclerView;
@@ -126,7 +126,6 @@ public class HomeScreen extends AppCompatActivity {
 
     ImageView storyImage;
     TextView txtName;
-    RelativeLayout durchschnittBtn;
     CardView newsCard;
     RelativeLayout nextBtn;
     ViewPager2 viewPager2;
@@ -153,10 +152,6 @@ public class HomeScreen extends AppCompatActivity {
         newsCard = findViewById(R.id.newsCard);
         nextBtn = findViewById(R.id.nextBtn);
 
-
-        durchschnittBtn = findViewById(R.id.durchschnittBtn);
-
-
         context = this;
 
         courses = new ArrayList<>();
@@ -177,20 +172,6 @@ public class HomeScreen extends AppCompatActivity {
         };
 
         nextBtn.setOnClickListener(stundenplanBottomSheetOnClickListener);
-
-
-
-
-        durchschnittBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                hide();
-                switchActivity(NotenrechnerActivity.class);
-
-            }
-        });
-
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
             @Override

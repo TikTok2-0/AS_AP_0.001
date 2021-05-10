@@ -34,7 +34,7 @@ public class LaunchActivity extends AppCompatActivity {
 
             switchActivity(LoginPageActivity.class,true);
         }else{
-            switchActivity(HomeScreen.class);
+            switchActivity(HomeScreenActivity.class);
 
 
         }

@@ -106,6 +106,7 @@ public class ProfilePageActivity extends AppCompatActivity {
     TextView btnAboutUs;
     RelativeLayout profileEditBtn;
     RelativeLayout notenrechnerEdtBtn;
+    private TextView notenrechnerBtn;
     private TextView abirechnerBtn;
 
     @Override
@@ -155,7 +156,7 @@ public class ProfilePageActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case(R.id.menu_home):
-                        switchActivity(HomeScreen.class);
+                        switchActivity(HomeScreenActivity.class);
                         break;
                     case(R.id.menu_news):
 
@@ -201,11 +202,11 @@ public class ProfilePageActivity extends AppCompatActivity {
             }
         });
 
-        notenrechnerEdtBtn = findViewById(R.id.edtNotenrechnerBtn);
-        notenrechnerEdtBtn.setOnClickListener(new View.OnClickListener() {
+        notenrechnerBtn = findViewById(R.id.notenrechnerBtn);
+        notenrechnerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchActivity(NotenrechnerEditActivity.class);
+                switchActivity(NotenrechnerActivity.class);
             }
         });
 

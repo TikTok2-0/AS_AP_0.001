@@ -221,7 +221,7 @@ public class NewsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case(R.id.menu_home):
-                        switchActivity(HomeScreen.class);
+                        switchActivity(HomeScreenActivity.class);
                         break;
                     case(R.id.menu_news):
 
