@@ -217,6 +217,10 @@ public class AbirechnerActivity extends AppCompatActivity {
         numAverage.setText(String.valueOf(average));
     }
 
+    public void updateAbinoten(ArrayList<AbiNote> abinoten){
+        this.Abinoten = abinoten;
+    }
+
     private void initItemTouchHelper(){
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override

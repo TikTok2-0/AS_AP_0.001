@@ -160,6 +160,7 @@ public class NotenrechnerViewAdapter extends RecyclerView.Adapter<NotenrechnerVi
     }
 
     public static void set(String key, String value){
+        System.out.println("-----------------"+editor);
         editor.putString(key,value);
         editor.apply();
     }

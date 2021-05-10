@@ -33,15 +33,15 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         this.context = context;
         this.abirechnerActivity = abirechnerActivity;
         this.Abinoten = abinoten;
+        sharedPreferences = abirechnerActivity.getSharedPreferences(
+                "mainPreferenceKey", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @NonNull
     @Override
     public AbiNoteViewAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.abinote_list_item,parent,false);
-        sharedPreferences = context.getSharedPreferences(
-                "mainPreferenceKey", Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
         return new AbiNoteViewAdapter.Viewholder(view);
 
     }
@@ -81,14 +81,15 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
     public void removeAbinote(int position){
         Abinoten.remove(position);
         notifyItemRemoved(position);
+        abirechnerActivity.updateAbinoten(Abinoten);
         abirechnerActivity.updateStats();
-        //mainActivityInstance.changeDurchschnitt(Noten);
         setList("abinoten", Abinoten);
     }
 
     public void addAbinote(AbiNote abiNote){
         Abinoten.add(abiNote);
         notifyDataSetChanged();
+        abirechnerActivity.updateAbinoten(Abinoten);
         abirechnerActivity.updateStats();
         setList("abinoten", Abinoten);
     }
@@ -124,6 +125,7 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
     }
 
     public static void set(String key, String value){
+        System.out.println("-------------"+editor);
         editor.putString(key,value);
         editor.apply();
     }
