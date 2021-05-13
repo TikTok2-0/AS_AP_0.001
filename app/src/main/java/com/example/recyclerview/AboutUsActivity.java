@@ -103,7 +103,7 @@ public class AboutUsActivity extends AppCompatActivity {
 
 
     TextView icons8Link;
-    TextView materialLink, copyrightTxt, openSourceLicences;
+    TextView materialLink, copyrightTxt, openSourceLicences, privacyPolLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +143,14 @@ public class AboutUsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openLink("https://material.io");
+            }
+        });
+
+        privacyPolLink = findViewById(R.id.txtPrivacyPol);
+        privacyPolLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLink("https://www.privacypolicies.com/live/a3287839-794c-4c4a-b883-f18a6e586f6f");
             }
         });
 
