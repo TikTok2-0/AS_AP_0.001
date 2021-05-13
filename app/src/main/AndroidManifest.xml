@@ -85,6 +85,9 @@
         <activity
             android:name=".NewsActivity"
             android:theme="@style/Theme.RecyclerView.Fullscreen" />
+
+
+
     </application>
 
 </manifest>
