@@ -96,30 +96,32 @@
                     />
 
                 <TextView
+                    android:id="@+id/copyrightTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/txtPrivacyPol"
                     android:layout_alignStart="@id/icons8Link"
                     android:layout_alignParentEnd="true"
                     android:textColor="@color/black"
-                    android:text="@string/backEndLicense"
+                    android:text="backEndLicense"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_marginBottom="25dp"
-                    android:id="@+id/copyrightTxt"
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/copyrightTxt"
-                    android:layout_alignStart="@+id/copyrightTxt"
-                    android:text="@string/openSourceLicence"
-                    android:textColor="@color/active_icon"
-                    android:layout_marginBottom="30dp"
-                    android:id="@+id/openSourceLicencesTxt"
+                    android:layout_alignStart="@id/icons8Link"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/light_blue_600"
+                    android:text="Opensource Licenses"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="25dp"
+                    android:id="@+id/openSourceLicences"
                     />
-
 
 
             </RelativeLayout>
