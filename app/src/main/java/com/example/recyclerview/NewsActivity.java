@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class NewsActivity extends AppCompatActivity {
 
-    private JsonPars json_Pars;
+    private com.hlgkaifu.recyclerview.JsonPars json_Pars;
     private static ArrayList<News> news;
     private static ArrayList<News> newsHlg;
     private static ArrayList<News> newsKfu;
@@ -140,7 +140,7 @@ public class NewsActivity extends AppCompatActivity {
         newsHlg = new ArrayList<>();
         newsKfu = new ArrayList<>();
         //json_Pars =  jsonPars.getJsonPars(this);
-        news = JsonPars.getNewsal();
+        news = com.hlgkaifu.recyclerview.JsonPars.getNewsal();
 
 
         

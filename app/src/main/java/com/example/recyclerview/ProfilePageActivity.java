@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.annotation.SuppressLint;
 
@@ -21,6 +21,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.hlgkaifu.recyclerview.AbirechnerActivity;
+import com.hlgkaifu.recyclerview.AboutUsActivity;
+import com.hlgkaifu.recyclerview.HomeScreenActivity;
+import com.hlgkaifu.recyclerview.HomeworkActivity;
+import com.hlgkaifu.recyclerview.LoginPageActivity;
+import com.hlgkaifu.recyclerview.NewsActivity;
+import com.hlgkaifu.recyclerview.NotenrechnerActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -29,7 +36,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
     private static final boolean AUTO_HIDE = true;
 
-    private ArrayList<SettingsProperty> settings;
+    private ArrayList<com.hlgkaifu.recyclerview.SettingsProperty> settings;
 
     private static final int AUTO_HIDE_DELAY_MILLIS = 0;
 
@@ -129,12 +136,12 @@ public class ProfilePageActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         settingsRecyclerView = findViewById(R.id.settingsRecView);
-        SettingsViewAdapter adapter = new SettingsViewAdapter(this,this,this);
+        com.hlgkaifu.recyclerview.SettingsViewAdapter adapter = new com.hlgkaifu.recyclerview.SettingsViewAdapter(this,this,this);
 
         //settings.add(new SettingsProperty("Username ","Team HLG",false,false));
-        settings.add(new SettingsProperty("Name",sharedPreferences.getString("name","username"),false,false));
-        settings.add(new SettingsProperty("Klasse",String.valueOf(sharedPreferences.getInt("class",1)),false,false));
-        settings.add(new SettingsProperty("Schule",sharedPreferences.getString("school","hlg/kaifu"),false,false));
+        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Name",sharedPreferences.getString("name","username"),false,false));
+        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Klasse",String.valueOf(sharedPreferences.getInt("class",1)),false,false));
+        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Schule",sharedPreferences.getString("school","hlg/kaifu"),false,false));
         //settings.add(new SettingsProperty("E-Mail","tiktok2-0@gmail.com",false,false));
         //settings.add(new SettingsProperty("Private Account","tiktok2-0@gmail.com",false,true));
         //settings.add(new SettingsProperty("Notifications","tiktok2-0@gmail.com",true,true));

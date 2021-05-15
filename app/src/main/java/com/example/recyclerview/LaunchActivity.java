@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,10 +7,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import com.hlgkaifu.recyclerview.HomeScreenActivity;
+import com.hlgkaifu.recyclerview.LoginPageActivity;
+
 public class LaunchActivity extends AppCompatActivity {
 
 
-    JsonPars json_Pars;
+    com.hlgkaifu.recyclerview.JsonPars json_Pars;
 
 
     @Override
@@ -18,9 +21,9 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
-        json_Pars =  JsonPars.getJsonPars(this);
+        json_Pars =  com.hlgkaifu.recyclerview.JsonPars.getJsonPars(this);
 
-        JsonPars.getNewsal();
+        com.hlgkaifu.recyclerview.JsonPars.getNewsal();
         //SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(

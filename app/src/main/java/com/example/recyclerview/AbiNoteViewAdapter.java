@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hlgkaifu.recyclerview.AbirechnerActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,10 +27,10 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
     private Context context;
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
-    private ArrayList<AbiNote> Abinoten = new ArrayList<>();
+    private ArrayList<com.hlgkaifu.recyclerview.AbiNote> Abinoten = new ArrayList<>();
     private AbirechnerActivity abirechnerActivity;
 
-    public AbiNoteViewAdapter(Context context, AbirechnerActivity abirechnerActivity, ArrayList<AbiNote> abinoten) {
+    public AbiNoteViewAdapter(Context context, AbirechnerActivity abirechnerActivity, ArrayList<com.hlgkaifu.recyclerview.AbiNote> abinoten) {
         this.context = context;
         this.abirechnerActivity = abirechnerActivity;
         this.Abinoten = abinoten;
@@ -86,7 +87,7 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         setList("abinoten", Abinoten);
     }
 
-    public void addAbinote(AbiNote abiNote){
+    public void addAbinote(com.hlgkaifu.recyclerview.AbiNote abiNote){
         Abinoten.add(abiNote);
         notifyDataSetChanged();
         abirechnerActivity.updateAbinoten(Abinoten);
@@ -130,12 +131,12 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         editor.apply();
     }
 
-    public ArrayList<AbiNote> getList(String key){
-        ArrayList<AbiNote> arrayItems = null;
+    public ArrayList<com.hlgkaifu.recyclerview.AbiNote> getList(String key){
+        ArrayList<com.hlgkaifu.recyclerview.AbiNote> arrayItems = null;
         String serializedObject = sharedPreferences.getString(key,null);
         if(serializedObject != null){
             Gson gson = new Gson();
-            Type type = new TypeToken<ArrayList<AbiNote>>(){}.getType();
+            Type type = new TypeToken<ArrayList<com.hlgkaifu.recyclerview.AbiNote>>(){}.getType();
             arrayItems = gson.fromJson(serializedObject,type);
         }
         return arrayItems;

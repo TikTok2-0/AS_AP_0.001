@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -78,9 +78,9 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
 
         //Das selbe aber vereinfacht
         if(sharedPreferences.getBoolean("hlgSelected",true)){
-        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(UniversalMenu.class, position));}
+        holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(com.hlgkaifu.recyclerview.UniversalMenu.class, position));}
         else{
-            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(UniversalMenu.class, position));
+            holder.parent.setOnClickListener((View v) -> mainActivityInstance.switchActivity(com.hlgkaifu.recyclerview.UniversalMenu.class, position));
         }
 
         //loading images

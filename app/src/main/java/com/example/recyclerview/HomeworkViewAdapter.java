@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hlgkaifu.recyclerview.Homework;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -30,13 +31,13 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
     Context context;
 
     private Activity mainActivity;
-    HomeworkActivity mainActivityInstance;
+    com.hlgkaifu.recyclerview.HomeworkActivity mainActivityInstance;
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
 
-    public HomeworkViewAdapter(Context context, Activity activity, HomeworkActivity mainActivityInstance){
+    public HomeworkViewAdapter(Context context, Activity activity, com.hlgkaifu.recyclerview.HomeworkActivity mainActivityInstance){
         this.context = context;
         this.mainActivity = activity;
         this.mainActivityInstance = mainActivityInstance;
@@ -118,7 +119,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
         holder.subject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeworkBottomSheetDialog bottomSheet = new HomeworkBottomSheetDialog(
+                com.hlgkaifu.recyclerview.HomeworkBottomSheetDialog bottomSheet = new com.hlgkaifu.recyclerview.HomeworkBottomSheetDialog(
                         mainActivityInstance.getSupportFragmentManager(),
                         mainActivityInstance.getAdapter(),
                         mainActivityInstance,true,

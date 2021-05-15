@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.recyclerview" >
+    package="com.hlgkaifu.recyclerview" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,12 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RecyclerView" >
-        <activity
-            android:name=".BasicFullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_basic_fullscreen"
-            android:theme="@style/Theme.RecyclerView.Fullscreen" >
-        </activity>
         <activity
             android:name=".AbirechnerActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

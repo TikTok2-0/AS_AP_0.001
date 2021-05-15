@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.annotation.SuppressLint;
 
@@ -32,11 +32,11 @@ import java.util.ArrayList;
 
 public class HomeScreenActivity extends AppCompatActivity {
 
-    private ArrayList<Course> courses;
+    private ArrayList<com.hlgkaifu.recyclerview.Course> courses;
     private RecyclerView courseRecyclerView;
 
-    private JsonPars json_Pars;
-    private ArrayList<News> news;
+    private com.hlgkaifu.recyclerview.JsonPars json_Pars;
+    private ArrayList<com.hlgkaifu.recyclerview.News> news;
 
     private static final boolean AUTO_HIDE = true;
 

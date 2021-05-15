@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,6 +22,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hlgkaifu.recyclerview.NotenrechnerActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

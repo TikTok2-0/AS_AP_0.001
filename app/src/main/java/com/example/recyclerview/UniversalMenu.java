@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.annotation.SuppressLint;
 
@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.hlgkaifu.recyclerview.NewsActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

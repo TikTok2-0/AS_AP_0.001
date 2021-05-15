@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.hlgkaifu.recyclerview.Course;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
     Context context;
     ViewPager2 viewPager2;
     CircleIndicator3 circleIndicator3;
-    StundenplanViewPagerAdapter adapter;
+    com.hlgkaifu.recyclerview.StundenplanViewPagerAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class StundenplanBottomSheetDialog extends BottomSheetDialogFragment {
         listRecview.add(monday);
         listRecview.add(tuesday);
 
-        adapter = new StundenplanViewPagerAdapter(context, viewPager2);
+        adapter = new com.hlgkaifu.recyclerview.StundenplanViewPagerAdapter(context, viewPager2);
         adapter.setRecyclerViews(listRecview);
 
         viewPager2.setAdapter(adapter);

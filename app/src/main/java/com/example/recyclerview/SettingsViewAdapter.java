@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.hlgkaifu.recyclerview.ProfilePageActivity;
+import com.hlgkaifu.recyclerview.SettingsProperty;
 
 import java.util.ArrayList;
 

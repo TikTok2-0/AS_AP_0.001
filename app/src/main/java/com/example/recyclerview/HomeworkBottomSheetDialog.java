@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.hlgkaifu.recyclerview.Homework;
+import com.hlgkaifu.recyclerview.HomeworkViewAdapter;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 
@@ -31,12 +33,12 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
     FragmentManager fragmentManager;
     HomeworkViewAdapter adapter;
-    HomeworkActivity homeworkActivityInstance;
+    com.hlgkaifu.recyclerview.HomeworkActivity homeworkActivityInstance;
     boolean usedAsEditor;
     String dateToSet,subjectToSet,extraInfToSet;
     int positionToEdit;
 
-    HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter, HomeworkActivity homeworkActivityInstance, boolean usedAsEditor){
+    HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter, com.hlgkaifu.recyclerview.HomeworkActivity homeworkActivityInstance, boolean usedAsEditor){
         this.fragmentManager = fragmentManager;
         this.adapter = adapter;
         this.homeworkActivityInstance = homeworkActivityInstance;
@@ -44,7 +46,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     }
 
     public HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter,
-                                     HomeworkActivity homeworkActivityInstance, boolean usedAsEditor,
+                                     com.hlgkaifu.recyclerview.HomeworkActivity homeworkActivityInstance, boolean usedAsEditor,
                                      String dateToSet, String subjectToSet, String extraInfToSet, int positionToEdit) {
         this.fragmentManager = fragmentManager;
         this.adapter = adapter;
@@ -59,7 +61,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     Context context;
     String dateStr;
     int fragmentId;
-    private String[] classes = NotenrechnerViewAdapter.fächer;
+    private String[] classes = com.hlgkaifu.recyclerview.NotenrechnerViewAdapter.fächer;
     public EditText date, extraInf, subject;
     HomeworkBottomSheetDialog thisFragment;
     public Homework homework;
@@ -109,7 +111,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
             public void onClick(View v) {
 
                 //DatePickerFragment newFragment = new DatePickerFragment(fragmentManager, fragmentId);
-                DatePickerFragment newFragment = new DatePickerFragment(thisFragment);
+                com.hlgkaifu.recyclerview.DatePickerFragment newFragment = new com.hlgkaifu.recyclerview.DatePickerFragment(thisFragment);
                 newFragment.show(fragmentManager,"datePicker");
 
             }

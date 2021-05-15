@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hlgkaifu.recyclerview.HomeScreenActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -79,7 +80,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
     private static SharedPreferences sharedPreferences;
     private static SharedPreferences.Editor editor;
     private ArrayList<Note> Noten = new ArrayList<>();
-    private NotenrechnerViewAdapter adapter;
+    private com.hlgkaifu.recyclerview.NotenrechnerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +119,7 @@ public class NotenrechnerActivity extends AppCompatActivity {
             System.out.println(e);
         }
 
-        adapter = new NotenrechnerViewAdapter(this,this, Noten);
+        adapter = new com.hlgkaifu.recyclerview.NotenrechnerViewAdapter(this,this, Noten);
         initItemTouchHelper();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));

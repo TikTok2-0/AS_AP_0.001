@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.annotation.SuppressLint;
 
@@ -138,7 +138,7 @@ public class HomeworkActivity extends AppCompatActivity {
                         break;
                     case(R.id.menu_settings):
 
-                        switchActivity(ProfilePageActivity.class);
+                        switchActivity(com.hlgkaifu.recyclerview.ProfilePageActivity.class);
                         break;
                     case(R.id.menu_homework):
 

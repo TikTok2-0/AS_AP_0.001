@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.annotation.SuppressLint;
 
@@ -19,6 +19,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import android.widget.Toast;
+
+import com.hlgkaifu.recyclerview.NewsActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -158,7 +160,7 @@ public class LoginPageActivity extends AppCompatActivity {
                         }
                         editor.apply();
                         if(intent.getBooleanExtra("fromLaunch",true))switchActivity(NewsActivity.class);
-                        else switchActivity(ProfilePageActivity.class);
+                        else switchActivity(com.hlgkaifu.recyclerview.ProfilePageActivity.class);
 
 
                     }else{

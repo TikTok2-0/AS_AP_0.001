@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:text="Monday"
         android:id="@+id/day"
-        android:layout_below="@+id/heading"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="20sp"

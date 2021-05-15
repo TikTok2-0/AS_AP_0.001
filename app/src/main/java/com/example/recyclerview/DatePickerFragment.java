@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -11,6 +11,8 @@ import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
+
+import com.hlgkaifu.recyclerview.Homework;
 
 import java.util.Calendar;
 
@@ -28,8 +30,8 @@ public class DatePickerFragment extends DialogFragment
         this.fragmentId = fragmentId;
     }
 
-    HomeworkBottomSheetDialog homeworkBottomSheetDialog;
-    DatePickerFragment(HomeworkBottomSheetDialog homeworkBottomSheetDialog){
+    com.hlgkaifu.recyclerview.HomeworkBottomSheetDialog homeworkBottomSheetDialog;
+    DatePickerFragment(com.hlgkaifu.recyclerview.HomeworkBottomSheetDialog homeworkBottomSheetDialog){
         this.homeworkBottomSheetDialog = homeworkBottomSheetDialog;
     }
 

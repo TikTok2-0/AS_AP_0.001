@@ -1,4 +1,4 @@
-package com.example.recyclerview;
+package com.hlgkaifu.recyclerview;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import me.relex.circleindicator.CircleIndicator3;
 
 public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
-    private AbirechnerActivity abirechnerActivity;
+    private com.hlgkaifu.recyclerview.AbirechnerActivity abirechnerActivity;
     private Context context;
 
     private EditText edtTxtCourse;
@@ -63,7 +63,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
     }
      */
 
-    public AbirechnerBottomSheetDialog(AbirechnerActivity abirechnerActivity) {
+    public AbirechnerBottomSheetDialog(com.hlgkaifu.recyclerview.AbirechnerActivity abirechnerActivity) {
         this.abirechnerActivity = abirechnerActivity;
         this.main = this;
     }
@@ -170,11 +170,11 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
         cardViewFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AbiNote abiNote;
+                com.hlgkaifu.recyclerview.AbiNote abiNote;
 
                 System.out.println("-----------------"+switchHigherLevel.isChecked());
 
-                abiNote = new AbiNote(edtTxtCourse.getText().toString()
+                abiNote = new com.hlgkaifu.recyclerview.AbiNote(edtTxtCourse.getText().toString()
                         ,getPoints(txtPointsS1, "S1: ")
                         ,getPoints(txtPointsS2, "S2: ")
                         ,getPoints(txtPointsS3, "S3: ")
