@@ -29,6 +29,11 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
     private com.hlgkaifu.recyclerview.AbirechnerActivity abirechnerActivity;
     private Context context;
+    private boolean isEdtpage;
+    private int positionAbinot;
+    private com.hlgkaifu.recyclerview.AbiNote abinote;
+
+    private TextView headline;
 
     private EditText edtTxtCourse;
 
@@ -66,6 +71,16 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
     public AbirechnerBottomSheetDialog(com.hlgkaifu.recyclerview.AbirechnerActivity abirechnerActivity) {
         this.abirechnerActivity = abirechnerActivity;
         this.main = this;
+        this.isEdtpage = false;
+    }
+
+    public AbirechnerBottomSheetDialog(com.hlgkaifu.recyclerview.AbirechnerActivity abirechnerActivity, int positionAbinot,
+                                       com.hlgkaifu.recyclerview.AbiNote abinote){
+        this.abirechnerActivity = abirechnerActivity;
+        this.main = this;
+        this.positionAbinot = positionAbinot;
+        this.abinote = abinote;
+        this.isEdtpage = true;
     }
 
     @Nullable
@@ -76,6 +91,7 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
         View v = inflater.inflate(R.layout.abirechner_bottomsheet, container, false);  //stundenplan_bottom_sheet
 
+        headline = v.findViewById(R.id.headline);
         edtTxtCourse = v.findViewById(R.id.edtTxtCourse);
         txtPointsS1 = v.findViewById(R.id.txtPointsS1);
         txtPointsS2 = v.findViewById(R.id.txtPointsS2);
@@ -95,6 +111,20 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
         btnPointsAbiturDec = v.findViewById(R.id.btnPointsAbiturDec);
         switchHigherLevel = v.findViewById(R.id.switchHigherLevel);
         cardViewFinish = v.findViewById(R.id.cardViewFinish);
+
+        if(isEdtpage){
+            headline.setText("Edit Subject");
+            edtTxtCourse.setText(abinote.getCourse());
+            txtPointsS1.setText("S1: "+ abinote.getPointsSem1()+"P");
+            txtPointsS2.setText("S2: "+ abinote.getPointsSem2()+"P");
+            txtPointsS3.setText("S3: "+ abinote.getPointsSem3()+"P");
+            txtPointsS4.setText("S4: "+ abinote.getPointsSem4()+"P");
+            switchExam.setChecked(abinote.isExam());
+            switchHigherLevel.setChecked(abinote.isHigherLevel());
+        }else{
+            headline.setText("New Subject");
+
+        }
 
         btnPointsS1Add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,21 +200,13 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
         cardViewFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                com.hlgkaifu.recyclerview.AbiNote abiNote;
 
-                System.out.println("-----------------"+switchHigherLevel.isChecked());
+                if(isEdtpage){
+                    finishEdt();
+                }else{
+                    finishAdd();
+                }
 
-                abiNote = new com.hlgkaifu.recyclerview.AbiNote(edtTxtCourse.getText().toString()
-                        ,getPoints(txtPointsS1, "S1: ")
-                        ,getPoints(txtPointsS2, "S2: ")
-                        ,getPoints(txtPointsS3, "S3: ")
-                        ,getPoints(txtPointsS4, "S4: ")
-                        ,switchExam.isChecked()
-                        ,getPoints(txtPointsAbitur, "Abitur: ")
-                        ,switchHigherLevel.isChecked()
-                        );
-                abirechnerActivity.addAbinote(abiNote);
-                main.dismiss();
             }
         });
 
@@ -192,22 +214,64 @@ public class AbirechnerBottomSheetDialog extends BottomSheetDialogFragment {
 
     }
 
+    private void finishEdt(){
+        com.hlgkaifu.recyclerview.AbiNote abiNote;
+
+        abiNote = new com.hlgkaifu.recyclerview.AbiNote(edtTxtCourse.getText().toString()
+                ,getPoints(txtPointsS1, "S1: ")
+                ,getPoints(txtPointsS2, "S2: ")
+                ,getPoints(txtPointsS3, "S3: ")
+                ,getPoints(txtPointsS4, "S4: ")
+                ,switchExam.isChecked()
+                ,getPoints(txtPointsAbitur, "Abitur: ")
+                ,switchHigherLevel.isChecked()
+        );
+        abirechnerActivity.edtAbinote(positionAbinot, abiNote);
+        edtTxtCourse.setText("");
+        switchExam.setChecked(false);
+        switchHigherLevel.setChecked(false);
+        main.dismiss();
+    }
+
+    private void finishAdd(){
+        com.hlgkaifu.recyclerview.AbiNote abiNote;
+
+        abiNote = new com.hlgkaifu.recyclerview.AbiNote(edtTxtCourse.getText().toString()
+                ,getPoints(txtPointsS1, "S1: ")
+                ,getPoints(txtPointsS2, "S2: ")
+                ,getPoints(txtPointsS3, "S3: ")
+                ,getPoints(txtPointsS4, "S4: ")
+                ,switchExam.isChecked()
+                ,getPoints(txtPointsAbitur, "Abitur: ")
+                ,switchHigherLevel.isChecked()
+        );
+        abirechnerActivity.addAbinote(abiNote);
+        edtTxtCourse.setText("");
+        switchExam.setChecked(false);
+        switchHigherLevel.setChecked(false);
+        main.dismiss();
+    }
+
     private void addPoint(TextView textView, String Semester){
         String text = (String) textView.getText();
         text = text.substring(Semester.length(),text.length()-1);
         int points = Integer.parseInt(text);
-        points += 1;
-        text = Semester + points + "P";
-        textView.setText(text);
+        if(points < 15) {
+            points += 1;
+            text = Semester + points + "P";
+            textView.setText(text);
+        }
     }
 
     private void decPoint(TextView textView, String Semester){
         String text = (String) textView.getText();
         text = text.substring(Semester.length(),text.length()-1);
         int points = Integer.parseInt(text);
-        points -= 1;
-        text = Semester + points + "P";
-        textView.setText(text);
+        if(points > 0) {
+            points -= 1;
+            text = Semester + points + "P";
+            textView.setText(text);
+        }
     }
 
     private int getPoints(TextView textView, String Semester){

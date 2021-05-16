@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.hlgkaifu.recyclerview.AbirechnerBottomSheetDialog;
 
 import android.content.Context;
 import android.content.Intent;
@@ -149,7 +150,15 @@ public class AbirechnerActivity extends AppCompatActivity {
         };
         addBtn.setOnClickListener(abirechnerBottomSheetOnClickListener);
 
+    }
 
+    public void openEdtBottomSheet(int position, com.hlgkaifu.recyclerview.AbiNote abiNote){
+        AbirechnerBottomSheetDialog bottomSheet = new AbirechnerBottomSheetDialog(this, position, abiNote);
+        bottomSheet.show(getSupportFragmentManager(), "abirechnerBottomSheet");
+    }
+
+    public void edtAbinote(int position, com.hlgkaifu.recyclerview.AbiNote abiNote){
+        adapter.edtAbinote(position, abiNote);
     }
 
     public void addAbinote(com.hlgkaifu.recyclerview.AbiNote abiNote){

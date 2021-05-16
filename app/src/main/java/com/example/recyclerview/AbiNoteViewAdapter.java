@@ -6,11 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentController;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hlgkaifu.recyclerview.AbirechnerActivity;
@@ -47,8 +51,17 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
 
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull AbiNoteViewAdapter.Viewholder holder, int position) {
+
+        holder.edtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abirechnerActivity.openEdtBottomSheet(position,Abinoten.get(position));
+            }
+        });
+
         holder.course.setText(Abinoten.get(holder.getAdapterPosition()).getCourse());
         holder.pointsS1.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getPointsSem1()));
         holder.pointsS2.setText(String.valueOf(Abinoten.get(holder.getAdapterPosition()).getPointsSem2()));
@@ -95,8 +108,24 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
         setList("abinoten", Abinoten);
     }
 
+    public void edtAbinote(int position, com.hlgkaifu.recyclerview.AbiNote abinote){
+        Abinoten.get(position).setCourse(abinote.getCourse());
+        Abinoten.get(position).setPointsSem1(abinote.getPointsSem1());
+        Abinoten.get(position).setPointsSem2(abinote.getPointsSem2());
+        Abinoten.get(position).setPointsSem3(abinote.getPointsSem3());
+        Abinoten.get(position).setPointsSem4(abinote.getPointsSem4());
+        Abinoten.get(position).setExam(abinote.isExam());
+        Abinoten.get(position).setExamGrade(abinote.getExamGrade());
+        Abinoten.get(position).setHigherLevel(abinote.isHigherLevel());
+        notifyDataSetChanged();
+        abirechnerActivity.updateAbinoten(Abinoten);
+        abirechnerActivity.updateStats();
+        setList("abinoten", Abinoten);
+    }
+
     public static class Viewholder extends RecyclerView.ViewHolder{
 
+        private ImageView edtBtn;
         private TextView course;
         private TextView pointsS1;
         private TextView pointsS2;
@@ -107,6 +136,7 @@ public class AbiNoteViewAdapter extends RecyclerView.Adapter<AbiNoteViewAdapter.
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
+            edtBtn = itemView.findViewById(R.id.edtBtn);
             course = itemView.findViewById(R.id.course);
             pointsS1 = itemView.findViewById(R.id.pointsS1);
             pointsS2 = itemView.findViewById(R.id.pointsS2);
