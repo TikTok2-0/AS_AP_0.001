@@ -103,6 +103,7 @@ public class AbirechnerActivity extends AppCompatActivity {
     private com.hlgkaifu.recyclerview.AbiNoteViewAdapter adapter;
     private ArrayList<com.hlgkaifu.recyclerview.AbiNote> Abinoten = new ArrayList<>();
     private ImageView addBtn;
+    private ImageView infoBtn;
     private int pointsSemester;
     private int pointsAbitur;
     private int pointsTotal;
@@ -149,6 +150,14 @@ public class AbirechnerActivity extends AppCompatActivity {
             }
         };
         addBtn.setOnClickListener(abirechnerBottomSheetOnClickListener);
+
+        infoBtn = findViewById(R.id.infoBtn);
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchActivity(AbirechnerInfoActivity.class);
+            }
+        });
 
     }
 

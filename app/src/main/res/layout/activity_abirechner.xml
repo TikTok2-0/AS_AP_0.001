@@ -42,6 +42,16 @@
             android:layout_marginEnd="15dp"
             app:tint="@color/black" />
 
+        <ImageView
+            android:id="@+id/infoBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_info"
+            android:layout_marginTop="30dp"
+            android:layout_toLeftOf="@id/addBtn"
+            android:layout_marginEnd="15dp"
+            app:tint="@color/black" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/statsCardView"
             android:layout_width="match_parent"
