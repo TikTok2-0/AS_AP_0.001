@@ -20,6 +20,83 @@
         android:background="@color/white"
         >
 
+        <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Information"
+            android:textColor="@color/black"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_marginStart="15dp"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headline"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/firstSubHeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:text="Which of your grades will be part of the Abitur average?"
+                    />
+
+                <TextView
+                    android:id="@+id/firstTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/firstSubHeadline"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="1) Deutsch\n2) Englisch\n3) Mathematik\n4) Profilgebenes Fach
+                \n5) Künstlerisches Fach\n6) Gesellschaftswissenschaftliches Fach\n7) Naturwissenschaft
+                \n8) weiteres Prüfungsfach"
+                    />
+
+                <TextView
+                    android:id="@+id/secondSubHeadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_below="@+id/firstTxt"
+                    android:layout_marginTop="25dp"
+                    android:text="What else do you need to know?"
+                    />
+
+                <TextView
+                    android:id="@+id/secondTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/secondSubHeadline"
+                    android:layout_marginTop="10dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:text="If either 5) or 7) is your profile subject, equivalent semester results will be factored into the calculation.
+                    \n\nOnly 40 semester results can be used for the final grade. Of your courses a maximum of 3 may be practical music courses.
+                    \n\nYou cannot decide which of your courses actually factor into your final grade. A bespoke program will automatically calculate your best possible results. The rest of your grades will appear on your final school report in parentheses.
+                    \n\nYou can only have five points or less in a maximum of one fifth of your courses. This equals to six of your courses being sub-courses if the minimum of 32 semester results is used in order to calculate your grade.
+                    \n\nYou mustn’t have 0 points in any of your courses.\n\n"
+                    />
+
+            </RelativeLayout>
+
+
+
+        </ScrollView>
+
 
 
 
