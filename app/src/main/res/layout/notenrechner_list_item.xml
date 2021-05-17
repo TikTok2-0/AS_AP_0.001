@@ -20,7 +20,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:id="@+id/actvfach"
-            android:hint="Fach"
+            android:hint="Course"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_centerVertical="true"

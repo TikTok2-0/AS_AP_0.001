@@ -140,8 +140,8 @@ public class ProfilePageActivity extends AppCompatActivity {
 
         //settings.add(new SettingsProperty("Username ","Team HLG",false,false));
         settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Name",sharedPreferences.getString("name","username"),false,false));
-        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Klasse",String.valueOf(sharedPreferences.getInt("class",1)),false,false));
-        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Schule",sharedPreferences.getString("school","hlg/kaifu"),false,false));
+        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("Class",String.valueOf(sharedPreferences.getInt("class",1)),false,false));
+        settings.add(new com.hlgkaifu.recyclerview.SettingsProperty("School",sharedPreferences.getString("school","hlg/kaifu"),false,false));
         //settings.add(new SettingsProperty("E-Mail","tiktok2-0@gmail.com",false,false));
         //settings.add(new SettingsProperty("Private Account","tiktok2-0@gmail.com",false,true));
         //settings.add(new SettingsProperty("Notifications","tiktok2-0@gmail.com",true,true));

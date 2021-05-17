@@ -153,7 +153,7 @@ public class UniversalMenu extends AppCompatActivity {
 
        txtDate.setText(date);
 
-       txtCat.setText("Kategorie: "+category);
+       txtCat.setText("Category: "+category);
 
         Glide.with(this)
                 .asBitmap()

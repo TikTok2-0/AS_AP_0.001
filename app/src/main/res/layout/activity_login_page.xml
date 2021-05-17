@@ -52,7 +52,7 @@
             android:layout_below="@id/edtTxtName"
             android:layout_alignStart="@+id/edtTxtName"
             android:ems="15"
-            android:hint="Klassenstufe"
+            android:hint="Class"
             android:inputType="number"
             android:layout_marginTop="24dp"
             android:id="@+id/edtTxtClass"

@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Notenrechner"
+                android:text="Grade Calculator"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp"
@@ -120,7 +120,7 @@
                 android:id="@+id/abirechnerTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Abirechner"
+                android:text="Abi Calculator"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="30sp"
