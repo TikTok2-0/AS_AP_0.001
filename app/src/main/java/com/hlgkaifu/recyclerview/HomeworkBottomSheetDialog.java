@@ -1,5 +1,6 @@
 package com.hlgkaifu.recyclerview;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -62,14 +64,14 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     String dateStr;
     int fragmentId;
     private String[] classes = com.hlgkaifu.recyclerview.NotenrechnerViewAdapter.fächer;
-    public EditText date, extraInf, subject;
+    public EditText date, extraInf, subject, time;
     HomeworkBottomSheetDialog thisFragment;
     public Homework homework;
     Button doneBtn;
     RecyclerView homeworkRecyclerView;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    RelativeLayout dateBox;
+    RelativeLayout dateBox, timeBox;
 
 
     @Nullable
@@ -88,10 +90,12 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         AutoCompleteTextView addClassField = v.findViewById(R.id.fachTxt);
 
         date = v.findViewById(R.id.date);
+        time = v.findViewById(R.id.time);
         doneBtn = v.findViewById(R.id.doneBtn);
         extraInf = v.findViewById(R.id.extInfTxt);
         subject = v.findViewById(R.id.fachTxt);
         dateBox = v.findViewById(R.id.dateBox);
+        timeBox = v.findViewById(R.id.timeBox);
 
         if(usedAsEditor){
             date.setText(dateToSet);
@@ -123,6 +127,19 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
                 homework.setDate(null);
                 date.setText("");
                 return true;
+            }
+        });
+
+        //TODO Zeit fertig machen
+        timeBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(homeworkActivityInstance, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+                    }
+                })
             }
         });
 

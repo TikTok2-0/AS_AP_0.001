@@ -97,7 +97,6 @@
                     android:textSize="20sp"
                     android:text="S1: 10P"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -107,7 +106,6 @@
                     android:textSize="20sp"
                     android:text="S2: 10P"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_below="@+id/txtPointsS1"
                     android:layout_marginTop="15dp"
                     />
@@ -119,7 +117,6 @@
                     android:textSize="20sp"
                     android:text="S3: 10P"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_below="@+id/txtPointsS2"
                     android:layout_marginTop="15dp"
                     />
@@ -131,7 +128,6 @@
                     android:textSize="20sp"
                     android:text="S4: 10P"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_below="@+id/txtPointsS3"
                     android:layout_marginTop="15dp"
                     />
@@ -260,7 +256,6 @@
                     android:textSize="20sp"
                     android:text="Written/Oral Exam"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     />
 
                 <TextView
@@ -270,7 +265,6 @@
                     android:textSize="20sp"
                     android:text="Abitur: 10P"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_below="@+id/txtExam"
                     android:layout_marginTop="15dp"
                     />
@@ -282,7 +276,6 @@
                     android:textSize="20sp"
                     android:text="Higher Level"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_below="@+id/txtPointsAbitur"
                     android:layout_marginTop="15dp"
                     />

@@ -214,8 +214,6 @@ public class AbirechnerActivity extends AppCompatActivity {
         pointsTotal =  pointsAbitur + pointsSemester;
     }
 
-
-    //TODO format durchschnitt
     public void calcAverage(){
         average = 0;
         double pointsTotal = this.pointsTotal;

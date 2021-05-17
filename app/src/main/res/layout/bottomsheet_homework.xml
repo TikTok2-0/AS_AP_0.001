@@ -36,7 +36,9 @@
         android:completionThreshold="1"
         android:inputType="textAutoComplete"
         android:imeOptions="normal"/>
+
     <EditText
+        android:id="@+id/date"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:inputType="date"
@@ -50,7 +52,7 @@
         android:layout_marginTop="10dp"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:id="@+id/date"/>
+        />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -60,6 +62,37 @@
         android:layout_alignBottom="@id/date"
         android:layout_alignEnd="@id/date"
         android:id="@+id/dateBox"
+
+        android:backgroundTint="@color/Transparent"
+
+        android:translationZ="90dp"/>
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:layout_below="@+id/fachTxt"
+        android:layout_toRightOf="@+id/date"
+        android:hint="Time"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:imeOptions="normal"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/time"
+        android:layout_alignTop="@+id/time"
+        android:layout_alignBottom="@id/time"
+        android:layout_alignEnd="@id/time"
+        android:id="@+id/timeBox"
 
         android:backgroundTint="@color/Transparent"
 
@@ -75,14 +108,20 @@
         app:cardCornerRadius="15dp"
         android:layout_marginTop="10dp"
         >
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:textStyle="bold"
             android:textSize="20sp"
             android:id="@+id/extInfTxt"
 
             android:hint="@string/extra_info"/>
+
+
+
     </androidx.cardview.widget.CardView>
 
     <Button
