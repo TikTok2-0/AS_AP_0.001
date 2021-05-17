@@ -35,6 +35,11 @@ public class DatePickerFragment extends DialogFragment
         this.homeworkBottomSheetDialog = homeworkBottomSheetDialog;
     }
 
+    HomeworkEditBottomSheetDialog homeworkEditBottomSheetDialog;
+    DatePickerFragment(HomeworkEditBottomSheetDialog homeworkEditBottomSheetDialog){
+        this.homeworkEditBottomSheetDialog = homeworkEditBottomSheetDialog;
+    }
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
         final Calendar c = Calendar.getInstance();
@@ -58,12 +63,38 @@ public class DatePickerFragment extends DialogFragment
                 //("0"+year).substring(String.valueOf(year).length()-1);
 
         //EditText dateEdttxt = fragmentManager.findFragmentById(fragmentId).getActivity().findViewById(R.id.date);
-        EditText dateEdttxt = homeworkBottomSheetDialog.date;
+
+        EditText dateEdttxt;
+
+        try {
+             dateEdttxt = homeworkBottomSheetDialog.date;
+        }catch (Exception e){
+             dateEdttxt = homeworkEditBottomSheetDialog.date;
+        }
+
+        try {
+             dateEdttxt = homeworkEditBottomSheetDialog.date;
+        }catch (Exception e){
+             dateEdttxt = homeworkBottomSheetDialog.date;
+        }
+
         System.out.println("------------------Date---: "+currentDate);
 
         dateEdttxt.setText(currentDate);
 
-        Homework homework = homeworkBottomSheetDialog.homework;
+        Homework homework;
+        try {
+             homework = homeworkBottomSheetDialog.homework;
+        }catch (Exception e ){
+             homework = homeworkEditBottomSheetDialog.homework;
+        }
+
+        try {
+             homework = homeworkEditBottomSheetDialog.homework;
+        }catch (Exception e ){
+             homework = homeworkBottomSheetDialog.homework;
+        }
+
 
         homework.setDate(Homework.convertToDate(currentDate));
 

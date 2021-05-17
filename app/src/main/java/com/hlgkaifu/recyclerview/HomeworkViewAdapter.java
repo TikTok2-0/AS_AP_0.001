@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,6 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HomeworkViewAdapter.ViewHolder holder, int position) {
-        //System.out.println("-----------Adapter: "+homeworkList.get(position).getSubject()+", "+homeworkList.get(position).getExtraInfo());
         try{
         holder.subject.setText(homeworkList.get(holder.getAdapterPosition()).getSubject());
         //holder.extraInf.setText(homeworkList.get(position).getExtraInfo());
@@ -146,6 +146,20 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
             e.printStackTrace();
         }
 
+        holder.edtBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeworkEditBottomSheetDialog homeworkEditBottomSheetDialog = new HomeworkEditBottomSheetDialog(
+                        mainActivityInstance.getSupportFragmentManager(),
+                        mainActivityInstance.getAdapter(),
+                        mainActivityInstance,
+                        homeworkList.get(position),
+                        position
+                );
+                homeworkEditBottomSheetDialog.show(mainActivityInstance.getSupportFragmentManager(), "homeworkEditBottomSheet");
+
+            }
+        });
 
     }
 
@@ -168,7 +182,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
         private TextView subject, date, extraInf;
         private CardView cardView;
         private CheckBox checkBox;
-
+        private ImageView edtBtn;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -179,7 +193,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
             date = itemView.findViewById(R.id.date);
             cardView = itemView.findViewById(R.id.cardView);
             checkBox = itemView.findViewById(R.id.checkbox);
-
+            edtBtn = itemView.findViewById(R.id.edtBtn);
 
         }
     }
