@@ -10,6 +10,8 @@ import java.util.Date;
 public class Homework {
 
     private Date date;
+    private int timeHour;
+    private int timeMin;
     private String subject;
     private String extraInfo;
     private boolean completed;
@@ -49,6 +51,16 @@ public class Homework {
 
     public void setExtraInfo(String extraInfo) {
         this.extraInfo = extraInfo;
+    }
+
+    public int getTimeHour() { return timeHour; }
+
+    public void setTimeHour(int timeHour) { this.timeHour = timeHour; }
+
+    public int getTimeMin() { return timeMin;}
+
+    public void setTimeMin(int timeMin) {
+        this.timeMin = timeMin;
     }
 
     public static ArrayList<Homework>   homeworkList = new ArrayList<>(),

@@ -1,5 +1,6 @@
 package com.hlgkaifu.recyclerview;
 
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
 
@@ -38,19 +41,21 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
         this.homeworkActivityInstance = homeworkActivityInstance;
         this.homework = homework;
         this.positionToEdit = position;
+        wasClickedTime = false;
     }
 
     Context context;
     String dateStr;
     int fragmentId;
     private String[] classes = NotenrechnerViewAdapter.fächer;
-    public EditText date, extraInf, subject;
+    public EditText date, extraInf, subject, time;
     HomeworkEditBottomSheetDialog thisFragment;
     Button doneBtn;
     RecyclerView homeworkRecyclerView;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    RelativeLayout dateBox;
+    RelativeLayout dateBox, timeBox;
+    boolean wasClickedTime;
 
 
     @Nullable
@@ -72,13 +77,14 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
         extraInf = v.findViewById(R.id.extInfTxt);
         subject = v.findViewById(R.id.fachTxt);
         dateBox = v.findViewById(R.id.dateBox);
-
+        timeBox = v.findViewById(R.id.timeBox);
+        time = v.findViewById(R.id.time);
 
         date.setText(homework.getDateStr());
         subject.setText(homework.getSubject());
         extraInf.setText(homework.getExtraInfo());
         homework.setDate(Homework.convertToDate(homework.getDateStr()));
-
+        time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
 
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,classes);
         addClassField.setAdapter(adapterFach);
@@ -100,7 +106,7 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(subject.getText().toString()!=""||extraInf.getText().toString()!=""||date.getText().toString()!=""){
+                if(!subject.getText().toString().equals("") && !date.getText().toString().equals("")){
 
                     homework.setSubject(subject.getText().toString());
                     homework.setExtraInfo(extraInf.getText().toString());
@@ -127,13 +133,57 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
 
                 }
                 else{
-                    Toast.makeText(context,"Mindestens ein Feld muss ausgefüllt sein",Toast.LENGTH_SHORT);
+                    String unanswered = "";
+                    if (subject.getText().toString().equals("")){
+                        unanswered = unanswered + "Courses";
+                    }
+                    if (date.getText().toString().equals("")){
+                        if (unanswered.equals("")){
+                            unanswered = unanswered + "Date";
+                        }else{
+                            unanswered = unanswered +  ", date";
+                        }
+                    }
+
+                    unanswered = unanswered +  " must be filled";
+
+
+                    Toast.makeText(context,unanswered,Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        timeBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int mHour, mMin;
+                Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMin = c.get(Calendar.MINUTE);
+                wasClickedTime = true;
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(homeworkActivityInstance, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        homework.setTimeHour(hourOfDay);
+                        homework.setTimeMin(minute);
+                        time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
+                    }
+                }, mHour, mMin, true);
+                timePickerDialog.show();
             }
         });
 
 
         return v;
+    }
+
+    private String formatTime(int time){
+        String formatedTime = String.valueOf(time);
+        if(time<10){
+            formatedTime = "0"+formatedTime;
+        }
+        return formatedTime;
     }
 
 

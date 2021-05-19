@@ -40,6 +40,17 @@
             android:textColor="@color/black" />
 
         <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/subject"
+            android:layout_toRightOf="@id/date"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text=""
+            android:textColor="@color/black" />
+
+        <TextView
             android:id="@+id/extraInf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

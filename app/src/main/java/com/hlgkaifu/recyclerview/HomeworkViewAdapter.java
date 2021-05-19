@@ -56,6 +56,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull HomeworkViewAdapter.ViewHolder holder, int position) {
+        int minute;
         try{
         holder.subject.setText(homeworkList.get(holder.getAdapterPosition()).getSubject());
         //holder.extraInf.setText(homeworkList.get(position).getExtraInfo());
@@ -64,6 +65,8 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
             //extraInfos = mainActivityInstance.findViewById(R.id.extInfTxt);
             extraInfos.setText(homeworkList.get(holder.getAdapterPosition()).getExtraInfo());
             holder.date.setText(homeworkList.get(holder.getAdapterPosition()).getDateStr());
+            holder.time.setText(formatTime(homeworkList.get(holder.getAdapterPosition()).getTimeHour()) +
+                    ":"+formatTime(homeworkList.get(holder.getAdapterPosition()).getTimeMin()));
         }catch (Exception e){
             e.printStackTrace();
 
@@ -153,8 +156,8 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
                         mainActivityInstance.getSupportFragmentManager(),
                         mainActivityInstance.getAdapter(),
                         mainActivityInstance,
-                        homeworkList.get(position),
-                        position
+                        homeworkList.get(holder.getAdapterPosition()),
+                        holder.getAdapterPosition()
                 );
                 homeworkEditBottomSheetDialog.show(mainActivityInstance.getSupportFragmentManager(), "homeworkEditBottomSheet");
 
@@ -179,7 +182,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView subject, date, extraInf;
+        private TextView subject, date, extraInf, time;
         private CardView cardView;
         private CheckBox checkBox;
         private ImageView edtBtn;
@@ -194,6 +197,7 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
             cardView = itemView.findViewById(R.id.cardView);
             checkBox = itemView.findViewById(R.id.checkbox);
             edtBtn = itemView.findViewById(R.id.edtBtn);
+            time = itemView.findViewById(R.id.time);
 
         }
     }
@@ -250,6 +254,15 @@ public class HomeworkViewAdapter extends RecyclerView.Adapter<HomeworkViewAdapte
         //mainActivityInstance.getString(R.string.homeworkPreferenceKey)
 
     }
+
+    private String formatTime(int time){
+        String formatedTime = String.valueOf(time);
+        if(time<10){
+            formatedTime = "0"+formatedTime;
+        }
+        return formatedTime;
+    }
+
     public <T> void setList(String key, ArrayList<T> list){
         Gson gson = new Gson();
         String json = gson.toJson(list);

@@ -26,6 +26,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
@@ -45,6 +46,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         this.adapter = adapter;
         this.homeworkActivityInstance = homeworkActivityInstance;
         this.usedAsEditor = usedAsEditor;
+        wasClickedTime = false;
     }
 
     public HomeworkBottomSheetDialog(FragmentManager fragmentManager, HomeworkViewAdapter adapter,
@@ -58,6 +60,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         this.subjectToSet = subjectToSet;
         this.extraInfToSet = extraInfToSet;
         this.positionToEdit = positionToEdit;
+        wasClickedTime = false;
     }
 
     Context context;
@@ -72,6 +75,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     RelativeLayout dateBox, timeBox;
+    private boolean wasClickedTime;
 
 
     @Nullable
@@ -90,12 +94,12 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         AutoCompleteTextView addClassField = v.findViewById(R.id.fachTxt);
 
         date = v.findViewById(R.id.date);
-        time = v.findViewById(R.id.time);
         doneBtn = v.findViewById(R.id.doneBtn);
         extraInf = v.findViewById(R.id.extInfTxt);
         subject = v.findViewById(R.id.fachTxt);
         dateBox = v.findViewById(R.id.dateBox);
         timeBox = v.findViewById(R.id.timeBox);
+        time = v.findViewById(R.id.time);
 
         if(usedAsEditor){
             date.setText(dateToSet);
@@ -130,23 +134,35 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
+
         //TODO Zeit fertig machen
         timeBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int mHour, mMin;
+                Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMin = c.get(Calendar.MINUTE);
+
                 TimePickerDialog timePickerDialog = new TimePickerDialog(homeworkActivityInstance, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
+                        homework.setTimeHour(hourOfDay);
+                        homework.setTimeMin(minute);
+                        time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
+                        wasClickedTime = true;
                     }
-                })
+                }, mHour, mMin, true);
+                timePickerDialog.show();
             }
         });
+
+
 
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(subject.getText().toString()!=""||extraInf.getText().toString()!=""||date.getText().toString()!=""){
+                if(!subject.getText().toString().equals("") && !date.getText().toString().equals("") && wasClickedTime){
 
                     homework.setSubject(subject.getText().toString());
                     homework.setExtraInfo(extraInf.getText().toString());
@@ -178,13 +194,42 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
                 }
                 else{
-                    Toast.makeText(context,"Mindestens ein Feld muss ausgefüllt sein",Toast.LENGTH_SHORT);
+                    String unanswered = "";
+                    if (subject.getText().toString().equals("")){
+                        unanswered = unanswered + "Courses";
+                    }
+                    if (date.getText().toString().equals("")){
+                        if (unanswered.equals("")){
+                            unanswered = unanswered + "Date";
+                        }else{
+                            unanswered = unanswered +  ", date";
+                        }
+                    }
+                    if (!wasClickedTime){
+                        if (unanswered.equals("")){
+                            unanswered = unanswered + "Time";
+                        }else{
+                            unanswered = unanswered +  ", time";
+                        }
+                    }
+                    unanswered = unanswered +  " must be filled";
+
+
+                    Toast.makeText(context,unanswered,Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
 
         return v;
+    }
+
+    private String formatTime(int time){
+        String formatedTime = String.valueOf(time);
+        if(time<10){
+            formatedTime = "0"+formatedTime;
+        }
+        return formatedTime;
     }
 
 
