@@ -2,5 +2,6 @@
 <resources>
     <integer name="menu_bar_margin_bottom">0</integer>
     <dimen name="menu_bar_margin_bottom">0dp</dimen>
+    <dimen name="abi_calculator_font_size">17sp</dimen>
 
 </resources>
