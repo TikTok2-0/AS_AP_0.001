@@ -120,10 +120,14 @@ public class UniversalMenu extends AppCompatActivity {
        txtDate = findViewById(R.id.txtDate);
        txtLink = findViewById(R.id.txtLink);
 
+       /*
        //API----
        if(Build.VERSION.SDK_INT>=26){
         mainText.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
        }
+
+        */
+
        //headline.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
        backBtn.setOnClickListener((View v) -> switchActivity(NewsActivity.class));
 
