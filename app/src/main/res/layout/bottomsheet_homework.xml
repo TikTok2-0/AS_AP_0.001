@@ -99,6 +99,7 @@
         android:translationZ="90dp"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/extraInfCardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date"
@@ -107,6 +108,7 @@
         android:layout_marginEnd="25dp"
         app:cardCornerRadius="15dp"
         android:layout_marginTop="10dp"
+        android:elevation="10dp"
         >
 
         <EditText
@@ -120,9 +122,108 @@
 
             android:hint="@string/extra_info"/>
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/notificationCardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/extraInfCardView"
+        android:layout_alignStart="@+id/date"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="25dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="25dp"
+        android:elevation="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+            android:id="@+id/notFirstTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:text="1 week before"
+            />
+
+            <TextView
+                android:id="@+id/notSecondTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/notFirstTxt"
+                android:textSize="20sp"
+                android:text="1 day before"
+                android:textColor="@color/black"
+
+                />
+
+            <TextView
+                android:id="@+id/notThirdTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@id/notSecondTxt"
+                android:textSize="20sp"
+                android:text="2 hours before"
+                android:textColor="@color/black"
+
+                />
+
+            <Switch
+                android:id="@+id/switchNotWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                />
+
+            <Switch
+                android:id="@+id/switchNotDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/switchNotWeek"
+                />
+
+            <Switch
+                android:id="@+id/switchNotHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/switchNotDay"
+                />
+
+        </RelativeLayout>
+
+
 
 
     </androidx.cardview.widget.CardView>
+
+
+
 
     <Button
         android:layout_width="wrap_content"

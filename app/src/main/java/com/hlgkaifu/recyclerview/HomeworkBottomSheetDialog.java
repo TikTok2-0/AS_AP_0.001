@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -76,6 +77,7 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
     SharedPreferences.Editor editor;
     RelativeLayout dateBox, timeBox;
     private boolean wasClickedTime;
+    Switch switchWeek, switchHour, switchDay;
 
 
     @Nullable
@@ -100,6 +102,9 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         dateBox = v.findViewById(R.id.dateBox);
         timeBox = v.findViewById(R.id.timeBox);
         time = v.findViewById(R.id.time);
+        switchWeek = v.findViewById(R.id.switchNotWeek);
+        switchHour = v.findViewById(R.id.switchNotHour);
+        switchDay = v.findViewById(R.id.switchNotDay);
 
         if(usedAsEditor){
             date.setText(dateToSet);
@@ -158,6 +163,36 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
         });
 
 
+        switchDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchDay.isChecked()){
+                    switchHour.setChecked(false);
+                    switchWeek.setChecked(false);
+                }
+            }
+        });
+
+        switchHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchHour.isChecked()){
+                    switchDay.setChecked(false);
+                    switchWeek.setChecked(false);
+                }
+            }
+        });
+
+        switchWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchWeek.isChecked()){
+                    switchDay.setChecked(false);
+                    switchHour.setChecked(false);
+                }
+            }
+        });
+
 
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +201,14 @@ public class HomeworkBottomSheetDialog extends BottomSheetDialogFragment {
 
                     homework.setSubject(subject.getText().toString());
                     homework.setExtraInfo(extraInf.getText().toString());
+
+                    if(switchHour.isChecked()){
+                        homework.setNotification("hour");
+                    }else if(switchDay.isChecked()){
+                        homework.setNotification("day");
+                    }else if(switchWeek.isChecked()){
+                        homework.setNotification("week");
+                    }
 
                     System.out.println("-------------------setting homework: "+subject.getText().toString()+", "+extraInf.getText().toString());
                     if(!usedAsEditor) {

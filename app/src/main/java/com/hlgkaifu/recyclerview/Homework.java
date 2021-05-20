@@ -15,6 +15,7 @@ public class Homework {
     private String subject;
     private String extraInfo;
     private boolean completed;
+    private String notification;
 
     public boolean isCompleted() {
         return completed;
@@ -62,6 +63,10 @@ public class Homework {
     public void setTimeMin(int timeMin) {
         this.timeMin = timeMin;
     }
+
+    public String getNotification() { return notification; }
+
+    public void setNotification(String notification) { this.notification = notification; }
 
     public static ArrayList<Homework>   homeworkList = new ArrayList<>(),
                                         activeHomwork = new ArrayList<>(),

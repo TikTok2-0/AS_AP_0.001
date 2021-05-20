@@ -12,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -56,6 +57,8 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
     SharedPreferences.Editor editor;
     RelativeLayout dateBox, timeBox;
     boolean wasClickedTime;
+    Switch switchWeek, switchHour, switchDay;
+
 
 
     @Nullable
@@ -79,12 +82,26 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
         dateBox = v.findViewById(R.id.dateBox);
         timeBox = v.findViewById(R.id.timeBox);
         time = v.findViewById(R.id.time);
+        switchWeek = v.findViewById(R.id.switchNotWeek);
+        switchHour = v.findViewById(R.id.switchNotHour);
+        switchDay = v.findViewById(R.id.switchNotDay);
 
         date.setText(homework.getDateStr());
         subject.setText(homework.getSubject());
         extraInf.setText(homework.getExtraInfo());
         homework.setDate(Homework.convertToDate(homework.getDateStr()));
         time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
+        switch(homework.getNotification()){
+            case "week":
+                switchWeek.setChecked(true);
+                break;
+            case "day":
+                switchDay.setChecked(true);
+                break;
+            case "hour":
+                switchHour.setChecked(true);
+                break;
+        }
 
         ArrayAdapter<String> adapterFach = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1,classes);
         addClassField.setAdapter(adapterFach);
@@ -103,6 +120,57 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
+        timeBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int mHour, mMin;
+                Calendar c = Calendar.getInstance();
+                mHour = c.get(Calendar.HOUR_OF_DAY);
+                mMin = c.get(Calendar.MINUTE);
+                wasClickedTime = true;
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(homeworkActivityInstance, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        homework.setTimeHour(hourOfDay);
+                        homework.setTimeMin(minute);
+                        time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
+                    }
+                }, mHour, mMin, true);
+                timePickerDialog.show();
+            }
+        });
+
+        switchDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchDay.isChecked()){
+                    switchHour.setChecked(false);
+                    switchWeek.setChecked(false);
+                }
+            }
+        });
+
+        switchHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchHour.isChecked()){
+                    switchDay.setChecked(false);
+                    switchWeek.setChecked(false);
+                }
+            }
+        });
+
+        switchWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(switchWeek.isChecked()){
+                    switchDay.setChecked(false);
+                    switchHour.setChecked(false);
+                }
+            }
+        });
+
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +178,14 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
 
                     homework.setSubject(subject.getText().toString());
                     homework.setExtraInfo(extraInf.getText().toString());
+
+                    if(switchHour.isChecked()){
+                        homework.setNotification("hour");
+                    }else if(switchDay.isChecked()){
+                        homework.setNotification("day");
+                    }else if(switchWeek.isChecked()){
+                        homework.setNotification("week");
+                    }
 
 
                     Homework.homeworkList.set(positionToEdit,homework);
@@ -153,26 +229,6 @@ public class HomeworkEditBottomSheetDialog extends BottomSheetDialogFragment {
             }
         });
 
-        timeBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int mHour, mMin;
-                Calendar c = Calendar.getInstance();
-                mHour = c.get(Calendar.HOUR_OF_DAY);
-                mMin = c.get(Calendar.MINUTE);
-                wasClickedTime = true;
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(homeworkActivityInstance, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        homework.setTimeHour(hourOfDay);
-                        homework.setTimeMin(minute);
-                        time.setText(formatTime(homework.getTimeHour())+":"+formatTime(homework.getTimeMin()));
-                    }
-                }, mHour, mMin, true);
-                timePickerDialog.show();
-            }
-        });
 
 
         return v;
