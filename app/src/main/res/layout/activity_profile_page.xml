@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:theme="@style/ThemeOverlay.RecyclerView.FullscreenContainer"
     tools:context=".ProfilePageActivity">
@@ -19,7 +19,7 @@
 
         android:textColor="?attr/fullscreenTextColor"
         android:textSize="50sp"
-        android:textStyle="bold" >
+        android:textStyle="bold">
 
         <TextView
             android:id="@+id/headline"
@@ -31,129 +31,171 @@
             android:text="@string/profile_page_title"
             android:textColor="@color/black"
             android:textSize="45sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="25dp"
             android:layout_alignTop="@+id/headline"
             android:layout_alignBottom="@+id/headline"
-            android:src="@drawable/ic_settings"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="12dp"
-            app:tint="@color/black"
-            android:visibility="invisible"/>
+            android:src="@drawable/ic_settings"
+            android:visibility="invisible"
+            app:tint="@color/black" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/headline"
-            android:id="@+id/profileCard"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Profile_subtitle"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:layout_marginStart="25dp"
-
-                android:id="@+id/headlineProfile"
-                android:layout_marginTop="24dp"/>
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/menu_bar"
+            android:layout_below="@+id/headline">
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/profileEditBtn"
-                android:layout_alignBottom="@+id/headlineProfile"
-                android:layout_alignParentEnd="true"
-                android:padding="4.2dp"
-                android:layout_marginEnd="8dp">
+                android:layout_marginBottom="100dp"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/profileCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/headlineProfile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/Profile_subtitle"
+                        android:textColor="@color/black"
+
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <RelativeLayout
+                        android:id="@+id/profileEditBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/headlineProfile"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="8dp"
+                        android:padding="4.2dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:text="Edit ⟩"
+                            android:textColor="@color/active_icon" />
+
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/settingsRecView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/headlineProfile"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+
+                        android:background="@color/white" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_below="@+id/settingsRecView"
+                        android:background="@color/profileTopicSeperator" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/gradeCalculatorCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profileCard">
+
+                    <TextView
+                        android:id="@+id/notenrechnerBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Grade Calculator"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_below="@+id/notenrechnerBtn"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/profileTopicSeperator" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/abiCalculatorCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradeCalculatorCard">
+
+
+                    <TextView
+                        android:id="@+id/abirechnerTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Abi Calculator"
+                        android:textColor="@color/black"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_below="@+id/abirechnerTxt"
+                        android:layout_marginTop="12dp"
+                        android:background="@color/profileTopicSeperator" />
+
+                </RelativeLayout>
+
 
                 <TextView
+                    android:id="@+id/btnAboutUs"
                     android:layout_width="wrap_content"
+                    android:layout_below="@+id/abiCalculatorCard"
                     android:layout_height="wrap_content"
 
-                    android:text="Edit ⟩"
-                    android:textColor="@color/active_icon"/>
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="32dp"
+                    android:text="About Us"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/btnLogout"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/btnAboutUs"
+
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/profile_logout"
+                    android:textColor="@color/black" />
+
+
+
+
 
             </RelativeLayout>
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/settingsRecView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/headlineProfile"
-                android:layout_marginTop="16dp"
-                android:background="@color/white"
-
-                android:layout_alignParentStart="true"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_below="@+id/settingsRecView"
-                android:background="@color/profileTopicSeperator"/>
-        </RelativeLayout>
-
-
-
-        <RelativeLayout
-            android:id="@+id/rechnerRelativeLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@id/headline"
-            android:layout_below="@id/profileCard"
-            android:layout_marginTop="24dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Grade Calculator"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:id="@+id/notenrechnerBtn"/>
-
-            <TextView
-                android:id="@+id/abirechnerTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Abi Calculator"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:layout_below="@+id/notenrechnerBtn"
-                android:layout_marginTop="20dp"/>
-
-        </RelativeLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_above="@+id/btnAboutUs"
-            android:text="@string/profile_logout"
-            android:layout_marginBottom="30dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/btnLogout"
-            android:textColor="@color/black"
-            />
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:id="@+id/btnAboutUs"
-            android:text="About Us"
-            android:layout_above="@+id/menu_bar"
-            android:textColor="@color/black"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            />
-
+        </ScrollView>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/menu_bar"
